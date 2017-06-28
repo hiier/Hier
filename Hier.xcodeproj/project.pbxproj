@@ -541,6 +541,7 @@
 				217BFD441EFA247D0033AD54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		217BFD451EFA247D0033AD54 /* Build configuration list for PBXNativeTarget "HierTests" */ = {
 			isa = XCConfigurationList;
@@ -549,6 +550,7 @@
 				217BFD471EFA247D0033AD54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
