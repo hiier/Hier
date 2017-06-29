@@ -12,8 +12,8 @@ import Alamofire
 class ViewController: UIViewController{
     
     
+    let URL_USER_REGISTER = "http://127.0.0.1:5000/signup/"
     
-    var clickCount = 0
     var trash = "www"
 
 
@@ -39,25 +39,28 @@ class ViewController: UIViewController{
             
         
         }else{
-        
-            clickCount+=1
-            Label.text="you clicked \(clickCount) times"
+            //creating parameters for the post request
+            let parameters: Parameters=[
+                "email":EnterEmail.text!,
+                "password":EnterPassword.text!
+            ]
             
             
             
-            Alamofire.request( "http://127.0.0.1:5000/ping").responseJSON { response in
-                
-                
-                if let json = response.result.value {
-                   
-                    print("JSON: \(json)")
+            
+            //Sending http post request
+            Alamofire.request(URL_USER_REGISTER, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON
+                {
+                    response in
+                    //printing response
+                    print(response)
                     
-                }
-                
-            
+                    //getting the json value from the server
+                    if let result = response.result.value {
+                        
+                        print("JSON: \(result)")
+                    }
             }
-            
-            Label.text = trash
             
             
         }
