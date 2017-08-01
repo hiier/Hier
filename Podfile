@@ -5,7 +5,12 @@ target 'Hier' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
   pod 'Alamofire', '~> 4.4'
-
+  pod 'Bolts'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
+  pod 'FacebookShare', :git => 'https://github.com/1amageek/facebook-sdk-swift'
+  pod 'SwiftLocation'
+  pod 'SwiftyJSON'
   # Pods for Hier
 
   target 'HierTests' do

@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		216511111F1EFF0700B839DD /* MainEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216511101F1EFF0700B839DD /* MainEventsTableViewController.swift */; };
+		216511171F1F0FC000B839DD /* GeneralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216511161F1F0FC000B839DD /* GeneralTableViewCell.swift */; };
+		216511191F1F14FC00B839DD /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216511181F1F14FC00B839DD /* RatingControl.swift */; };
+		2165111B1F20784600B839DD /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165111A1F20784500B839DD /* Event.swift */; };
 		217BFD291EFA247D0033AD54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BFD281EFA247D0033AD54 /* AppDelegate.swift */; };
-		217BFD2B1EFA247D0033AD54 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BFD2A1EFA247D0033AD54 /* ViewController.swift */; };
+		217BFD2B1EFA247D0033AD54 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BFD2A1EFA247D0033AD54 /* SignupViewController.swift */; };
 		217BFD2E1EFA247D0033AD54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217BFD2C1EFA247D0033AD54 /* Main.storyboard */; };
 		217BFD301EFA247D0033AD54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 217BFD2F1EFA247D0033AD54 /* Assets.xcassets */; };
-		217BFD331EFA247D0033AD54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217BFD311EFA247D0033AD54 /* LaunchScreen.storyboard */; };
 		217BFD3E1EFA247D0033AD54 /* HierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BFD3D1EFA247D0033AD54 /* HierTests.swift */; };
+		219989871F156B0E0083ADE4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219989861F156B0E0083ADE4 /* ProfileViewController.swift */; };
+		21D02EFD1F04B0A800CDA906 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */; };
 		52BDF342C25BFD388AE3D010 /* Pods_HierTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714327D4949130D7954570D0 /* Pods_HierTests.framework */; };
 		AFF98DF63D47199B39407E7F /* Pods_Hier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CD76E8BF0ABAEFBF1DFCB29 /* Pods_Hier.framework */; };
 /* End PBXBuildFile section */
@@ -28,16 +33,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		216511101F1EFF0700B839DD /* MainEventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainEventsTableViewController.swift; sourceTree = "<group>"; };
+		216511161F1F0FC000B839DD /* GeneralTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralTableViewCell.swift; sourceTree = "<group>"; };
+		216511181F1F14FC00B839DD /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		2165111A1F20784500B839DD /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		217BFD251EFA247D0033AD54 /* Hier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		217BFD281EFA247D0033AD54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		217BFD2A1EFA247D0033AD54 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		217BFD2A1EFA247D0033AD54 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		217BFD2D1EFA247D0033AD54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		217BFD2F1EFA247D0033AD54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		217BFD321EFA247D0033AD54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		217BFD341EFA247D0033AD54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		217BFD391EFA247D0033AD54 /* HierTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HierTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		217BFD3D1EFA247D0033AD54 /* HierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierTests.swift; sourceTree = "<group>"; };
 		217BFD3F1EFA247D0033AD54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		219989861F156B0E0083ADE4 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		714327D4949130D7954570D0 /* Pods_HierTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HierTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD76E8BF0ABAEFBF1DFCB29 /* Pods_Hier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6CAA26C25386E7E2317AB3A /* Pods-HierTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HierTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HierTests/Pods-HierTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,10 +109,15 @@
 			isa = PBXGroup;
 			children = (
 				217BFD281EFA247D0033AD54 /* AppDelegate.swift */,
-				217BFD2A1EFA247D0033AD54 /* ViewController.swift */,
+				217BFD2A1EFA247D0033AD54 /* SignupViewController.swift */,
+				21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */,
 				217BFD2C1EFA247D0033AD54 /* Main.storyboard */,
+				2165111A1F20784500B839DD /* Event.swift */,
+				216511181F1F14FC00B839DD /* RatingControl.swift */,
+				216511161F1F0FC000B839DD /* GeneralTableViewCell.swift */,
+				216511101F1EFF0700B839DD /* MainEventsTableViewController.swift */,
+				219989861F156B0E0083ADE4 /* ProfileViewController.swift */,
 				217BFD2F1EFA247D0033AD54 /* Assets.xcassets */,
-				217BFD311EFA247D0033AD54 /* LaunchScreen.storyboard */,
 				217BFD341EFA247D0033AD54 /* Info.plist */,
 			);
 			path = Hier;
@@ -184,6 +199,7 @@
 				TargetAttributes = {
 					217BFD241EFA247D0033AD54 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = N7FJ58882C;
 						ProvisioningStyle = Automatic;
 					};
 					217BFD381EFA247D0033AD54 = {
@@ -217,7 +233,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				217BFD331EFA247D0033AD54 /* LaunchScreen.storyboard in Resources */,
 				217BFD301EFA247D0033AD54 /* Assets.xcassets in Resources */,
 				217BFD2E1EFA247D0033AD54 /* Main.storyboard in Resources */,
 			);
@@ -330,7 +345,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				217BFD2B1EFA247D0033AD54 /* ViewController.swift in Sources */,
+				2165111B1F20784600B839DD /* Event.swift in Sources */,
+				216511191F1F14FC00B839DD /* RatingControl.swift in Sources */,
+				21D02EFD1F04B0A800CDA906 /* LoginViewController.swift in Sources */,
+				216511111F1EFF0700B839DD /* MainEventsTableViewController.swift in Sources */,
+				216511171F1F0FC000B839DD /* GeneralTableViewCell.swift in Sources */,
+				217BFD2B1EFA247D0033AD54 /* SignupViewController.swift in Sources */,
+				219989871F156B0E0083ADE4 /* ProfileViewController.swift in Sources */,
 				217BFD291EFA247D0033AD54 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,14 +381,6 @@
 				217BFD2D1EFA247D0033AD54 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		217BFD311EFA247D0033AD54 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				217BFD321EFA247D0033AD54 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -471,11 +484,13 @@
 			baseConfigurationReference = E43464689730B62BBFBF64AC /* Pods-Hier.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = N7FJ58882C;
 				INFOPLIST_FILE = Hier/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Hier;
+				PRODUCT_BUNDLE_IDENTIFIER = com.go.Hier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -484,11 +499,13 @@
 			baseConfigurationReference = F40AC3A95243F406BC1E821B /* Pods-Hier.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = N7FJ58882C;
 				INFOPLIST_FILE = Hier/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Hier;
+				PRODUCT_BUNDLE_IDENTIFIER = com.go.Hier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
