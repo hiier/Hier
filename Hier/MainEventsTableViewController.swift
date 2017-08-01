@@ -34,6 +34,7 @@ class MainEventsTableViewController: UITableViewController {
                         if let evt = Event(name: eventJson["title"].stringValue, description: eventJson["description"].stringValue, time: eventJson["time"]["$date"].stringValue, location: eventJson["location"]["coordinates"].stringValue)  {
                                 self.allevents.append(evt)
                                 print(evt.name)
+                                print(self.allevents.count)
                             }
                         
                         
@@ -50,14 +51,17 @@ class MainEventsTableViewController: UITableViewController {
             case .failure(let error):
                 print(error)
             }
+            
+            print("final check")
+            print(self.allevents.count)
+            self.tableView.reloadData()
         }
         
-        
-        
-        
-        
-        
-        
+        print("another check")
+        print(allevents.count)
+      
+
+
         
     }
     
@@ -74,8 +78,12 @@ class MainEventsTableViewController: UITableViewController {
         
         loadEvents()
         
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
+        print("loadload")
+        print(allevents.count)
+//        self.tableView.dataSource = self
+//        self.tableView.delegate = self
+//        self.tableView.reloadData()
+
     }
     
 
@@ -93,25 +101,23 @@ class MainEventsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return self.allevents.count
+        return allevents.count
+       
     }
 
  
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "GeneralTableViewCell"
         
-        print("here1")
         
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? GeneralTableViewCell else{
             fatalError("The dequeued cell is not an instance of GeneralTableViewCell.")
         }
-        print("here2")
 
         let event = self.allevents[indexPath.row]
         
         print(event.name + event.description + event.time + event.location)
-        print("here3")
         
         cell.eventName.text = "hello"
         
