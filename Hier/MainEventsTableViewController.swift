@@ -9,12 +9,19 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-
-
+import MaterialComponents.MaterialCollections
 
 class MainEventsTableViewController: UITableViewController {
     //MARK: Properties
     var allevents = [Event]()
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        // Initialize Tab Bar Item
+        tabBarItem = UITabBarItem(tabBarSystemItem:.bookmarks, tag: 1)
+    }
+
 
     
     //MARK: Private Methods
@@ -33,10 +40,7 @@ class MainEventsTableViewController: UITableViewController {
                         var eventJson = JSON(data: dataFromString)
                         if let evt = Event(name: eventJson["title"].stringValue, description: eventJson["description"].stringValue, time: eventJson["time"]["$date"].stringValue, location: eventJson["location"]["coordinates"].stringValue)  {
                                 self.allevents.append(evt)
-                                print(evt.name)
-                                print(self.allevents.count)
                             }
-                        
                         
                         
                     } else{
@@ -51,18 +55,10 @@ class MainEventsTableViewController: UITableViewController {
             case .failure(let error):
                 print(error)
             }
-            
-            print("final check")
-            print(self.allevents.count)
+
             self.tableView.reloadData()
         }
-        
-        print("another check")
-        print(allevents.count)
-      
-
-
-        
+       
     }
     
 
@@ -77,12 +73,7 @@ class MainEventsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         loadEvents()
-        
-        print("loadload")
-        print(allevents.count)
-//        self.tableView.dataSource = self
-//        self.tableView.delegate = self
-//        self.tableView.reloadData()
+
 
     }
     
@@ -119,7 +110,7 @@ class MainEventsTableViewController: UITableViewController {
         
         print(event.name + event.description + event.time + event.location)
         
-        cell.eventName.text = "hello"
+        cell.eventName.text = event.name
         
 
         return cell

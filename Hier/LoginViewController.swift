@@ -15,6 +15,12 @@ import FacebookLogin
 class LoginViewController: UIViewController {
     
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        // Initialize Tab Bar Item
+        tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
+    }
     
     
     override func viewDidLoad() {

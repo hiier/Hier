@@ -11,6 +11,7 @@ target 'Hier' do
   pod 'FacebookShare', :git => 'https://github.com/1amageek/facebook-sdk-swift'
   pod 'SwiftLocation'
   pod 'SwiftyJSON'
+  pod 'MaterialComponents'
   # Pods for Hier
 
   target 'HierTests' do
