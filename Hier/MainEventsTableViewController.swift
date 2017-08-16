@@ -19,7 +19,7 @@ class MainEventsTableViewController: UITableViewController {
         super.init(coder: aDecoder)
         
         // Initialize Tab Bar Item
-        tabBarItem = UITabBarItem(tabBarSystemItem:.bookmarks, tag: 1)
+        tabBarItem = UITabBarItem(tabBarSystemItem:.bookmarks, tag: 0)
     }
 
 

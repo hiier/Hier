@@ -12,6 +12,8 @@ target 'Hier' do
   pod 'SwiftLocation'
   pod 'SwiftyJSON'
   pod 'MaterialComponents'
+  pod 'Eureka'
+  pod 'ImageRow', '~> 1.0'
   # Pods for Hier
 
   target 'HierTests' do

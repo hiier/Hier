@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
         super.init(coder: aDecoder)
         
         // Initialize Tab Bar Item
-        tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
+        tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
     }
     
     
@@ -83,7 +83,7 @@ class LoginViewController: UIViewController {
                         let profileViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
                         self.navigationController?.pushViewController(profileViewController, animated: true)
                         
-                        self.dismiss(animated: false, completion: nil)
+//                        self.dismiss(animated: false, completion: nil)
                     }else{
                         //error message in case of invalid credential
                         self.notif.text = "Invalid username or password"

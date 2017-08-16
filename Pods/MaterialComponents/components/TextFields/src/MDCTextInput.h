@@ -72,6 +72,15 @@
 /** A Boolean value indicating whether the text field is currently in edit mode. */
 @property(nonatomic, assign, readonly, getter=isEditing) BOOL editing;
 
+/**
+ A Boolean value indicating whether the input is enabled.
+
+ The main use of this is to change the appearance when isEnabled = NO to look 'disabled'.
+
+ Some inputs will inherit this from UIControl.
+ */
+@property(nonatomic, assign, getter=isEnabled) BOOL enabled;
+
 /** The font of the text in the input. */
 @property(nonatomic, nullable, strong) UIFont *font;
 
@@ -123,6 +132,9 @@
 /** The color of the text in the input. */
 @property(nonatomic, nullable, strong) UIColor *textColor;
 
+/** Insets used to calculate the spacing of subviews. */
+@property(nonatomic, assign, readonly) UIEdgeInsets textInsets;
+
 /**
  The label on the trailing side under the input.
 
@@ -130,7 +142,43 @@
  */
 @property(nonatomic, nonnull, strong, readonly) UILabel *trailingUnderlineLabel;
 
+/**
+ An overlay view on the side of the input opposite from where reading and writing lines begin. In
+ LTR this means it will show on the Right side. In LTR, the Left side.
+ */
+@property(nonatomic, nullable, strong) UIView *trailingView;
+
+/**
+ Controls when the trailing view will display.
+ */
+@property(nonatomic, assign) UITextFieldViewMode trailingViewMode;
+
 /** The underline view */
 @property(nonatomic, nullable, strong, readonly) MDCTextInputUnderlineView *underline;
+
+@end
+
+/** Common API for Material Design compliant multiline text inputs. */
+@protocol MDCMultilineTextInput <MDCTextInput>
+
+/**
+ The minimum number of lines to use for rendering text.
+
+ The height of an empty text field is measured in potential lines. If the value were 3, the height
+ of would never be shorter than 3 times the line height of the input font (plus clearance for
+ auxillary views like the underline and the underline labels.)
+
+ The smallest number of lines allowed is 1. A value of 0 has no effect.
+
+ Default is 1.
+ */
+@property(nonatomic, assign) NSUInteger minimumLines UI_APPEARANCE_SELECTOR;
+
+/**
+ Should the text field grow vertically as new lines are added.
+ 
+ Default is YES.
+ */
+@property(nonatomic, assign) BOOL expandsOnOverflow UI_APPEARANCE_SELECTOR;
 
 @end

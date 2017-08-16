@@ -61,11 +61,9 @@
                                 <rect key="frame" x="109" y="76" width="118" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Go To Sign In"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c6V-iq-ig7">
-                                <rect key="frame" x="109" y="119" width="118" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Events"/>
+                                <connections>
+                                    <segue destination="442-H1-4Oo" kind="show" id="paL-Sh-Dl0"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -80,7 +78,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2889" y="136"/>
+            <point key="canvasLocation" x="4584" y="134"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="p6P-NJ-v8d">
@@ -93,13 +91,30 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="442-H1-4Oo" kind="relationship" relationship="viewControllers" id="nEb-8i-axG"/>
-                        <segue destination="hry-Qa-RuY" kind="relationship" relationship="viewControllers" id="9s9-Sr-3cQ"/>
+                        <segue destination="idS-He-IJa" kind="relationship" relationship="viewControllers" id="vHu-v7-HZk"/>
+                        <segue destination="7uP-xh-QXn" kind="relationship" relationship="viewControllers" id="pbd-EI-LrG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ecq-yd-2H9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="821" y="552"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="fWd-AG-lyV">
+            <objects>
+                <navigationController id="idS-He-IJa" customClass="EventsNavigationViewController" customModule="Hier" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="rjf-FI-Raz"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IJu-di-Wvc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="hry-Qa-RuY" kind="relationship" relationship="rootViewController" id="lPc-CS-04S"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WI3-PE-riY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="819" y="1702"/>
         </scene>
         <!--Item-->
         <scene sceneID="IqO-5r-edu">
@@ -109,18 +124,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="DaN-hV-dVC">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Hier" id="qKg-Wp-ceP">
+                                    <barButtonItem key="rightBarButtonItem" title="Create" id="EMy-p3-aMq">
+                                        <connections>
+                                            <segue destination="Ml0-v4-ZOW" kind="show" id="yE1-Ke-h0v"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GeneralTableViewCell" rowHeight="90" id="GWL-ti-y8d" customClass="GeneralTableViewCell" customModule="Hier">
-                                <rect key="frame" x="0.0" y="28" width="320" height="90"/>
+                                <rect key="frame" x="0.0" y="72" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GWL-ti-y8d" id="Agx-nS-Pnv">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="LQF-GT-ESU">
-                                            <rect key="frame" x="0.0" y="-28" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjp-Vb-o6Z">
                                             <rect key="frame" x="10" y="-18" width="42" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -139,6 +163,10 @@
                                             <rect key="frame" x="136" y="56" width="176" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </stackView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="LQF-GT-ESU">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="90"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -150,10 +178,46 @@
                         </prototypes>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="1kb-aU-7b6"/>
+                    <navigationItem key="navigationItem" id="zkB-6i-E8r"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mMP-9s-Fdp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1877" y="1017"/>
+            <point key="canvasLocation" x="1876.875" y="1016.1971830985916"/>
+        </scene>
+        <!--Create Event View Controller-->
+        <scene sceneID="HNx-Tk-gMM">
+            <objects>
+                <viewController id="Ml0-v4-ZOW" customClass="CreateEventViewController" customModule="Hier" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xWd-q4-Znc"/>
+                        <viewControllerLayoutGuide type="bottom" id="IGx-vk-Lq8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zCH-pA-J1e">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="POC-6a-62V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2666" y="1016"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="AZc-rs-Asp">
+            <objects>
+                <navigationController id="7uP-xh-QXn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="moH-qI-Zvr"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Eg4-0C-znS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="442-H1-4Oo" kind="relationship" relationship="rootViewController" id="0cg-88-rap"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FoS-Tj-CI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1877" y="133"/>
         </scene>
         <!--Item-->
         <scene sceneID="Z7L-0s-HkQ">
@@ -175,7 +239,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HyQ-L3-MZ8">
-                                <rect key="frame" x="100" y="219" width="112" height="34"/>
+                                <rect key="frame" x="58" y="214" width="87" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
@@ -197,6 +261,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p5J-MZ-NYw">
+                                <rect key="frame" x="167" y="214" width="87" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Signup"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="3dL-Q7-pZQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -210,7 +282,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uPL-g1-Ert" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1876.875" y="136.26760563380282"/>
+            <point key="canvasLocation" x="2664" y="132"/>
         </scene>
         <!--Item-->
         <scene sceneID="68G-Hm-q8E">
@@ -238,10 +310,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sRt-Eh-Hf8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1877" y="-599"/>
+            <point key="canvasLocation" x="3249" y="-1004"/>
         </scene>
     </scenes>
     <resources>
         <image name="defaultPhoto" width="1632" height="1224"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="0cg-88-rap"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -34,7 +34,7 @@
  @param defaultInsets The value of text container insets that the MDCTextInput has calculated by
  default.
  */
-- (UIEdgeInsets)textContainerInset:(UIEdgeInsets)defaultInsets;
+- (UIEdgeInsets)textInsets:(UIEdgeInsets)defaultInsets;
 
 /**
  The area that inputted text should be displayed while isEditing = true.
@@ -43,12 +43,5 @@
  enlarged depending on rightView, leftView, or clearButton presences.
  */
 - (CGRect)editingRectForBounds:(CGRect)bounds defaultRect:(CGRect)defaultRect;
-
-/**
- An object can use this to inject a custom value to be returned by the text input's sizeThatFits:.
-
- @param defaultSize The default value of the the input's sizeThatFits:.
- */
-- (CGSize)sizeThatFits:(CGSize)size defaultSize:(CGSize)defaultSize;
 
 @end

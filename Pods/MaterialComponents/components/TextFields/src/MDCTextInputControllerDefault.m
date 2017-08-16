@@ -16,6 +16,7 @@
 
 #import "MDCTextInputControllerDefault.h"
 
+#import "MDCMultilineTextField.h"
 #import "MDCTextField.h"
 #import "MDCTextInput.h"
 #import "MDCTextInputCharacterCounter.h"
@@ -128,7 +129,6 @@ static UITextFieldViewMode _underlineViewModeDefault = UITextFieldViewModeWhileE
 @property(nonatomic, strong) NSLayoutConstraint *characterCountTrailing;
 @property(nonatomic, strong) NSLayoutConstraint *clearButtonY;
 @property(nonatomic, strong) NSLayoutConstraint *clearButtonTrailingCharacterCountLeading;
-@property(nonatomic, strong) NSLayoutConstraint *heightConstraint;
 @property(nonatomic, strong) NSLayoutConstraint *placeholderLeading;
 @property(nonatomic, strong) NSLayoutConstraint *placeholderTop;
 @property(nonatomic, strong) NSLayoutConstraint *placeholderTrailingCharacterCountLeading;
@@ -322,19 +322,20 @@ static UITextFieldViewMode _underlineViewModeDefault = UITextFieldViewModeWhileE
                         object:_textInput];
   }
 
-  if ([_textInput isKindOfClass:[UITextView class]]) {
+  if ([_textInput isKindOfClass:[MDCMultilineTextField class]]) {
+    MDCMultilineTextField *textField = (MDCMultilineTextField*)_textInput;
     [defaultCenter addObserver:self
                       selector:@selector(textInputDidBeginEditing:)
                           name:UITextViewTextDidBeginEditingNotification
-                        object:_textInput];
+                        object:textField.textView];
     [defaultCenter addObserver:self
                       selector:@selector(textInputDidChange:)
                           name:UITextViewTextDidChangeNotification
-                        object:_textInput];
+                        object:textField.textView];
     [defaultCenter addObserver:self
                       selector:@selector(textInputDidEndEditing:)
                           name:UITextViewTextDidEndEditingNotification
-                        object:_textInput];
+                        object:textField.textView];
   }
 }
 
@@ -477,7 +478,7 @@ static UITextFieldViewMode _underlineViewModeDefault = UITextFieldViewModeWhileE
   void (^animationBlock)(void);
 
   // The animation is accomplished pretty simply. A constraint for vertical and a constraint for
-  // horizontal offset, both with a required priority (1000), are acivated to the placeholderLabel.
+  // horizontal offset, both with a required priority (1000), are acivated on the placeholderLabel.
   // A simple scale transform is also applied. Then it's animated through the UIView animation API
   // (layoutIfNeeded). If in reverse (isToUp == NO), these things are just removed / deactivated.
 
@@ -545,9 +546,8 @@ static UITextFieldViewMode _underlineViewModeDefault = UITextFieldViewModeWhileE
 
   // Offsets needed due to transform working on normal (0.5,0.5) anchor point.
   // Why no anchor point of (0,0)? Because our users wouldn't expect it.
-  placeholderY -=
-      self.textInput.placeholderLabel.font.lineHeight *
-          (1 - (CGFloat)self.floatingPlaceholderScale.floatValue) * .5f;
+  placeholderY -= self.textInput.placeholderLabel.font.lineHeight *
+                  (1 - (CGFloat)self.floatingPlaceholderScale.floatValue) * .5f;
 
   CGFloat estimatedWidth = MDCCeil(CGRectGetWidth([self.textInput.placeholderLabel.text
       boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, self.textInput.placeholderLabel.font.lineHeight)
@@ -556,8 +556,8 @@ static UITextFieldViewMode _underlineViewModeDefault = UITextFieldViewModeWhileE
                   NSFontAttributeName : self.textInput.font
                 }
                    context:nil]));
-  CGFloat placeholderX = -1 * estimatedWidth *
-      (1 - (CGFloat)self.floatingPlaceholderScale.floatValue) * .5f;
+  CGFloat placeholderX =
+      -1 * estimatedWidth * (1 - (CGFloat)self.floatingPlaceholderScale.floatValue) * .5f;
 
   return CGPointMake(placeholderX, placeholderY);
 }
@@ -747,8 +747,10 @@ static UITextFieldViewMode _underlineViewModeDefault = UITextFieldViewModeWhileE
 
 - (void)setFloatingPlaceholderScale:(NSNumber *)floatingPlaceholderScale {
   if (![_floatingPlaceholderScale isEqualToNumber:floatingPlaceholderScale]) {
-    _floatingPlaceholderScale = floatingPlaceholderScale ? floatingPlaceholderScale :
-        [NSNumber numberWithFloat:(float)[[self class] floatingPlaceholderScaleDefault]];
+    _floatingPlaceholderScale =
+        floatingPlaceholderScale
+            ? floatingPlaceholderScale
+            : [NSNumber numberWithFloat:(float)[[self class] floatingPlaceholderScaleDefault]];
 
     [self updatePlaceholder];
   }
@@ -910,16 +912,6 @@ static UITextFieldViewMode _underlineViewModeDefault = UITextFieldViewModeWhileE
 }
 
 - (void)updateConstraints {
-  if (!self.heightConstraint) {
-    self.heightConstraint = [NSLayoutConstraint constraintWithItem:self.textInput
-                                                         attribute:NSLayoutAttributeHeight
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:nil
-                                                         attribute:NSLayoutAttributeNotAnAttribute
-                                                        multiplier:1
-                                                          constant:0];
-  }
-
   // These constraints are deactivated via .active (vs deactivate()) in case they are nil.
   self.characterCountTrailing.active = NO;
   self.characterCountY.active = NO;
@@ -928,22 +920,6 @@ static UITextFieldViewMode _underlineViewModeDefault = UITextFieldViewModeWhileE
   self.placeholderLeading.active = NO;
   self.placeholderTrailingCharacterCountLeading.active = NO;
   self.placeholderTrailingSuperviewTrailing.active = NO;
-
-  UIEdgeInsets insets = [self textContainerInset:UIEdgeInsetsZero];
-
-  if (self.isFloatingEnabled) {
-    self.heightConstraint.constant =
-        insets.top +  // Labels and padding
-        MDCRint(MAX(self.textInput.font.lineHeight,
-                    self.textInput.placeholderLabel.font.lineHeight)) +  // Text field
-        insets.bottom;                                                   // Padding or labels
-
-  }  // else is .default which needs no heightConstraint.
-
-  // Default just uses the built in intrinsic content size but floating placeholder needs more
-  // height and full width needs less. (Constants set above.)
-  self.heightConstraint.active =
-      (self.floatingEnabled && !self.textInput.translatesAutoresizingMaskIntoConstraints);
 }
 
 - (void)updateFontsForDynamicType {
@@ -959,7 +935,7 @@ static UITextFieldViewMode _underlineViewModeDefault = UITextFieldViewModeWhileE
 
 // clang-format off
 /**
- textContainerInset: is the source of truth for vertical layout. It's used to figure out the proper
+ textInsets: is the source of truth for vertical layout. It's used to figure out the proper
  height and also where to place the placeholder / text field.
  
  NOTE: It's applied before the textRect is flipped for RTL. So all calculations are done here à la
@@ -976,20 +952,20 @@ static UITextFieldViewMode _underlineViewModeDefault = UITextFieldViewModeWhileE
  MAX(underlineLabelsOffset,MDCTextInputDefaultVerticalHalfPadding)           // Padding and/or labels
  */
 // clang-format on
-- (UIEdgeInsets)textContainerInset:(UIEdgeInsets)defaultInsets {
+- (UIEdgeInsets)textInsets:(UIEdgeInsets)defaultInsets {
   // NOTE: UITextFields have a centerY based layout. But you can change EITHER the height or the Y.
   // Not both. Don't know why. So, we have to leave the text rect as big as the bounds and move it
   // to a Y that works. In other words, no bottom inset will make a difference here for UITextFields
-  UIEdgeInsets textContainerInset = defaultInsets;
+  UIEdgeInsets textInsets = defaultInsets;
 
   if (!self.isFloatingEnabled) {
     return defaultInsets;
   }
 
-  textContainerInset.top = MDCTextInputDefaultVerticalPadding +
-                           MDCRint(self.textInput.placeholderLabel.font.lineHeight *
-                                   (CGFloat)self.floatingPlaceholderScale.floatValue) +
-                                   MDCTextInputDefaultVerticalHalfPadding;
+  textInsets.top = MDCTextInputDefaultVerticalPadding +
+                   MDCRint(self.textInput.placeholderLabel.font.lineHeight *
+                           (CGFloat)self.floatingPlaceholderScale.floatValue) +
+                   MDCTextInputDefaultVerticalHalfPadding;
 
   // The amount of space underneath the underline is variable. It could just be
   // MDCTextInputDefaultVerticalPadding or the biggest estimated underlineLabel height +
@@ -1007,18 +983,9 @@ static UITextFieldViewMode _underlineViewModeDefault = UITextFieldViewModeWhileE
   CGFloat underlineOffset = MDCTextInputDefaultVerticalHalfPadding + underlineLabelsOffset;
 
   // .bottom = underlineOffset + the half padding above the line but below the text field
-  textContainerInset.bottom = underlineOffset + MDCTextInputDefaultVerticalHalfPadding;
+  textInsets.bottom = underlineOffset + MDCTextInputDefaultVerticalHalfPadding;
 
-  return textContainerInset;
-}
-
-- (CGSize)sizeThatFits:(CGSize)size defaultSize:(CGSize)defaultSize {
-  CGSize newSize = defaultSize;
-  newSize.height = (!self.isFloatingEnabled || !self.heightConstraint)
-                       ? defaultSize.height
-                       : self.heightConstraint.constant;
-
-  return newSize;
+  return textInsets;
 }
 
 #pragma mark - UITextField & UITextView Notification Observation
@@ -1149,7 +1116,7 @@ static UITextFieldViewMode _underlineViewModeDefault = UITextFieldViewModeWhileE
     if (self.previousLeadingText) {
       self.textInput.leadingUnderlineLabel.text = self.previousLeadingText;
     }
-    
+
     // Clear out saved state.
     self.previousLeadingText = nil;
   }
@@ -1183,9 +1150,9 @@ static UITextFieldViewMode _underlineViewModeDefault = UITextFieldViewModeWhileE
 
     self.textInput.accessibilityValue = valueString;
     NSString *leadingUnderlineLabelText = self.textInput.leadingUnderlineLabel.text;
-    self.textInput.leadingUnderlineLabel.accessibilityLabel = [NSString
-        stringWithFormat:@"Error: %@.", leadingUnderlineLabelText ?
-                                                               leadingUnderlineLabelText : @""];
+    self.textInput.leadingUnderlineLabel.accessibilityLabel =
+        [NSString stringWithFormat:@"Error: %@.",
+                                   leadingUnderlineLabelText ? leadingUnderlineLabelText : @""];
   } else {
     self.textInput.accessibilityValue = nil;
     self.textInput.leadingUnderlineLabel.accessibilityLabel = nil;
