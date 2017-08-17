@@ -77,13 +77,9 @@ class LoginViewController: UIViewController {
                 
                 if( statusCode == 200){
                 
-                
-                        
                         //switching the screen
-                        let profileViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
-                        self.navigationController?.pushViewController(profileViewController, animated: true)
-                        
-//                        self.dismiss(animated: false, completion: nil)
+                    self.performSegue(withIdentifier:"welcome", sender: self)
+
                     }else{
                         //error message in case of invalid credential
                         self.notif.text = "Invalid username or password"

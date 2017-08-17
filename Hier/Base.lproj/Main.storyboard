@@ -244,7 +244,6 @@
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="login:" destination="442-H1-4Oo" eventType="touchUpInside" id="gN9-gq-pEv"/>
-                                    <segue destination="bf6-in-wg6" kind="show" id="YiI-Kw-xPn"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gWg-pA-mys">
@@ -278,6 +277,7 @@
                         <outlet property="notif" destination="gWg-pA-mys" id="IUi-M3-b03"/>
                         <outlet property="password" destination="OOD-q3-2rR" id="w5m-cY-VX5"/>
                         <outlet property="username" destination="AxO-Wk-Mco" id="UUY-yW-6Nk"/>
+                        <segue destination="bf6-in-wg6" kind="show" identifier="welcome" id="cxR-yt-nIk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uPL-g1-Ert" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -307,10 +307,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="5qn-fq-cTD"/>
+                    <navigationItem key="navigationItem" id="qXW-CO-5VW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sRt-Eh-Hf8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3249" y="-1004"/>
+            <point key="canvasLocation" x="2663" y="-621"/>
         </scene>
     </scenes>
     <resources>
