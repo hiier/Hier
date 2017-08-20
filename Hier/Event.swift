@@ -6,49 +6,34 @@
 //  Copyright © 2017 P.R.K. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 
 class Event {
     
-    //MARK: Properties
+    // MARK: Properties
     
-    var name: String
+    var title: String
     var description: String
-    var time: String
+    var time: NSDate
     var location: String
+    var likes = [Like]()
+    var comments = [Comment]()
     
-    
-    //MARK: Initialization
+    // MARK: Initialization
     
 
-    init?(name: String, description: String, time:String, location: String) {
-        
-        // Initialization should fail if there is no name or if the rating is negative.
-        guard !name.isEmpty else {
+    init?(name: String, description: String, time: NSDate, location: String) {
+        // Initialization should fail if there is no name or description
+        if name.isEmpty || description.isEmpty {
             return nil
         }
-        
-        guard !description.isEmpty else {
-            return nil
-        }
-    
-        
-        // Initialize stored properties.
-        self.name = name
+
+        self.title = name
         self.description = description
         self.time = time
         self.location = location
-        
-        
-        
-        
-
-        
     }
-    
-
-    
 }
 
 
