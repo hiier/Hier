@@ -1,34 +1,20 @@
 //
-//  EventsNavigationViewController.swift
+//  MainTabBarViewController.swift
 //  Hier
 //
-//  Created by P.R.K on 8/8/17.
+//  Created by Yang Zhao on 8/17/17.
 //  Copyright © 2017 P.R.K. All rights reserved.
 //
 
 import UIKit
 
-class EventsNavigationViewController: UINavigationController {
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        // Initialize Tab Bar Item
-        tabBarItem = UITabBarItem(tabBarSystemItem:.bookmarks, tag: 0)
-    }
-
+class MainTabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     /*
     // MARK: - Navigation

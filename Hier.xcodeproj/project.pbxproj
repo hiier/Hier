@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		216487AF1F43FE1E000FDDF1 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216487AE1F43FE1E000FDDF1 /* CustomCell.swift */; };
-		216511111F1EFF0700B839DD /* MainEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216511101F1EFF0700B839DD /* MainEventsTableViewController.swift */; };
-		216511171F1F0FC000B839DD /* GeneralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216511161F1F0FC000B839DD /* GeneralTableViewCell.swift */; };
+		216511111F1EFF0700B839DD /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216511101F1EFF0700B839DD /* EventsTableViewController.swift */; };
 		216511191F1F14FC00B839DD /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216511181F1F14FC00B839DD /* RatingControl.swift */; };
 		2165111B1F20784600B839DD /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165111A1F20784500B839DD /* Event.swift */; };
 		217BFD291EFA247D0033AD54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BFD281EFA247D0033AD54 /* AppDelegate.swift */; };
@@ -17,12 +16,18 @@
 		217BFD2E1EFA247D0033AD54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217BFD2C1EFA247D0033AD54 /* Main.storyboard */; };
 		217BFD301EFA247D0033AD54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 217BFD2F1EFA247D0033AD54 /* Assets.xcassets */; };
 		217BFD3E1EFA247D0033AD54 /* HierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BFD3D1EFA247D0033AD54 /* HierTests.swift */; };
-		218FEBDE1F3AC3E800F814A1 /* EventsNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218FEBDD1F3AC3E700F814A1 /* EventsNavigationViewController.swift */; };
 		219989871F156B0E0083ADE4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219989861F156B0E0083ADE4 /* ProfileViewController.swift */; };
 		21D02EFD1F04B0A800CDA906 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */; };
 		21D1654F1F3C1C6B00043E32 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1654E1F3C1C6B00043E32 /* CreateEventViewController.swift */; };
 		52BDF342C25BFD388AE3D010 /* Pods_HierTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714327D4949130D7954570D0 /* Pods_HierTests.framework */; };
 		AFF98DF63D47199B39407E7F /* Pods_Hier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CD76E8BF0ABAEFBF1DFCB29 /* Pods_Hier.framework */; };
+		C01EB7371F456842000EABEC /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EB7361F456842000EABEC /* EventTableViewCell.swift */; };
+		C01EB73A1F456FD9000EABEC /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EB7391F456FD9000EABEC /* Like.swift */; };
+		C01EB73C1F457017000EABEC /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EB73B1F457017000EABEC /* Comment.swift */; };
+		C01EB73E1F46ACB2000EABEC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EB73D1F46ACB2000EABEC /* User.swift */; };
+		C01EB7401F46B086000EABEC /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EB73F1F46B086000EABEC /* MainTabBarViewController.swift */; };
+		C01EB7421F46B0E1000EABEC /* EventMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EB7411F46B0E1000EABEC /* EventMgr.swift */; };
+		C01EB7441F48F10A000EABEC /* DetailedEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EB7431F48F10A000EABEC /* DetailedEventViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +42,7 @@
 
 /* Begin PBXFileReference section */
 		216487AE1F43FE1E000FDDF1 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
-		216511101F1EFF0700B839DD /* MainEventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainEventsTableViewController.swift; sourceTree = "<group>"; };
-		216511161F1F0FC000B839DD /* GeneralTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralTableViewCell.swift; sourceTree = "<group>"; };
+		216511101F1EFF0700B839DD /* EventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		216511181F1F14FC00B839DD /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		2165111A1F20784500B839DD /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		217BFD251EFA247D0033AD54 /* Hier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hier.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,7 +54,6 @@
 		217BFD391EFA247D0033AD54 /* HierTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HierTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		217BFD3D1EFA247D0033AD54 /* HierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierTests.swift; sourceTree = "<group>"; };
 		217BFD3F1EFA247D0033AD54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		218FEBDD1F3AC3E700F814A1 /* EventsNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsNavigationViewController.swift; sourceTree = "<group>"; };
 		219989861F156B0E0083ADE4 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		21D1654E1F3C1C6B00043E32 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +61,13 @@
 		7CD76E8BF0ABAEFBF1DFCB29 /* Pods_Hier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6CAA26C25386E7E2317AB3A /* Pods-HierTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HierTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HierTests/Pods-HierTests.release.xcconfig"; sourceTree = "<group>"; };
 		AA890AD8F7F5FD4DB329BB57 /* Pods-HierTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HierTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HierTests/Pods-HierTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C01EB7361F456842000EABEC /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		C01EB7391F456FD9000EABEC /* Like.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
+		C01EB73B1F457017000EABEC /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		C01EB73D1F46ACB2000EABEC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C01EB73F1F46B086000EABEC /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		C01EB7411F46B0E1000EABEC /* EventMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMgr.swift; sourceTree = "<group>"; };
+		C01EB7431F48F10A000EABEC /* DetailedEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedEventViewController.swift; sourceTree = "<group>"; };
 		E43464689730B62BBFBF64AC /* Pods-Hier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hier.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hier/Pods-Hier.debug.xcconfig"; sourceTree = "<group>"; };
 		F40AC3A95243F406BC1E821B /* Pods-Hier.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hier.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hier/Pods-Hier.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,16 +124,17 @@
 		217BFD271EFA247D0033AD54 /* Hier */ = {
 			isa = PBXGroup;
 			children = (
+				C01EB7381F456C25000EABEC /* common */,
 				21D1654E1F3C1C6B00043E32 /* CreateEventViewController.swift */,
 				217BFD281EFA247D0033AD54 /* AppDelegate.swift */,
 				217BFD2A1EFA247D0033AD54 /* SignupViewController.swift */,
 				21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */,
 				217BFD2C1EFA247D0033AD54 /* Main.storyboard */,
-				218FEBDD1F3AC3E700F814A1 /* EventsNavigationViewController.swift */,
-				2165111A1F20784500B839DD /* Event.swift */,
+				C01EB7361F456842000EABEC /* EventTableViewCell.swift */,
 				216511181F1F14FC00B839DD /* RatingControl.swift */,
-				216511161F1F0FC000B839DD /* GeneralTableViewCell.swift */,
-				216511101F1EFF0700B839DD /* MainEventsTableViewController.swift */,
+				216511101F1EFF0700B839DD /* EventsTableViewController.swift */,
+				C01EB7431F48F10A000EABEC /* DetailedEventViewController.swift */,
+				C01EB73F1F46B086000EABEC /* MainTabBarViewController.swift */,
 				219989861F156B0E0083ADE4 /* ProfileViewController.swift */,
 				217BFD2F1EFA247D0033AD54 /* Assets.xcassets */,
 				217BFD341EFA247D0033AD54 /* Info.plist */,
@@ -150,6 +161,18 @@
 				A6CAA26C25386E7E2317AB3A /* Pods-HierTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		C01EB7381F456C25000EABEC /* common */ = {
+			isa = PBXGroup;
+			children = (
+				2165111A1F20784500B839DD /* Event.swift */,
+				C01EB7391F456FD9000EABEC /* Like.swift */,
+				C01EB73B1F457017000EABEC /* Comment.swift */,
+				C01EB73D1F46ACB2000EABEC /* User.swift */,
+				C01EB7411F46B0E1000EABEC /* EventMgr.swift */,
+			);
+			name = common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,16 +377,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C01EB73E1F46ACB2000EABEC /* User.swift in Sources */,
 				2165111B1F20784600B839DD /* Event.swift in Sources */,
 				216511191F1F14FC00B839DD /* RatingControl.swift in Sources */,
+				C01EB7401F46B086000EABEC /* MainTabBarViewController.swift in Sources */,
 				216487AF1F43FE1E000FDDF1 /* CustomCell.swift in Sources */,
 				21D02EFD1F04B0A800CDA906 /* LoginViewController.swift in Sources */,
-				216511111F1EFF0700B839DD /* MainEventsTableViewController.swift in Sources */,
-				216511171F1F0FC000B839DD /* GeneralTableViewCell.swift in Sources */,
+				216511111F1EFF0700B839DD /* EventsTableViewController.swift in Sources */,
 				217BFD2B1EFA247D0033AD54 /* SignupViewController.swift in Sources */,
-				218FEBDE1F3AC3E800F814A1 /* EventsNavigationViewController.swift in Sources */,
 				21D1654F1F3C1C6B00043E32 /* CreateEventViewController.swift in Sources */,
+				C01EB73C1F457017000EABEC /* Comment.swift in Sources */,
+				C01EB7421F46B0E1000EABEC /* EventMgr.swift in Sources */,
+				C01EB7441F48F10A000EABEC /* DetailedEventViewController.swift in Sources */,
 				219989871F156B0E0083ADE4 /* ProfileViewController.swift in Sources */,
+				C01EB7371F456842000EABEC /* EventTableViewCell.swift in Sources */,
+				C01EB73A1F456FD9000EABEC /* Like.swift in Sources */,
 				217BFD291EFA247D0033AD54 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
