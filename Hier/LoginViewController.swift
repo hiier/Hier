@@ -9,11 +9,13 @@
 import UIKit
 import Alamofire
 import FacebookLogin
+import SwiftyJSON
 
 
 
 class LoginViewController: UIViewController {
     
+    let URL_SIGNIN = "http://127.0.0.1:5000/login/"
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -24,6 +26,36 @@ class LoginViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        let defaults = UserDefaults.standard
+        let savedinfo = defaults.object(forKey: "UserConfToken") as! String
+        
+        
+        var headers: HTTPHeaders = [:]
+        if let authorizationHeader = Request.authorizationHeader(user: savedinfo, password: "foo") {
+            headers[authorizationHeader.key] = authorizationHeader.value
+        }
+        Alamofire.request(URL_SIGNIN, headers: headers).responseJSON{
+            
+            response in
+            let statusCode = (response.response?.statusCode)
+            
+            if( statusCode == 200){
+                
+                //switching the screen
+                self.performSegue(withIdentifier:"welcome", sender: self)
+                
+            }
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
         let loginButton = LoginButton(readPermissions: [ .publicProfile ])
         loginButton.center = view.center
         
@@ -31,7 +63,7 @@ class LoginViewController: UIViewController {
         
            }
 
-    let URL_SIGNIN = "http://127.0.0.1:5000/login/"
+
     
     
     @IBOutlet weak var username: UITextField!
@@ -63,7 +95,7 @@ class LoginViewController: UIViewController {
             headers[authorizationHeader.key] = authorizationHeader.value
         }
         
-        Alamofire.request(URL_SIGNIN, headers: headers).responseString{
+        Alamofire.request(URL_SIGNIN, headers: headers).responseJSON{
 
                 response in
                 //printing response
@@ -71,11 +103,19 @@ class LoginViewController: UIViewController {
                 print("Response String: \(String(describing:response.result.value))")
                 print(response)
                 print(response.response?.allHeaderFields)
-                
-                
+            
+            
+            
                 let statusCode = (response.response?.statusCode)
                 
                 if( statusCode == 200){
+                    
+                    let res_json = JSON(response.result.value)
+                    let token = res_json["token"].stringValue
+                    
+                    let defaults = UserDefaults.standard
+                    defaults.set(token, forKey: "UserConfToken")
+                    
                 
                         //switching the screen
                     self.performSegue(withIdentifier:"welcome", sender: self)
