@@ -13,19 +13,19 @@ class User {
     // MARK: Properties
     
     var id: Int
-    var name: String
+    var username: String
     var participated = [Event]()
     var created = [Event]()
     var liked = [Event]()
     
     // MARK: Initialization
     
-    init?(id: Int, name: String) {
-        if name.isEmpty {
+    init?( id:Int, username: String) {
+        if username.isEmpty {
             return nil
         }
         
         self.id = id
-        self.name = name
+        self.username = username
     }
 }

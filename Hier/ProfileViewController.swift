@@ -7,11 +7,72 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class ProfileViewController: UIViewController {
+    
+    
+   
+    @IBOutlet weak var userName: UILabel!
+    
+    let URL_USER = "http://127.0.0.1:5000/user/"
+    var userinfo = User(id :0, username:"")
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        // Initialize Tab Bar Item
+        tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let defaults = UserDefaults.standard
+        
+        if (defaults.object(forKey: "UserName") != nil && defaults.object(forKey: "UserConfToken") != nil ){
+            let user = defaults.object(forKey: "UserName") as! String
+            let savedinfo = defaults.object(forKey: "UserConfToken") as! String
+            let parameters: Parameters = ["username": user]
+            
+            var headers: HTTPHeaders = [:]
+            if let authorizationHeader = Request.authorizationHeader(user: savedinfo, password: "foo") {
+                headers[authorizationHeader.key] = authorizationHeader.value
+            }
+            Alamofire.request(URL_USER,  parameters: parameters).responseJSON{
+                
+                response in
+                
+                print(response)
+                
+                let statusCode = (response.response?.statusCode)
+                
+                if( statusCode == 200){
+                    let user_json = JSON(response.result.value)
+                    self.userName.text = "Your Name"
+
+                    
+                    let userinfo = User(id:0, username : user_json["username"].stringValue)
+                    self.userName.text = user_json["username"].stringValue
+                    
+                    
+                }
+                
+            }
+            
+        
+        }else{
+            
+             print("333")
+            
+            self.performSegue(withIdentifier:"logintemp", sender: self)
+        
+        
+        }
+        
+        
 
         // Do any additional setup after loading the view.
     }

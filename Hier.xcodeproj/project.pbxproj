@@ -11,6 +11,7 @@
 		216511111F1EFF0700B839DD /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216511101F1EFF0700B839DD /* EventsTableViewController.swift */; };
 		216511191F1F14FC00B839DD /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216511181F1F14FC00B839DD /* RatingControl.swift */; };
 		2165111B1F20784600B839DD /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165111A1F20784500B839DD /* Event.swift */; };
+		216962E61F4A22210052B871 /* ProfileLoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216962E51F4A22210052B871 /* ProfileLoginNavigationController.swift */; };
 		217BFD291EFA247D0033AD54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BFD281EFA247D0033AD54 /* AppDelegate.swift */; };
 		217BFD2B1EFA247D0033AD54 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BFD2A1EFA247D0033AD54 /* SignupViewController.swift */; };
 		217BFD2E1EFA247D0033AD54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217BFD2C1EFA247D0033AD54 /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 		216511101F1EFF0700B839DD /* EventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		216511181F1F14FC00B839DD /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		2165111A1F20784500B839DD /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		216962E51F4A22210052B871 /* ProfileLoginNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileLoginNavigationController.swift; sourceTree = "<group>"; };
 		217BFD251EFA247D0033AD54 /* Hier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		217BFD281EFA247D0033AD54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		217BFD2A1EFA247D0033AD54 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				217BFD2A1EFA247D0033AD54 /* SignupViewController.swift */,
 				21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */,
 				217BFD2C1EFA247D0033AD54 /* Main.storyboard */,
+				216962E51F4A22210052B871 /* ProfileLoginNavigationController.swift */,
 				C01EB7361F456842000EABEC /* EventTableViewCell.swift */,
 				216511181F1F14FC00B839DD /* RatingControl.swift */,
 				216511101F1EFF0700B839DD /* EventsTableViewController.swift */,
@@ -391,6 +394,7 @@
 				C01EB7441F48F10A000EABEC /* DetailedEventViewController.swift in Sources */,
 				219989871F156B0E0083ADE4 /* ProfileViewController.swift in Sources */,
 				C01EB7371F456842000EABEC /* EventTableViewCell.swift in Sources */,
+				216962E61F4A22210052B871 /* ProfileLoginNavigationController.swift in Sources */,
 				C01EB73A1F456FD9000EABEC /* Like.swift in Sources */,
 				217BFD291EFA247D0033AD54 /* AppDelegate.swift in Sources */,
 			);

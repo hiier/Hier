@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="m3e-qT-BdY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="m3e-qT-BdY">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -79,7 +79,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4545" y="-183"/>
+            <point key="canvasLocation" x="4018" y="-691"/>
         </scene>
         <!--Main Tab Bar View Controller-->
         <scene sceneID="p6P-NJ-v8d">
@@ -131,7 +131,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GWL-ti-y8d" id="Agx-nS-Pnv">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjp-Vb-o6Z">
@@ -282,10 +282,10 @@
             </objects>
             <point key="canvasLocation" x="4545" y="812.32394366197184"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Profile Login Navigation Controller-->
         <scene sceneID="AZc-rs-Asp">
             <objects>
-                <navigationController id="7uP-xh-QXn" sceneMemberID="viewController">
+                <navigationController id="7uP-xh-QXn" customClass="ProfileLoginNavigationController" customModule="Hier" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="moH-qI-Zvr"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Eg4-0C-znS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -296,7 +296,8 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="442-H1-4Oo" kind="relationship" relationship="rootViewController" id="0cg-88-rap"/>
+                        <segue destination="bf6-in-wg6" kind="relationship" relationship="rootViewController" id="j7C-Zq-ldJ"/>
+                        <segue destination="442-H1-4Oo" kind="show" identifier="login" id="cfR-Qf-vh8"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FoS-Tj-CI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -360,12 +361,12 @@
                         <outlet property="notif" destination="gWg-pA-mys" id="IUi-M3-b03"/>
                         <outlet property="password" destination="OOD-q3-2rR" id="w5m-cY-VX5"/>
                         <outlet property="username" destination="AxO-Wk-Mco" id="UUY-yW-6Nk"/>
-                        <segue destination="bf6-in-wg6" kind="show" identifier="welcome" id="cxR-yt-nIk"/>
+                        <segue destination="7uP-xh-QXn" kind="show" identifier="welcome" id="09e-zP-bPI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uPL-g1-Ert" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2664" y="132"/>
+            <point key="canvasLocation" x="3008" y="-690"/>
         </scene>
         <!--Item-->
         <scene sceneID="68G-Hm-q8E">
@@ -380,9 +381,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibM-k0-t6q">
-                                <rect key="frame" x="100" y="144" width="119" height="46"/>
+                                <rect key="frame" x="101" y="72" width="119" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYd-TE-tcx">
+                                <rect key="frame" x="47" y="143" width="227" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -391,10 +399,14 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="5qn-fq-cTD"/>
                     <navigationItem key="navigationItem" id="qXW-CO-5VW"/>
+                    <connections>
+                        <outlet property="userName" destination="SYd-TE-tcx" id="TLI-Eu-wfB"/>
+                        <segue destination="442-H1-4Oo" kind="show" identifier="logintemp" id="agF-c8-HTb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sRt-Eh-Hf8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2663" y="-621"/>
+            <point key="canvasLocation" x="3007.5" y="130.98591549295776"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ScN-yv-DCj">
@@ -421,6 +433,7 @@
         <image name="favorite" width="338" height="338"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="paL-Sh-Dl0"/>
+        <segue reference="09e-zP-bPI"/>
+        <segue reference="agF-c8-HTb"/>
     </inferredMetricsTieBreakers>
 </document>

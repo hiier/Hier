@@ -24,16 +24,16 @@ class EventMgr {
     
     init() {
         users = [
-            User(id: 0, name: "Amy")!,
-            User(id: 1, name: "Bob")!,
-            User(id: 2, name: "Chris")!,
-            User(id: 3, name: "David")!,
-            User(id: 4, name: "Eva")!
+            User(id: 0, username: "Amy")!,
+            User(id: 1, username: "Bob")!,
+            User(id: 2, username: "Chris")!,
+            User(id: 3, username: "David")!,
+            User(id: 4, username: "Eva")!
         ]
         
         for user in users {
             likes.append(Like(user: user, time: NSDate())!)
-            comments.append(Comment(user: user, time: NSDate(), content: "\(user.name): Nice")!)
+            comments.append(Comment(user: user, time: NSDate(), content: "\(user.username): Nice")!)
         }
     }
     

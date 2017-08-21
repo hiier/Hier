@@ -26,34 +26,6 @@ class LoginViewController: UIViewController {
     
     
     override func viewDidLoad() {
-        let defaults = UserDefaults.standard
-        let savedinfo = defaults.object(forKey: "UserConfToken") as! String
-        
-        
-        var headers: HTTPHeaders = [:]
-        if let authorizationHeader = Request.authorizationHeader(user: savedinfo, password: "foo") {
-            headers[authorizationHeader.key] = authorizationHeader.value
-        }
-        Alamofire.request(URL_SIGNIN, headers: headers).responseJSON{
-            
-            response in
-            let statusCode = (response.response?.statusCode)
-            
-            if( statusCode == 200){
-                
-                //switching the screen
-                self.performSegue(withIdentifier:"welcome", sender: self)
-                
-            }
-            
-        }
-        
-        
-        
-        
-        
-        
-        
         
         
         let loginButton = LoginButton(readPermissions: [ .publicProfile ])
@@ -115,6 +87,8 @@ class LoginViewController: UIViewController {
                     
                     let defaults = UserDefaults.standard
                     defaults.set(token, forKey: "UserConfToken")
+                    defaults.set(user, forKey:"UserName")
+                    
                     
                 
                         //switching the screen
