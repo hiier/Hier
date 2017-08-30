@@ -29,6 +29,9 @@
 		C01EB7401F46B086000EABEC /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EB73F1F46B086000EABEC /* MainTabBarViewController.swift */; };
 		C01EB7421F46B0E1000EABEC /* EventMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EB7411F46B0E1000EABEC /* EventMgr.swift */; };
 		C01EB7441F48F10A000EABEC /* DetailedEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EB7431F48F10A000EABEC /* DetailedEventViewController.swift */; };
+		C01EB7461F4914A0000EABEC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EB7451F4914A0000EABEC /* Constants.swift */; };
+		C023CA6A1F4D2D280081A2B9 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = C023CA691F4D2D280081A2B9 /* Tag.swift */; };
+		C023CA6D1F4E7CA90081A2B9 /* EventNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C023CA6C1F4E7CA90081A2B9 /* EventNavigationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +73,9 @@
 		C01EB73F1F46B086000EABEC /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		C01EB7411F46B0E1000EABEC /* EventMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMgr.swift; sourceTree = "<group>"; };
 		C01EB7431F48F10A000EABEC /* DetailedEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedEventViewController.swift; sourceTree = "<group>"; };
+		C01EB7451F4914A0000EABEC /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C023CA691F4D2D280081A2B9 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		C023CA6C1F4E7CA90081A2B9 /* EventNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventNavigationViewController.swift; sourceTree = "<group>"; };
 		E43464689730B62BBFBF64AC /* Pods-Hier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hier.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hier/Pods-Hier.debug.xcconfig"; sourceTree = "<group>"; };
 		F40AC3A95243F406BC1E821B /* Pods-Hier.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hier.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hier/Pods-Hier.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,22 +132,10 @@
 		217BFD271EFA247D0033AD54 /* Hier */ = {
 			isa = PBXGroup;
 			children = (
-				C01EB7381F456C25000EABEC /* common */,
-				21D1654E1F3C1C6B00043E32 /* CreateEventViewController.swift */,
-				217BFD281EFA247D0033AD54 /* AppDelegate.swift */,
-				217BFD2A1EFA247D0033AD54 /* SignupViewController.swift */,
-				21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */,
+				C01EB7381F456C25000EABEC /* models */,
+				C023CA6E1F4E86010081A2B9 /* viewControllers */,
+				C023CA6B1F4D3CC50081A2B9 /* supporting */,
 				217BFD2C1EFA247D0033AD54 /* Main.storyboard */,
-				216962E51F4A22210052B871 /* ProfileLoginNavigationController.swift */,
-				C01EB7361F456842000EABEC /* EventTableViewCell.swift */,
-				216511181F1F14FC00B839DD /* RatingControl.swift */,
-				216511101F1EFF0700B839DD /* EventsTableViewController.swift */,
-				C01EB7431F48F10A000EABEC /* DetailedEventViewController.swift */,
-				C01EB73F1F46B086000EABEC /* MainTabBarViewController.swift */,
-				219989861F156B0E0083ADE4 /* ProfileViewController.swift */,
-				217BFD2F1EFA247D0033AD54 /* Assets.xcassets */,
-				217BFD341EFA247D0033AD54 /* Info.plist */,
-				216487AE1F43FE1E000FDDF1 /* CustomCell.swift */,
 			);
 			path = Hier;
 			sourceTree = "<group>";
@@ -166,7 +160,7 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		C01EB7381F456C25000EABEC /* common */ = {
+		C01EB7381F456C25000EABEC /* models */ = {
 			isa = PBXGroup;
 			children = (
 				2165111A1F20784500B839DD /* Event.swift */,
@@ -174,8 +168,55 @@
 				C01EB73B1F457017000EABEC /* Comment.swift */,
 				C01EB73D1F46ACB2000EABEC /* User.swift */,
 				C01EB7411F46B0E1000EABEC /* EventMgr.swift */,
+				C01EB7451F4914A0000EABEC /* Constants.swift */,
+				C023CA691F4D2D280081A2B9 /* Tag.swift */,
 			);
-			name = common;
+			name = models;
+			sourceTree = "<group>";
+		};
+		C023CA6B1F4D3CC50081A2B9 /* supporting */ = {
+			isa = PBXGroup;
+			children = (
+				217BFD281EFA247D0033AD54 /* AppDelegate.swift */,
+				217BFD2F1EFA247D0033AD54 /* Assets.xcassets */,
+				217BFD341EFA247D0033AD54 /* Info.plist */,
+			);
+			name = supporting;
+			sourceTree = "<group>";
+		};
+		C023CA6E1F4E86010081A2B9 /* viewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C023CA701F4E86B10081A2B9 /* profile */,
+				C023CA6F1F4E86A90081A2B9 /* event */,
+				216511181F1F14FC00B839DD /* RatingControl.swift */,
+				C01EB73F1F46B086000EABEC /* MainTabBarViewController.swift */,
+				216487AE1F43FE1E000FDDF1 /* CustomCell.swift */,
+			);
+			name = viewControllers;
+			sourceTree = "<group>";
+		};
+		C023CA6F1F4E86A90081A2B9 /* event */ = {
+			isa = PBXGroup;
+			children = (
+				C01EB7361F456842000EABEC /* EventTableViewCell.swift */,
+				21D1654E1F3C1C6B00043E32 /* CreateEventViewController.swift */,
+				C01EB7431F48F10A000EABEC /* DetailedEventViewController.swift */,
+				C023CA6C1F4E7CA90081A2B9 /* EventNavigationViewController.swift */,
+				216511101F1EFF0700B839DD /* EventsTableViewController.swift */,
+			);
+			name = event;
+			sourceTree = "<group>";
+		};
+		C023CA701F4E86B10081A2B9 /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				217BFD2A1EFA247D0033AD54 /* SignupViewController.swift */,
+				21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */,
+				216962E51F4A22210052B871 /* ProfileLoginNavigationController.swift */,
+				219989861F156B0E0083ADE4 /* ProfileViewController.swift */,
+			);
+			name = profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,6 +422,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C01EB73E1F46ACB2000EABEC /* User.swift in Sources */,
+				C01EB7461F4914A0000EABEC /* Constants.swift in Sources */,
 				2165111B1F20784600B839DD /* Event.swift in Sources */,
 				216511191F1F14FC00B839DD /* RatingControl.swift in Sources */,
 				C01EB7401F46B086000EABEC /* MainTabBarViewController.swift in Sources */,
@@ -390,6 +432,8 @@
 				217BFD2B1EFA247D0033AD54 /* SignupViewController.swift in Sources */,
 				21D1654F1F3C1C6B00043E32 /* CreateEventViewController.swift in Sources */,
 				C01EB73C1F457017000EABEC /* Comment.swift in Sources */,
+				C023CA6D1F4E7CA90081A2B9 /* EventNavigationViewController.swift in Sources */,
+				C023CA6A1F4D2D280081A2B9 /* Tag.swift in Sources */,
 				C01EB7421F46B0E1000EABEC /* EventMgr.swift in Sources */,
 				C01EB7441F48F10A000EABEC /* DetailedEventViewController.swift in Sources */,
 				219989871F156B0E0083ADE4 /* ProfileViewController.swift in Sources */,

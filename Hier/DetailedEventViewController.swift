@@ -10,6 +10,9 @@ import UIKit
 
 class DetailedEventViewController: UIViewController {
     
+    @IBOutlet weak var eventTitle: UILabel!
+    
+    
     var event: Event? {
         didSet {
             updateUI()
@@ -18,11 +21,12 @@ class DetailedEventViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateUI()
     }
     
     private func updateUI() {
-        
+        if let unwrappedEvent = event {
+            eventTitle?.text = unwrappedEvent.title
+        }
     }
 }
