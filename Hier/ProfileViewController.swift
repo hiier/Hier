@@ -9,8 +9,12 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import MaterialComponents
 
 class ProfileViewController: UIViewController {
+    
+    
+    @IBOutlet weak var profilePic: UIImageView!
     
     
    
@@ -26,6 +30,7 @@ class ProfileViewController: UIViewController {
         // Initialize Tab Bar Item
         tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
     }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +57,6 @@ class ProfileViewController: UIViewController {
                 if( statusCode == 200){
                     let user_json = JSON(response.result.value)
                     self.userName.text = "Your Name"
-
                     
                     let userinfo = User(id:0, username : user_json["username"].stringValue)
                     self.userName.text = user_json["username"].stringValue
@@ -64,17 +68,28 @@ class ProfileViewController: UIViewController {
             
         
         }else{
-            
-             print("333")
-            
             self.performSegue(withIdentifier:"logintemp", sender: self)
-        
-        
         }
         
         
 
         // Do any additional setup after loading the view.
+        
+        self.profilePic.layer.borderWidth = 1
+        self.profilePic.layer.masksToBounds = false
+        self.profilePic.layer.cornerRadius = self.profilePic.frame.size.width/2
+        self.profilePic.clipsToBounds = true
+        
+        
+//        let tabBar = MDCTabBar(frame: view.bounds)
+//        tabBar.items = [
+//            UITabBarItem(title: "Recents", image: UIImage(named: "phone"), tag: 0),
+//            UITabBarItem(title: "Favorites", image: UIImage(named: "heart"), tag: 0),
+//        ]
+//        tabBar.itemAppearance = .titledImages
+//        tabBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
+//        tabBar.sizeToFit()
+//        view.addSubview(tabBar)
     }
 
     override func didReceiveMemoryWarning() {

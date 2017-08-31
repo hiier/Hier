@@ -22,31 +22,23 @@ class ProfileLoginNavigationController: UINavigationController {
         if (defaults.object(forKey: "UserConfToken") != nil){
             let savedinfo = defaults.object(forKey: "UserConfToken") as! String
             
-            
             var headers: HTTPHeaders = [:]
-            if let authorizationHeader = Request.authorizationHeader(user: savedinfo, password: "") {
+            if let authorizationHeader = Request.authorizationHeader(user: savedinfo, password: "foo") {
                 headers[authorizationHeader.key] = authorizationHeader.value
             }
-            Alamofire.request(URL_SIGNIN, headers: headers).response{
+            Alamofire.request(URL_SIGNIN, headers: headers).responseJSON{
                 
                 response in
                 let statusCode = (response.response?.statusCode)
-                print(response)
                 
                 if( statusCode != 200){
-                    
                     //switching the screen
-                     print("222")
                     self.performSegue(withIdentifier:"login", sender: self)
-                    
                 }
-                
             }
         
         }else{
-            print("111")
             self.performSegue(withIdentifier:"login", sender: self)
-        
         }
 
     }
