@@ -17,7 +17,7 @@
 		217BFD2E1EFA247D0033AD54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217BFD2C1EFA247D0033AD54 /* Main.storyboard */; };
 		217BFD301EFA247D0033AD54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 217BFD2F1EFA247D0033AD54 /* Assets.xcassets */; };
 		217BFD3E1EFA247D0033AD54 /* HierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BFD3D1EFA247D0033AD54 /* HierTests.swift */; };
-		217C5E191F568DE300442CA2 /* SubProfileEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C5E181F568DE300442CA2 /* SubProfileEventsViewController.swift */; };
+		21827E391F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21827E381F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift */; };
 		219989871F156B0E0083ADE4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219989861F156B0E0083ADE4 /* ProfileViewController.swift */; };
 		21D02EFD1F04B0A800CDA906 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */; };
 		21D1654F1F3C1C6B00043E32 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1654E1F3C1C6B00043E32 /* CreateEventViewController.swift */; };
@@ -60,7 +60,7 @@
 		217BFD391EFA247D0033AD54 /* HierTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HierTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		217BFD3D1EFA247D0033AD54 /* HierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierTests.swift; sourceTree = "<group>"; };
 		217BFD3F1EFA247D0033AD54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		217C5E181F568DE300442CA2 /* SubProfileEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubProfileEventsViewController.swift; path = ../SubProfileEventsViewController.swift; sourceTree = "<group>"; };
+		21827E381F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEvtsTabBarViewController.swift; sourceTree = "<group>"; };
 		219989861F156B0E0083ADE4 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		21D1654E1F3C1C6B00043E32 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
@@ -137,8 +137,8 @@
 				C01EB7381F456C25000EABEC /* models */,
 				C023CA6E1F4E86010081A2B9 /* viewControllers */,
 				C023CA6B1F4D3CC50081A2B9 /* supporting */,
-				217C5E181F568DE300442CA2 /* SubProfileEventsViewController.swift */,
 				217BFD2C1EFA247D0033AD54 /* Main.storyboard */,
+				21827E381F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift */,
 			);
 			path = Hier;
 			sourceTree = "<group>";
@@ -424,7 +424,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				217C5E191F568DE300442CA2 /* SubProfileEventsViewController.swift in Sources */,
 				C01EB73E1F46ACB2000EABEC /* User.swift in Sources */,
 				C01EB7461F4914A0000EABEC /* Constants.swift in Sources */,
 				2165111B1F20784600B839DD /* Event.swift in Sources */,
@@ -436,6 +435,7 @@
 				217BFD2B1EFA247D0033AD54 /* SignupViewController.swift in Sources */,
 				21D1654F1F3C1C6B00043E32 /* CreateEventViewController.swift in Sources */,
 				C01EB73C1F457017000EABEC /* Comment.swift in Sources */,
+				21827E391F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift in Sources */,
 				C023CA6D1F4E7CA90081A2B9 /* EventNavigationViewController.swift in Sources */,
 				C023CA6A1F4D2D280081A2B9 /* Tag.swift in Sources */,
 				C01EB7421F46B0E1000EABEC /* EventMgr.swift in Sources */,
