@@ -74,7 +74,7 @@ class EventMgr {
     }
     
     private func createDummyEvent() -> Event? {
-        let event = Event(name: "Dining", description: "Let's go eating at Xi'an Kitchen!", time: NSDate(), location: "300 Barber Ct, Milpitas, CA 95035")!
+        let event = Event(name: "Dining", description: "Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen!", time: NSDate(), location: "300 Barber Ct, Milpitas, CA 95035")!
         event.likes = [likes[0], likes[2], likes[4]]
         event.comments = [comments[1], comments[3]]
         return event

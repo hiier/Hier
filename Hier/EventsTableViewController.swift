@@ -12,19 +12,23 @@ import SwiftyJSON
 import MaterialComponents.MaterialCollections
 
 class EventsTableViewController: UITableViewController {
-
+    
     var eventMgr = EventMgr()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         eventMgr.update()
+        
+        // UI configurations
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+        tableView.separatorColor = Constants.LightGreen
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

@@ -19,6 +19,7 @@ class Event {
     var location: String
     var likes = [Like]()
     var comments = [Comment]()
+    var tags = [Tag]()
     
     // MARK: Initialization
     

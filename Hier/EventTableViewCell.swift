@@ -10,11 +10,11 @@ import UIKit
 
 class EventTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var photo: UIImageView!
+    @IBOutlet weak var eventPhoto: UIImageView!
     
-    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var eventTitle: UILabel!
     
-    @IBOutlet weak var content: UILabel!
+    @IBOutlet weak var eventDescription: UILabel!
     
     @IBOutlet weak var numLikes: UILabel!
     
@@ -28,8 +28,8 @@ class EventTableViewCell: UITableViewCell {
 
     private func updateUI() {
         if let unwrappedEvent = event {
-            title.text = unwrappedEvent.title
-            content.text = unwrappedEvent.description
+            eventTitle.text = unwrappedEvent.title
+            eventDescription.text = unwrappedEvent.description
             numLikes.text = String(unwrappedEvent.likes.count)
             numComments.text = String(unwrappedEvent.comments.count)
         }
