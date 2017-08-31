@@ -10,21 +10,25 @@ import Foundation
 
 class Tag {
     
-    // MARK: Properties
+    // MARK: - Properties
     
     var name: String
-    var description: String
+    var description: String?
     var icon: NSData
     
-    // MARK: Initialization
+    // MARK: - Methods
     
-    init?(name: String, description: String, icon: NSData) {
-        if name.isEmpty {
+    init?(name: String, description: String?, icon: NSData) {
+        guard Tag.isValidName(name) else {
             return nil
         }
         
         self.name = name
         self.description = description
         self.icon = icon
+    }
+    
+    public static func isValidName(_ name: String) -> Bool {
+        return !name.isEmpty
     }
 }

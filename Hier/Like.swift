@@ -10,14 +10,14 @@ import Foundation
 
 class Like {
     
-    // MARK: Properties
+    // MARK: - Properties
     
     var user: User
-    var time: NSDate
+    var time: Date
     
-    // MARK: Initialization
+    // MARK: - Methods
     
-    init?(user: User, time: NSDate) {
+    init?(user: User, time: Date) {
         self.user = user
         self.time = time
     }

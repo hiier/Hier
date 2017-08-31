@@ -14,6 +14,7 @@ target 'Hier' do
   pod 'MaterialComponents'
   pod 'Eureka'
   pod 'ImageRow', '~> 1.0'
+  pod 'PhoneNumberKit', '~> 1.3'
   # Pods for Hier
 
   target 'HierTests' do

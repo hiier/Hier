@@ -10,22 +10,21 @@ import Foundation
 
 class User {
     
-    // MARK: Properties
+    // MARK: - Properties
     
-    var id: Int
+    var id: String
+    var email: String
     var username: String
-    var participated = [Event]()
-    var created = [Event]()
-    var liked = [Event]()
     
-    // MARK: Initialization
+    var participated: [Event] = []
+    var created: [Event] = []
+    var liked: [Event] = []
     
-    init?( id:Int, username: String) {
-        if username.isEmpty {
-            return nil
-        }
-        
+    // MARK: - Methods
+    
+    init?(id: String, email: String, username: String) {
         self.id = id
+        self.email = email
         self.username = username
     }
 }

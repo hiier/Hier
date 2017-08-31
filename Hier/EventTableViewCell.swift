@@ -10,7 +10,14 @@ import UIKit
 
 class EventTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var eventPhoto: UIImageView!
+    // MARK: - Outlets
+    
+    @IBOutlet weak var eventPhoto: UIImageView! {
+        didSet {
+            eventPhoto.layer.cornerRadius = Constants.CornerRadius
+            eventPhoto.clipsToBounds = true
+        }
+    }
     
     @IBOutlet weak var eventTitle: UILabel!
     
@@ -20,12 +27,16 @@ class EventTableViewCell: UITableViewCell {
     
     @IBOutlet weak var numComments: UILabel!
     
+    // MARK: - Properties
+    
     var event: Event? {
         didSet {
             updateUI()
         }
     }
 
+    // MARK: - Custom methods
+    
     private func updateUI() {
         if let unwrappedEvent = event {
             eventTitle.text = unwrappedEvent.title
