@@ -10,9 +10,14 @@ import UIKit
 import MaterialComponents
 
 class ProfileEvtsTabBarViewController: MDCTabBarViewController {
-
+    
+    
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+
 
         let tabBar = MDCTabBar(frame: view.bounds)
         tabBar.items = [
@@ -28,6 +33,8 @@ class ProfileEvtsTabBarViewController: MDCTabBarViewController {
         tabBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         tabBar.sizeToFit()
         view.addSubview(tabBar)
+        
+
         // Do any additional setup after loading the view.
     }
 
@@ -35,6 +42,13 @@ class ProfileEvtsTabBarViewController: MDCTabBarViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+
+    
+
+    
+    
     
 
     /*

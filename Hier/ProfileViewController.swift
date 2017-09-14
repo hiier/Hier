@@ -16,8 +16,6 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var profilePic: UIImageView!
     
-    
-   
     @IBOutlet weak var userName: UILabel!
     
     let URL_USER = "http://127.0.0.1:5000/user/"
@@ -81,16 +79,36 @@ class ProfileViewController: UIViewController {
         self.profilePic.clipsToBounds = true
         
         
-//        let tabBar = MDCTabBar(frame: view.bounds)
-//        tabBar.items = [
-//            UITabBarItem(title: "Recents", image: UIImage(named: "phone"), tag: 0),
-//            UITabBarItem(title: "Favorites", image: UIImage(named: "heart"), tag: 0),
-//        ]
-//        tabBar.itemAppearance = .titledImages
-//        tabBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
-//        tabBar.sizeToFit()
-//        view.addSubview(tabBar)
+        let pictureTap = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped(_:)))
+        
+        self.profilePic.addGestureRecognizer(pictureTap)
+        self.profilePic.isUserInteractionEnabled = true
+        
+        
+
     }
+    
+    
+    @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        sender.view?.removeFromSuperview()
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -138,7 +138,6 @@
 				C023CA6E1F4E86010081A2B9 /* viewControllers */,
 				C023CA6B1F4D3CC50081A2B9 /* supporting */,
 				217BFD2C1EFA247D0033AD54 /* Main.storyboard */,
-				21827E381F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift */,
 			);
 			path = Hier;
 			sourceTree = "<group>";
@@ -218,6 +217,7 @@
 				21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */,
 				216962E51F4A22210052B871 /* ProfileLoginNavigationController.swift */,
 				219989861F156B0E0083ADE4 /* ProfileViewController.swift */,
+				21827E381F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift */,
 			);
 			name = profile;
 			sourceTree = "<group>";
