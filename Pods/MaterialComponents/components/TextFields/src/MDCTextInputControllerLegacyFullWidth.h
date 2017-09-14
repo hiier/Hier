@@ -1,5 +1,5 @@
 /*
- Copyright 2017-present The Material Motion Authors. All Rights Reserved.
+ Copyright 2017-present the Material Components for iOS authors. All Rights Reserved.
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -14,16 +14,15 @@
  limitations under the License.
  */
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#import "MDCTextInputController.h"
 
-#import "MDMTransitionController.h"
+/**
+ Material Design compliant text field. The logic for 'automagic' error states changes:
+ underline color, underline text color.
+ https://www.google.com/design/spec/components/text-fields.html#text-fields-single-line-text-field
 
-@interface MDMPresentationTransitionController : NSObject <MDMTransitionController, UIViewControllerTransitioningDelegate>
-
-- (nonnull instancetype)initWithViewController:(nonnull UIViewController *)viewController
-    NS_DESIGNATED_INITIALIZER;
-
-- (nonnull instancetype)init NS_UNAVAILABLE;
+ The placeholder is laid out inline and the character count is also inline to the right.
+ */
+@interface MDCTextInputControllerLegacyFullWidth : NSObject <MDCTextInputController>
 
 @end

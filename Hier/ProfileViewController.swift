@@ -19,7 +19,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userName: UILabel!
     
     let URL_USER = "http://127.0.0.1:5000/user/"
-    var userinfo = User(id :0, username:"")
+    var userinfo = User(id: "0", email: "yangzhao1012@gmail.com", username:"")
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -56,7 +56,7 @@ class ProfileViewController: UIViewController {
                     let user_json = JSON(response.result.value)
                     self.userName.text = "Your Name"
                     
-                    let userinfo = User(id:0, username : user_json["username"].stringValue)
+                    let userinfo = User(id: "0", email: "yangzhao1012@gmail.com", username : user_json["username"].stringValue)
                     self.userName.text = user_json["username"].stringValue
                     
                     

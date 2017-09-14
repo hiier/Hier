@@ -10,21 +10,25 @@ import Foundation
 
 class Comment {
     
-    // MARK: Properties
+    // MARK: - Properties
     
     var user: User
-    var time: NSDate
+    var time: Date
     var content: String
     
-    // MARK: Initialization
+    // MARK: - Methods
     
-    init?(user: User, time: NSDate, content: String) {
-        if content.isEmpty {
+    init?(user: User, time: Date, content: String) {
+        guard Comment.isValidContent(content) else {
             return nil
         }
         
         self.user = user
         self.time = time
         self.content = content
+    }
+    
+    public static func isValidContent(_ content: String) -> Bool {
+        return !content.isEmpty
     }
 }

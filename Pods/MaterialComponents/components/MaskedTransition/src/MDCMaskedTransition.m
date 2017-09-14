@@ -59,7 +59,7 @@ static inline CGFloat LengthOfVector(CGVector vector) {
   return self;
 }
 
-- (id<MDMTransition>)fallbackTransitionWithContext:(id<MDMTransitionContext>)context {
+- (id<MDMTransition>)fallbackTransitionWithContext:(__unused id<MDMTransitionContext>)context {
   return _shouldSlideWhenCollapsed ? nil : self;
 }
 
@@ -71,7 +71,7 @@ static inline CGFloat LengthOfVector(CGVector vector) {
 
 - (UIPresentationController *)presentationControllerForPresentedViewController:(UIViewController *)presented
                                                       presentingViewController:(UIViewController *)presenting
-                                                          sourceViewController:(UIViewController *)source {
+                                                          sourceViewController:(__unused UIViewController *)source {
   MDCMaskedPresentationController *presentationController =
       [[MDCMaskedPresentationController alloc] initWithPresentedViewController:presented
                                                       presentingViewController:presenting
@@ -210,7 +210,7 @@ static inline CGFloat LengthOfVector(CGVector vector) {
   }
 
   {
-    void (^completion)() = nil;
+    void (^completion)(void) = nil;
     if (context.direction == MDMTransitionDirectionForward) {
       completion = ^{
         // Upon completion of the animation we want all of the content to be visible, so we jump

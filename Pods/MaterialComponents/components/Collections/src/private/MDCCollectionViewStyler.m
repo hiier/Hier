@@ -21,9 +21,6 @@
 
 #include <tgmath.h>
 
-#define RGBCOLOR(r, g, b) \
-  [UIColor colorWithRed:(r) / 255.0f green:(g) / 255.0f blue:(b) / 255.0f alpha:1]
-
 typedef NS_OPTIONS(NSUInteger, BackgroundCacheKey) {
   BackgroundCacheKeyFlat = 0,
   BackgroundCacheKeyTop = 1 << 0,
@@ -125,11 +122,18 @@ NS_INLINE CGRect RectShift(CGRect rect, CGFloat dx, CGFloat dy) {
     // Cell default style properties.
     _cellBackgroundColor = [UIColor whiteColor];
     _cellStyle = MDCCollectionViewCellStyleDefault;
-    _collectionView.backgroundColor = RGBCOLOR(0xEE, 0xEE, 0xEE);
+    // Background color is 0xEEEEEE
+    _collectionView.backgroundColor = [UIColor colorWithRed:(CGFloat)(238 / 255.0)
+                                                      green:(CGFloat)(238 / 255.0)
+                                                       blue:(CGFloat)(238 / 255.0)
+                                                      alpha:1];
     _inlaidIndexPathSet = [NSMutableSet set];
 
     // Cell separator defaults.
-    _separatorColor = RGBCOLOR(224, 224, 224);
+    _separatorColor = [UIColor colorWithRed:(CGFloat)(224 / 255.0)
+                                      green:(CGFloat)(224 / 255.0)
+                                       blue:(CGFloat)(224 / 255.0)
+                                      alpha:1];
     _separatorInset = UIEdgeInsetsZero;
     _separatorLineHeight =
         kCollectionViewCellSeparatorDefaultHeightInPixels / [[UIScreen mainScreen] scale];
@@ -172,7 +176,7 @@ NS_INLINE CGRect RectShift(CGRect rect, CGFloat dx, CGFloat dy) {
         animations:^{
           [self updateLayoutAnimated:YES];
         }
-        completion:^(BOOL finished) {
+        completion:^(__unused BOOL finished) {
           [self setShouldAnimateCellsOnAppearance:NO];
         }];
   }
@@ -359,7 +363,7 @@ NS_INLINE CGRect RectShift(CGRect rect, CGFloat dx, CGFloat dy) {
       }
     }
 
-    void (^completionBlock)(BOOL finished) = ^(BOOL finished) {
+    void (^completionBlock)(BOOL finished) = ^(__unused BOOL finished) {
       if ([self.delegate
               respondsToSelector:@selector(collectionView:didApplyInlayToItemAtIndexPaths:)]) {
         [self.delegate collectionView:_collectionView
@@ -376,7 +380,7 @@ NS_INLINE CGRect RectShift(CGRect rect, CGFloat dx, CGFloat dy) {
 - (void)removeInlayFromItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated {
   [_inlaidIndexPathSet removeObject:indexPath];
 
-  void (^completionBlock)(BOOL finished) = ^(BOOL finished) {
+  void (^completionBlock)(BOOL finished) = ^(__unused BOOL finished) {
     if ([self.delegate
             respondsToSelector:@selector(collectionView:didRemoveInlayFromItemAtIndexPaths:)]) {
       [self.delegate collectionView:_collectionView
@@ -398,7 +402,7 @@ NS_INLINE CGRect RectShift(CGRect rect, CGFloat dx, CGFloat dy) {
       }
     }
 
-    void (^completionBlock)(BOOL finished) = ^(BOOL finished) {
+    void (^completionBlock)(BOOL finished) = ^(__unused BOOL finished) {
       if ([self.delegate
               respondsToSelector:@selector(collectionView:didApplyInlayToItemAtIndexPaths:)]) {
         [self.delegate collectionView:_collectionView
@@ -415,7 +419,7 @@ NS_INLINE CGRect RectShift(CGRect rect, CGFloat dx, CGFloat dy) {
   NSArray *indexPaths = [_inlaidIndexPathSet allObjects];
   [_inlaidIndexPathSet removeAllObjects];
 
-  void (^completionBlock)(BOOL finished) = ^(BOOL finished) {
+  void (^completionBlock)(BOOL finished) = ^(__unused BOOL finished) {
     if ([self.delegate
             respondsToSelector:@selector(collectionView:didRemoveInlayFromItemAtIndexPaths:)]) {
       [self.delegate collectionView:_collectionView didRemoveInlayFromItemAtIndexPaths:indexPaths];

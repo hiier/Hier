@@ -20,7 +20,6 @@
 		21827E391F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21827E381F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift */; };
 		219989871F156B0E0083ADE4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219989861F156B0E0083ADE4 /* ProfileViewController.swift */; };
 		21D02EFD1F04B0A800CDA906 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */; };
-		21D1654F1F3C1C6B00043E32 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1654E1F3C1C6B00043E32 /* CreateEventViewController.swift */; };
 		52BDF342C25BFD388AE3D010 /* Pods_HierTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714327D4949130D7954570D0 /* Pods_HierTests.framework */; };
 		AFF98DF63D47199B39407E7F /* Pods_Hier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CD76E8BF0ABAEFBF1DFCB29 /* Pods_Hier.framework */; };
 		C01EB7371F456842000EABEC /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EB7361F456842000EABEC /* EventTableViewCell.swift */; };
@@ -28,11 +27,14 @@
 		C01EB73C1F457017000EABEC /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EB73B1F457017000EABEC /* Comment.swift */; };
 		C01EB73E1F46ACB2000EABEC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EB73D1F46ACB2000EABEC /* User.swift */; };
 		C01EB7401F46B086000EABEC /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EB73F1F46B086000EABEC /* MainTabBarViewController.swift */; };
-		C01EB7421F46B0E1000EABEC /* EventMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EB7411F46B0E1000EABEC /* EventMgr.swift */; };
-		C01EB7441F48F10A000EABEC /* DetailedEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EB7431F48F10A000EABEC /* DetailedEventViewController.swift */; };
+		C01EB7421F46B0E1000EABEC /* DataMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EB7411F46B0E1000EABEC /* DataMgr.swift */; };
 		C01EB7461F4914A0000EABEC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EB7451F4914A0000EABEC /* Constants.swift */; };
 		C023CA6A1F4D2D280081A2B9 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = C023CA691F4D2D280081A2B9 /* Tag.swift */; };
-		C023CA6D1F4E7CA90081A2B9 /* EventNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C023CA6C1F4E7CA90081A2B9 /* EventNavigationViewController.swift */; };
+		C023CA741F5691420081A2B9 /* UITextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C023CA731F5691420081A2B9 /* UITextViewPlaceholder.swift */; };
+		C023CA761F569D4D0081A2B9 /* CreateEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C023CA751F569D4D0081A2B9 /* CreateEventTableViewController.swift */; };
+		C0D764371F5CE37900011BCA /* EventLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D764361F5CE37900011BCA /* EventLocationViewController.swift */; };
+		C0D764391F5E570900011BCA /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D764381F5E570900011BCA /* LocationSearchTableViewController.swift */; };
+		C0D832D41F679DAA00EC6E58 /* DetailedEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D832D31F679DAA00EC6E58 /* DetailedEventTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +65,6 @@
 		21827E381F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEvtsTabBarViewController.swift; sourceTree = "<group>"; };
 		219989861F156B0E0083ADE4 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		21D1654E1F3C1C6B00043E32 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		714327D4949130D7954570D0 /* Pods_HierTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HierTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD76E8BF0ABAEFBF1DFCB29 /* Pods_Hier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6CAA26C25386E7E2317AB3A /* Pods-HierTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HierTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HierTests/Pods-HierTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -73,11 +74,15 @@
 		C01EB73B1F457017000EABEC /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		C01EB73D1F46ACB2000EABEC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C01EB73F1F46B086000EABEC /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
-		C01EB7411F46B0E1000EABEC /* EventMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMgr.swift; sourceTree = "<group>"; };
-		C01EB7431F48F10A000EABEC /* DetailedEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedEventViewController.swift; sourceTree = "<group>"; };
+		C01EB7411F46B0E1000EABEC /* DataMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataMgr.swift; sourceTree = "<group>"; };
 		C01EB7451F4914A0000EABEC /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C023CA691F4D2D280081A2B9 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
-		C023CA6C1F4E7CA90081A2B9 /* EventNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventNavigationViewController.swift; sourceTree = "<group>"; };
+		C023CA731F5691420081A2B9 /* UITextViewPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewPlaceholder.swift; sourceTree = "<group>"; };
+		C023CA751F569D4D0081A2B9 /* CreateEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventTableViewController.swift; sourceTree = "<group>"; };
+		C0D764361F5CE37900011BCA /* EventLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLocationViewController.swift; sourceTree = "<group>"; };
+		C0D764381F5E570900011BCA /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
+		C0D7643A1F60FD6C00011BCA /* Hier.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hier.entitlements; sourceTree = "<group>"; };
+		C0D832D31F679DAA00EC6E58 /* DetailedEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedEventTableViewController.swift; sourceTree = "<group>"; };
 		E43464689730B62BBFBF64AC /* Pods-Hier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hier.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hier/Pods-Hier.debug.xcconfig"; sourceTree = "<group>"; };
 		F40AC3A95243F406BC1E821B /* Pods-Hier.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hier.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hier/Pods-Hier.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,6 +139,8 @@
 		217BFD271EFA247D0033AD54 /* Hier */ = {
 			isa = PBXGroup;
 			children = (
+				C0D7643A1F60FD6C00011BCA /* Hier.entitlements */,
+				C023CA711F5691110081A2B9 /* utils */,
 				C01EB7381F456C25000EABEC /* models */,
 				C023CA6E1F4E86010081A2B9 /* viewControllers */,
 				C023CA6B1F4D3CC50081A2B9 /* supporting */,
@@ -169,8 +176,7 @@
 				C01EB7391F456FD9000EABEC /* Like.swift */,
 				C01EB73B1F457017000EABEC /* Comment.swift */,
 				C01EB73D1F46ACB2000EABEC /* User.swift */,
-				C01EB7411F46B0E1000EABEC /* EventMgr.swift */,
-				C01EB7451F4914A0000EABEC /* Constants.swift */,
+				C01EB7411F46B0E1000EABEC /* DataMgr.swift */,
 				C023CA691F4D2D280081A2B9 /* Tag.swift */,
 			);
 			name = models;
@@ -201,11 +207,12 @@
 		C023CA6F1F4E86A90081A2B9 /* event */ = {
 			isa = PBXGroup;
 			children = (
+				C0D764361F5CE37900011BCA /* EventLocationViewController.swift */,
 				C01EB7361F456842000EABEC /* EventTableViewCell.swift */,
-				21D1654E1F3C1C6B00043E32 /* CreateEventViewController.swift */,
-				C01EB7431F48F10A000EABEC /* DetailedEventViewController.swift */,
-				C023CA6C1F4E7CA90081A2B9 /* EventNavigationViewController.swift */,
 				216511101F1EFF0700B839DD /* EventsTableViewController.swift */,
+				C023CA751F569D4D0081A2B9 /* CreateEventTableViewController.swift */,
+				C0D764381F5E570900011BCA /* LocationSearchTableViewController.swift */,
+				C0D832D31F679DAA00EC6E58 /* DetailedEventTableViewController.swift */,
 			);
 			name = event;
 			sourceTree = "<group>";
@@ -220,6 +227,15 @@
 				21827E381F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift */,
 			);
 			name = profile;
+			sourceTree = "<group>";
+		};
+		C023CA711F5691110081A2B9 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				C01EB7451F4914A0000EABEC /* Constants.swift */,
+				C023CA731F5691420081A2B9 /* UITextViewPlaceholder.swift */,
+			);
+			name = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +296,11 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = N7FJ58882C;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 					217BFD381EFA247D0033AD54 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -333,9 +354,46 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Hier/Pods-Hier-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageRow/ImageRow.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionAnimator/MotionAnimator.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionInterchange/MotionInterchange.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionTransitioning/MotionTransitioning.framework",
+				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftLocation/SwiftLocation.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageRow.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionAnimator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionInterchange.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionTransitioning.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftLocation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -378,9 +436,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HierTests/Pods-HierTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -393,13 +454,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HierTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		92348D3917F24B0F9E8925C4 /* [CP] Check Pods Manifest.lock */ = {
@@ -408,13 +472,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hier-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -424,22 +491,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				217C5E191F568DE300442CA2 /* SubProfileEventsViewController.swift in Sources */,
+				C0D764371F5CE37900011BCA /* EventLocationViewController.swift in Sources */,
 				C01EB73E1F46ACB2000EABEC /* User.swift in Sources */,
 				C01EB7461F4914A0000EABEC /* Constants.swift in Sources */,
+				C0D832D41F679DAA00EC6E58 /* DetailedEventTableViewController.swift in Sources */,
 				2165111B1F20784600B839DD /* Event.swift in Sources */,
 				216511191F1F14FC00B839DD /* RatingControl.swift in Sources */,
 				C01EB7401F46B086000EABEC /* MainTabBarViewController.swift in Sources */,
 				216487AF1F43FE1E000FDDF1 /* CustomCell.swift in Sources */,
 				21D02EFD1F04B0A800CDA906 /* LoginViewController.swift in Sources */,
+				C023CA761F569D4D0081A2B9 /* CreateEventTableViewController.swift in Sources */,
 				216511111F1EFF0700B839DD /* EventsTableViewController.swift in Sources */,
 				217BFD2B1EFA247D0033AD54 /* SignupViewController.swift in Sources */,
-				21D1654F1F3C1C6B00043E32 /* CreateEventViewController.swift in Sources */,
+				C023CA741F5691420081A2B9 /* UITextViewPlaceholder.swift in Sources */,
 				C01EB73C1F457017000EABEC /* Comment.swift in Sources */,
 				21827E391F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift in Sources */,
 				C023CA6D1F4E7CA90081A2B9 /* EventNavigationViewController.swift in Sources */,
 				C023CA6A1F4D2D280081A2B9 /* Tag.swift in Sources */,
-				C01EB7421F46B0E1000EABEC /* EventMgr.swift in Sources */,
-				C01EB7441F48F10A000EABEC /* DetailedEventViewController.swift in Sources */,
+				C0D764391F5E570900011BCA /* LocationSearchTableViewController.swift in Sources */,
+				C01EB7421F46B0E1000EABEC /* DataMgr.swift in Sources */,
 				219989871F156B0E0083ADE4 /* ProfileViewController.swift in Sources */,
 				C01EB7371F456842000EABEC /* EventTableViewCell.swift in Sources */,
 				216962E61F4A22210052B871 /* ProfileLoginNavigationController.swift in Sources */,
