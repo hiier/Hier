@@ -19,8 +19,8 @@ class ProfileLoginNavigationController: UINavigationController {
 
         let defaults = UserDefaults.standard
         
-        if (defaults.object(forKey: "UserConfToken") != nil){
-            let savedinfo = defaults.object(forKey: "UserConfToken") as! String
+        if (defaults.object(forKey: "userToken") != nil){
+            let savedinfo = defaults.object(forKey: "userToken") as! String
             
             var headers: HTTPHeaders = [:]
             if let authorizationHeader = Request.authorizationHeader(user: savedinfo, password: "foo") {

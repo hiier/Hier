@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05CD86AB1F7216E2002471AB /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD86AA1F7216E2002471AB /* API.swift */; };
 		216487AF1F43FE1E000FDDF1 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216487AE1F43FE1E000FDDF1 /* CustomCell.swift */; };
 		216511111F1EFF0700B839DD /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216511101F1EFF0700B839DD /* EventsTableViewController.swift */; };
 		216511191F1F14FC00B839DD /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216511181F1F14FC00B839DD /* RatingControl.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05CD86AA1F7216E2002471AB /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		216487AE1F43FE1E000FDDF1 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		216511101F1EFF0700B839DD /* EventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		216511181F1F14FC00B839DD /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				C01EB73D1F46ACB2000EABEC /* User.swift */,
 				C01EB7411F46B0E1000EABEC /* DataMgr.swift */,
 				C023CA691F4D2D280081A2B9 /* Tag.swift */,
+				05CD86AA1F7216E2002471AB /* API.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				C01EB7371F456842000EABEC /* EventTableViewCell.swift in Sources */,
 				216962E61F4A22210052B871 /* ProfileLoginNavigationController.swift in Sources */,
 				C01EB73A1F456FD9000EABEC /* Like.swift in Sources */,
+				05CD86AB1F7216E2002471AB /* API.swift in Sources */,
 				217BFD291EFA247D0033AD54 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

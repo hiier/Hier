@@ -499,7 +499,7 @@
                     <connections>
                         <outlet property="profilePic" destination="Koh-rk-JVe" id="WcB-ZS-u8s"/>
                         <outlet property="userName" destination="SYd-TE-tcx" id="TLI-Eu-wfB"/>
-                        <segue destination="442-H1-4Oo" kind="show" identifier="logintemp" id="agF-c8-HTb"/>
+                        <segue destination="442-H1-4Oo" kind="show" identifier="ProfileToLogin" id="agF-c8-HTb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sRt-Eh-Hf8" userLabel="First Responder" sceneMemberID="firstResponder"/>
