@@ -11,12 +11,15 @@ import Alamofire
 import SwiftyJSON
 import MaterialComponents
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UIScrollViewDelegate {
     
-    
+  
     @IBOutlet weak var profilePic: UIImageView!
     
     @IBOutlet weak var userName: UILabel!
+    
+//    var profilePicScrollView: UIScrollView!
+    
     
     let URL_USER = "http://127.0.0.1:5000/user/"
     var userinfo = User(id: "0", email: "yangzhao1012@gmail.com", username:"")
@@ -83,26 +86,50 @@ class ProfileViewController: UIViewController {
         
         self.profilePic.addGestureRecognizer(pictureTap)
         self.profilePic.isUserInteractionEnabled = true
-        
-        
 
     }
+    
     
     
     @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
         let imageView = sender.view as! UIImageView
         let newImageView = UIImageView(image: imageView.image)
-        newImageView.frame = UIScreen.main.bounds
+        
+        
+        let profilePicScrollView = UIScrollView(frame: UIScreen.main.bounds
+)
+        profilePicScrollView.minimumZoomScale = 1;
+        profilePicScrollView.maximumZoomScale = 3.0;
+        profilePicScrollView.delegate = self as! UIScrollViewDelegate;
+        profilePicScrollView.translatesAutoresizingMaskIntoConstraints = true
+        profilePicScrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        
+//        newImageView.frame = UIScreen.main.bounds
+        newImageView.frame = imageView.frame
         newImageView.backgroundColor = .black
         newImageView.contentMode = .scaleAspectFit
         newImageView.isUserInteractionEnabled = true
+        
+        profilePicScrollView.addSubview(newImageView)
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
-        newImageView.addGestureRecognizer(tap)
-        self.view.addSubview(newImageView)
+        profilePicScrollView.addGestureRecognizer(tap)
+        
+        self.view.addSubview(profilePicScrollView)
+        profilePicScrollView.subviews[0].zoomIn()
+
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = true
     }
     
+    
+    
+    func viewForZooming(in profilePicScrollView: UIScrollView) -> UIView? {
+        return profilePicScrollView.subviews[0]
+    }
+    
+       
     func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = false

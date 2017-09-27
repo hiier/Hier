@@ -19,6 +19,7 @@
 		217BFD3E1EFA247D0033AD54 /* HierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BFD3D1EFA247D0033AD54 /* HierTests.swift */; };
 		21827E391F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21827E381F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift */; };
 		219989871F156B0E0083ADE4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219989861F156B0E0083ADE4 /* ProfileViewController.swift */; };
+		2199FE4E1F73780500421815 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2199FE4D1F73780500421815 /* UIViewExtensions.swift */; };
 		21D02EFD1F04B0A800CDA906 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */; };
 		52BDF342C25BFD388AE3D010 /* Pods_HierTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714327D4949130D7954570D0 /* Pods_HierTests.framework */; };
 		AFF98DF63D47199B39407E7F /* Pods_Hier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CD76E8BF0ABAEFBF1DFCB29 /* Pods_Hier.framework */; };
@@ -64,6 +65,7 @@
 		217BFD3F1EFA247D0033AD54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21827E381F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEvtsTabBarViewController.swift; sourceTree = "<group>"; };
 		219989861F156B0E0083ADE4 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2199FE4D1F73780500421815 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		714327D4949130D7954570D0 /* Pods_HierTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HierTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD76E8BF0ABAEFBF1DFCB29 /* Pods_Hier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				C01EB7451F4914A0000EABEC /* Constants.swift */,
+				2199FE4D1F73780500421815 /* UIViewExtensions.swift */,
 				C023CA731F5691420081A2B9 /* UITextViewPlaceholder.swift */,
 			);
 			name = utils;
@@ -491,8 +494,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				217C5E191F568DE300442CA2 /* SubProfileEventsViewController.swift in Sources */,
 				C0D764371F5CE37900011BCA /* EventLocationViewController.swift in Sources */,
+				2199FE4E1F73780500421815 /* UIViewExtensions.swift in Sources */,
 				C01EB73E1F46ACB2000EABEC /* User.swift in Sources */,
 				C01EB7461F4914A0000EABEC /* Constants.swift in Sources */,
 				C0D832D41F679DAA00EC6E58 /* DetailedEventTableViewController.swift in Sources */,
@@ -507,7 +510,6 @@
 				C023CA741F5691420081A2B9 /* UITextViewPlaceholder.swift in Sources */,
 				C01EB73C1F457017000EABEC /* Comment.swift in Sources */,
 				21827E391F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift in Sources */,
-				C023CA6D1F4E7CA90081A2B9 /* EventNavigationViewController.swift in Sources */,
 				C023CA6A1F4D2D280081A2B9 /* Tag.swift in Sources */,
 				C0D764391F5E570900011BCA /* LocationSearchTableViewController.swift in Sources */,
 				C01EB7421F46B0E1000EABEC /* DataMgr.swift in Sources */,
