@@ -14,37 +14,24 @@ import SwiftyJSON
 
 
 class LoginViewController: UIViewController {
-    
-    let URL_SIGNIN = "http://127.0.0.1:5000/login/"
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         // Initialize Tab Bar Item
         tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
     }
-    
-    
+
     override func viewDidLoad() {
-        
-        
         let loginButton = LoginButton(readPermissions: [ .publicProfile ])
         loginButton.center = view.center
         
         view.addSubview(loginButton)
-        
-           }
+   }
 
-
-    
-    
     @IBOutlet weak var username: UITextField!
-    
     @IBOutlet weak var password: UITextField!
     
-    
     @IBOutlet weak var notif: UILabel!
-    
 
     @IBAction func login(_ sender: UIButton) {
         
@@ -67,53 +54,30 @@ class LoginViewController: UIViewController {
             headers[authorizationHeader.key] = authorizationHeader.value
         }
         
-        Alamofire.request(URL_SIGNIN, headers: headers).responseJSON{
+        Alamofire.request(Queries.User.login, headers: headers).responseJSON{ response in
+            //printing response
+            print("request : \(String(describing:response.request))")
+            print("Response String: \(String(describing:response.result.value))")
+            print(response)
+            print(response.response?.allHeaderFields)
 
-                response in
-                //printing response
-                print("request : \(String(describing:response.request))")
-                print("Response String: \(String(describing:response.result.value))")
-                print(response)
-                print(response.response?.allHeaderFields)
+            let statusCode = (response.response?.statusCode)
             
-            
-            
-                let statusCode = (response.response?.statusCode)
+            if( statusCode == 200){
                 
-                if( statusCode == 200){
-                    
-                    let res_json = JSON(response.result.value)
-                    let token = res_json["token"].stringValue
-                    
-                    let defaults = UserDefaults.standard
-                    defaults.set(token, forKey: "UserConfToken")
-                    defaults.set(user, forKey:"UserName")
-                    
-                    
+                let res_json = JSON(response.result.value)
+                let token = res_json["token"].stringValue
+                let userId = res_json["id"].stringValue
                 
-                        //switching the screen
-                    self.performSegue(withIdentifier:"welcome", sender: self)
-
-                    }else{
-                        //error message in case of invalid credential
-                        self.notif.text = "Invalid username or password"
-                    }
-                
+                let defaults = UserDefaults.standard
+                defaults.set(token, forKey: "userToken")
+                defaults.set(userId, forKey:"userId")
+                //switching the screen
+                self.performSegue(withIdentifier:"welcome", sender: self)
+            }else{
+                //error message in case of invalid credential
+                self.notif.text = "Invalid username or password"
+            }
         }
-  
-
-        
-        
-        
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -12,85 +12,58 @@ import SwiftyJSON
 import MaterialComponents
 
 class ProfileViewController: UIViewController, UIScrollViewDelegate {
-    
-  
+    // user object id
+    var id: String?
     @IBOutlet weak var profilePic: UIImageView!
     
     @IBOutlet weak var userName: UILabel!
     
 //    var profilePicScrollView: UIScrollView!
-    
-    
-    let URL_USER = "http://127.0.0.1:5000/user/"
-    var userinfo = User(id: "0", email: "yangzhao1012@gmail.com", username:"")
-    
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         // Initialize Tab Bar Item
         tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
     }
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let defaults = UserDefaults.standard
-        
-        if (defaults.object(forKey: "UserName") != nil && defaults.object(forKey: "UserConfToken") != nil ){
-            let user = defaults.object(forKey: "UserName") as! String
-            let savedinfo = defaults.object(forKey: "UserConfToken") as! String
-            let parameters: Parameters = ["username": user]
-            
-            var headers: HTTPHeaders = [:]
-            if let authorizationHeader = Request.authorizationHeader(user: savedinfo, password: "foo") {
-                headers[authorizationHeader.key] = authorizationHeader.value
+
+        let token = defaults.object(forKey: "userToken") as? String
+        let userId = defaults.object(forKey: "userId") as? String
+        print("yz print token and user id");
+        print(token);
+        print(userId);
+        if (token != nil && userId != nil) {
+            let queryId = id == nil ? userId : id!
+
+            let user: User? = User.getProfile(id: queryId!)
+            if user != nil {
+                self.userName.text = user!.username
             }
-            Alamofire.request(URL_USER,  parameters: parameters).responseJSON{
-                
-                response in
-                
-                print(response)
-                
-                let statusCode = (response.response?.statusCode)
-                
-                if( statusCode == 200){
-                    let user_json = JSON(response.result.value)
-                    self.userName.text = "Your Name"
-                    
-                    let userinfo = User(id: "0", email: "yangzhao1012@gmail.com", username : user_json["username"].stringValue)
-                    self.userName.text = user_json["username"].stringValue
-                    
-                    
-                }
-                
-            }
-            
-        
         }else{
-            self.performSegue(withIdentifier:"logintemp", sender: self)
+            self.performSegue(withIdentifier:"ProfileToLogin", sender: self)
         }
-        
-        
 
         // Do any additional setup after loading the view.
-        
+        setUpView()
+    }
+    
+    func setUpView() {
         self.profilePic.layer.borderWidth = 1
         self.profilePic.layer.masksToBounds = false
         self.profilePic.layer.cornerRadius = self.profilePic.frame.size.width/2
         self.profilePic.clipsToBounds = true
         
-        
         let pictureTap = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped(_:)))
         
         self.profilePic.addGestureRecognizer(pictureTap)
         self.profilePic.isUserInteractionEnabled = true
-
     }
-    
-    
-    
+
     @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
         let imageView = sender.view as! UIImageView
         let newImageView = UIImageView(image: imageView.image)
@@ -135,22 +108,10 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         self.tabBarController?.tabBar.isHidden = false
         sender.view?.removeFromSuperview()
     }
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
