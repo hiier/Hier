@@ -10,12 +10,18 @@ import UIKit
 import Alamofire
 import FacebookLogin
 import SwiftyJSON
-
 import Material
 
 
-
 class LoginViewController: UIViewController {
+        
+    fileprivate var emailField: ErrorTextField!
+    fileprivate var passwordField: TextField!
+    
+    /// A constant to layout the textFields.
+    fileprivate let constant: CGFloat = 32
+    
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         // Initialize Tab Bar Item
@@ -23,32 +29,34 @@ class LoginViewController: UIViewController {
     }
 
     override func viewDidLoad() {
-        let loginButton = LoginButton(readPermissions: [ .publicProfile ])
-        loginButton.center = view.center
+        //FACEBOOK LOGIN
+//        let loginButton = LoginButton(readPermissions: [ .publicProfile ])
+//        loginButton.center = view.center
+//        
+//        view.addSubview(loginButton)
         
-        view.addSubview(loginButton)
+        preparePasswordField()
+        prepareEmailField()
+        prepareSignInResponderButton()
    }
 
-    @IBOutlet weak var username: UITextField!
-    @IBOutlet weak var password: UITextField!
-    
-    @IBOutlet weak var notif: UILabel!
+    /// Prepares the sign in responder button.
+    fileprivate func prepareSignInResponderButton() {
+        let btn = RaisedButton(title: "Sign In", titleColor: Color.cyan.base)
+        btn.addTarget(self, action: #selector(signIn(button:)), for: .touchUpInside)
+        
+        view.layout(btn).width(100).height(constant).center(offsetY: +passwordField.height + 60)
 
-    @IBAction func login(_ sender: UIButton) {
+    }
+    
+    /// Handle the sign in responder button.
+    @objc
+    internal func signIn(button: UIButton) {
+        emailField?.resignFirstResponder()
+        passwordField?.resignFirstResponder()
         
-//        let auth = "Basic " + username.text! + ":" + password.text!
-//        
-//        print(auth)
-//        let headers :HTTPHeaders = [
-//            "Authorization": auth,
-//            "Accept": "text/html"
-//        ]
-        
-        
-//        Alamofire.request(URL_SIGNIN, method:.get,  encoding: URLEncoding.queryString, headers:headers ).responseString{
-//         
-        let user = username.text!
-        let psw = password.text!
+        let user = emailField.text!
+        let psw = passwordField.text!
         
         var headers: HTTPHeaders = [:]
         if let authorizationHeader = Request.authorizationHeader(user: user, password: psw) {
@@ -61,7 +69,7 @@ class LoginViewController: UIViewController {
             print("Response String: \(String(describing:response.result.value))")
             print(response)
             print(response.response?.allHeaderFields)
-
+            
             let statusCode = (response.response?.statusCode)
             
             if( statusCode == 200){
@@ -77,8 +85,84 @@ class LoginViewController: UIViewController {
                 self.performSegue(withIdentifier:"welcome", sender: self)
             }else{
                 //error message in case of invalid credential
-                self.notif.text = "Invalid username or password"
+                self.passwordField.detail = "Invalid username or password"
+                self.passwordField.detailColor = Color.pink.base
             }
         }
     }
+    
+    
 }
+
+
+extension LoginViewController {
+    fileprivate func prepareEmailField() {
+        emailField = ErrorTextField()
+        emailField.placeholder = "Email"
+        emailField.detail = "Error, incorrect email"
+        emailField.isClearIconButtonEnabled = true
+        emailField.delegate = self
+        emailField.isPlaceholderUppercasedWhenEditing = true
+//        emailField.placeholderAnimation = .hidden
+        
+        // Set the colors for the emailField, different from the defaults.
+//        emailField.placeholderNormalColor = Color.amber.darken4
+//        emailField.placeholderActiveColor = Color.pink.base
+//        emailField.dividerNormalColor = Color.cyan.base
+//        emailField.dividerActiveColor = Color.green.base
+        emailField.dividerActiveColor = Color.cyan.base
+        emailField.placeholderActiveColor = Color.pink.base
+        
+        // Set the text inset
+        //        emailField.textInset = 20
+        
+        let leftView = UIImageView()
+        leftView.image = Icon.email
+        emailField.leftView = leftView
+        
+        emailField.leftViewActiveColor = Color.cyan.base
+        
+        view.layout(emailField).center(offsetY: -passwordField.height - 60).left(20).right(20)
+    }
+    
+    fileprivate func preparePasswordField() {
+        passwordField = TextField()
+        passwordField.placeholder = "Password"
+        passwordField.detail = "At least 8 characters"
+        passwordField.clearButtonMode = .whileEditing
+        passwordField.isVisibilityIconButtonEnabled = true
+        passwordField.isPlaceholderUppercasedWhenEditing = true
+        
+        passwordField.dividerActiveColor = Color.cyan.base
+        passwordField.placeholderActiveColor = Color.pink.base
+        
+        let leftView = UIImageView()
+        leftView.image = Icon.cm.pen
+        passwordField.leftView = leftView
+        
+        passwordField.leftViewActiveColor = Color.cyan.base
+        
+        // Setting the visibilityIconButton color.
+        passwordField.visibilityIconButton?.tintColor = Color.cyan.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
+        
+        view.layout(passwordField).center().left(20).right(20)
+    }
+}
+
+
+extension LoginViewController: TextFieldDelegate {
+    public func textFieldDidEndEditing(_ textField: UITextField) {
+        (textField as? ErrorTextField)?.isErrorRevealed = false
+    }
+    
+    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        (textField as? ErrorTextField)?.isErrorRevealed = false
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        (textField as? ErrorTextField)?.isErrorRevealed = true
+        return true
+    }
+}
+
