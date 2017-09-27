@@ -11,16 +11,13 @@ import Alamofire
 import SwiftLocation
 import SwiftyJSON
 
+import Material
 
 class SignupViewController: UIViewController{
     
     
     
     let URL_USER_REGISTER = "http://127.0.0.1:5000/signup/"
-    
-    var trash = "www"
-
-
     
     @IBOutlet weak var EnterEmail: UITextField!
 
@@ -49,9 +46,6 @@ class SignupViewController: UIViewController{
                 "password":EnterPassword.text!
             ]
             
-            
-            
-            
             //Sending http post request
             Alamofire.request(URL_USER_REGISTER, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON
                 {
@@ -71,8 +65,14 @@ class SignupViewController: UIViewController{
         
     }
     
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        
         
 //        Location.getLocation(accuracy: .city, frequency: .continuous, success: { (_, location) in
 //            print("A new update of location is available: \(location)")
@@ -101,3 +101,6 @@ class SignupViewController: UIViewController{
     
     
 }
+
+
+

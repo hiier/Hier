@@ -280,19 +280,18 @@ static NSString *const MDCNavigationBarTitleAlignmentKey = @"MDCNavigationBarTit
 
   CGSize leadingButtonBarSize = [_leadingButtonBar sizeThatFits:self.bounds.size];
   CGRect leadingButtonBarFrame =
-      CGRectMake(0, self.bounds.origin.y, leadingButtonBarSize.width, leadingButtonBarSize.height);
-  _leadingButtonBar.frame = MDCRectFlippedForRTL(leadingButtonBarFrame, self.bounds.size.width,
+      CGRectMake(0, CGRectGetMinY(self.bounds), leadingButtonBarSize.width, leadingButtonBarSize.height);
+  _leadingButtonBar.frame = MDCRectFlippedForRTL(leadingButtonBarFrame, CGRectGetWidth(self.bounds),
                                                  self.mdc_effectiveUserInterfaceLayoutDirection);
 
   CGSize trailingButtonBarSize = [_trailingButtonBar sizeThatFits:self.bounds.size];
   CGRect trailingButtonBarFrame =
-      CGRectMake(self.bounds.size.width - trailingButtonBarSize.width, self.bounds.origin.y,
+      CGRectMake(CGRectGetWidth(self.bounds) - trailingButtonBarSize.width, CGRectGetMinY(self.bounds),
                  trailingButtonBarSize.width, trailingButtonBarSize.height);
-  _trailingButtonBar.frame = MDCRectFlippedForRTL(trailingButtonBarFrame, self.bounds.size.width,
+  _trailingButtonBar.frame = MDCRectFlippedForRTL(trailingButtonBarFrame, CGRectGetWidth(self.bounds),
                                                   self.mdc_effectiveUserInterfaceLayoutDirection);
 
-  const BOOL isPad = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad;
-  UIEdgeInsets textInsets = isPad ? kTextPadInsets : kTextInsets;
+  UIEdgeInsets textInsets = [self usePadInsets] ? kTextPadInsets : kTextInsets;
 
   CGRect textFrame = UIEdgeInsetsInsetRect(self.bounds, textInsets);
   textFrame.origin.x += _leadingButtonBar.frame.size.width;
@@ -312,7 +311,7 @@ static NSString *const MDCNavigationBarTitleAlignmentKey = @"MDCNavigationBarTit
   titleSize.width = MDCCeil(titleSize.width);
   titleSize.height = MDCCeil(titleSize.height);
   CGRect titleFrame = CGRectMake(textFrame.origin.x, 0, titleSize.width, titleSize.height);
-  titleFrame = MDCRectFlippedForRTL(titleFrame, self.bounds.size.width,
+  titleFrame = MDCRectFlippedForRTL(titleFrame, CGRectGetWidth(self.bounds),
                                     self.mdc_effectiveUserInterfaceLayoutDirection);
   UIControlContentVerticalAlignment titleVerticalAlignment = UIControlContentVerticalAlignmentTop;
   CGRect alignedFrame = [self mdc_frameAlignedVertically:titleFrame
@@ -346,8 +345,8 @@ static NSString *const MDCNavigationBarTitleAlignmentKey = @"MDCNavigationBarTit
 }
 
 - (CGSize)intrinsicContentSize {
-  const BOOL isPad = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad;
-  CGFloat height = (isPad ? kNavigationBarPadDefaultHeight : kNavigationBarDefaultHeight);
+
+  CGFloat height = ([self usePadInsets] ? kNavigationBarPadDefaultHeight : kNavigationBarDefaultHeight);
   return CGSizeMake(UIViewNoIntrinsicMetric, height);
 }
 
@@ -361,6 +360,17 @@ static NSString *const MDCNavigationBarTitleAlignmentKey = @"MDCNavigationBarTit
 }
 
 #pragma mark Private
+
+// Used to determine whether or not to apply insets relevant for iPad or use smaller iPhone size.
+// As the difference between iPad/iPhone is only in top & bottom insets, we should use vertical
+// size class to determine
+- (BOOL)usePadInsets {
+  const BOOL isPad = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad;
+  if (isPad && self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular) {
+    return YES;
+  }
+  return NO;
+}
 
 + (NSTextAlignment)textAlignmentFromTitleAlignment:(MDCNavigationBarTitleAlignment)titleAlignment {
   switch (titleAlignment) {
@@ -439,22 +449,23 @@ static NSString *const MDCNavigationBarTitleAlignmentKey = @"MDCNavigationBarTit
                            alignment:(UIControlContentVerticalAlignment)alignment {
   switch (alignment) {
     case UIControlContentVerticalAlignmentBottom:
-      return CGRectMake(frame.origin.x, CGRectGetMaxY(bounds) - frame.size.height, frame.size.width,
-                        frame.size.height);
+      return CGRectMake(CGRectGetMinX(frame), CGRectGetMaxY(bounds) - CGRectGetHeight(frame),
+                        CGRectGetWidth(frame),
+                        CGRectGetHeight(frame));
 
     case UIControlContentVerticalAlignmentCenter: {
-      CGFloat centeredY = MDCFloor((bounds.size.height - frame.size.height) / 2) + bounds.origin.y;
-      return CGRectMake(frame.origin.x, centeredY, frame.size.width, frame.size.height);
+      CGFloat centeredY = MDCFloor((CGRectGetHeight(bounds) - CGRectGetHeight(frame)) / 2) + CGRectGetMinY(bounds);
+      return CGRectMake(CGRectGetMinX(frame), centeredY, CGRectGetWidth(frame), CGRectGetHeight(frame));
     }
 
     case UIControlContentVerticalAlignmentTop: {
       // The title frame is vertically centered with the back button but will stick to the top of
       // the header regardless of the header's height.
       CGFloat navigationBarCenteredY =
-          MDCFloor(([self intrinsicContentSize].height - frame.size.height) / 2);
+          MDCFloor(([self intrinsicContentSize].height - CGRectGetHeight(frame)) / 2);
       navigationBarCenteredY = MAX(0, navigationBarCenteredY);
-      return CGRectMake(frame.origin.x, navigationBarCenteredY, frame.size.width,
-                        frame.size.height);
+      return CGRectMake(CGRectGetMinX(frame), navigationBarCenteredY, CGRectGetWidth(frame),
+                        CGRectGetHeight(frame));
     }
 
     case UIControlContentVerticalAlignmentFill: {
@@ -473,9 +484,7 @@ static NSString *const MDCNavigationBarTitleAlignmentKey = @"MDCNavigationBarTit
 
       MDCButtonBar *leftButtonBar = self.leadingButtonBar;
       MDCButtonBar *rightButtonBar = self.trailingButtonBar;
-      UIEdgeInsets textInsets =
-          [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad ? kTextPadInsets
-                                                                                   : kTextInsets;
+      UIEdgeInsets textInsets = [self usePadInsets] ? kTextPadInsets : kTextInsets;
       CGFloat titleLeftInset = textInsets.left;
       CGFloat titleRightInset = textInsets.right;
 
@@ -502,12 +511,14 @@ static NSString *const MDCNavigationBarTitleAlignmentKey = @"MDCNavigationBarTit
       // Place the title as close to the center, shifting it slightly in to the side with more space
       if (leftMidSpaceX >= halfFrameWidth) {
         CGFloat frameMaxX = CGRectGetMinX(rightButtonBar.frame) - titleRightInset;
-        return CGRectMake(frameMaxX - frame.size.width, frame.origin.y, frame.size.width,
-                          frame.size.height);
+        return CGRectMake(frameMaxX - CGRectGetWidth(frame), CGRectGetMinY(frame),
+                          CGRectGetWidth(frame),
+                          CGRectGetHeight(frame));
       }
       if (rightMidSpaceX >= halfFrameWidth) {
         CGFloat frameOriginX = CGRectGetMaxX(leftButtonBar.frame) + titleLeftInset;
-        return CGRectMake(frameOriginX, frame.origin.y, frame.size.width, frame.size.height);
+        return CGRectMake(frameOriginX, CGRectGetMinY(frame), CGRectGetWidth(frame),
+                          CGRectGetHeight(frame));
       }
     }
     // Intentional fall through

@@ -201,14 +201,6 @@ static inline CGFloat normalizeValue(CGFloat value, CGFloat minRange, CGFloat ma
   [self setNeedsLayout];
 }
 
-- (CGSize)sizeForNumberOfPages:(NSInteger)pageCount {
-  CGFloat radius = kPageControlIndicatorRadius;
-  CGFloat margin = kPageControlIndicatorMargin;
-  CGFloat width = pageCount * ((radius * 2) + margin) - margin;
-  CGFloat height = MAX(kPageControlMinimumHeight, radius * 2);
-  return CGSizeMake(width, height);
-}
-
 - (BOOL)isPageIndexValid:(NSInteger)nextPage {
   // Returns YES if next page is within bounds of page control. Otherwise NO.
   return (nextPage >= 0 && nextPage < _numberOfPages);
@@ -217,7 +209,15 @@ static inline CGFloat normalizeValue(CGFloat value, CGFloat minRange, CGFloat ma
 #pragma mark - UIView(UIViewGeometry)
 
 - (CGSize)sizeThatFits:(__unused CGSize)size {
-  return [self sizeForNumberOfPages:_numberOfPages];
+  return [MDCPageControl sizeForNumberOfPages:_numberOfPages];
+}
+
++ (CGSize)sizeForNumberOfPages:(NSInteger)pageCount {
+   CGFloat radius = kPageControlIndicatorRadius;
+   CGFloat margin = kPageControlIndicatorMargin;
+   CGFloat width = pageCount * ((radius * 2) + margin) - margin;
+   CGFloat height = MAX(kPageControlMinimumHeight, radius * 2);
+   return CGSizeMake(width, height);
 }
 
 #pragma mark - Colors
@@ -473,14 +473,16 @@ static inline CGFloat normalizeValue(CGFloat value, CGFloat minRange, CGFloat ma
 
   // Resize container view to keep indicators centered.
   CGFloat frameWidth = _containerView.frame.size.width;
-  CGSize controlSize = [self sizeForNumberOfPages:_numberOfPages];
+  CGSize controlSize = [MDCPageControl sizeForNumberOfPages:_numberOfPages];
   _containerView.frame = CGRectInset(_containerView.frame, (frameWidth - controlSize.width) / 2, 0);
   _trackLength = CGRectGetWidth(_containerView.frame) - (radius * 2);
 
   // Add animated indicator that will travel freely across the container. Its transform will be
   // updated by calling its -updateIndicatorTransformX method.
   CGPoint center = CGPointMake(radius, radius);
+  CGPoint point = [_indicatorPositions[_currentPage] CGPointValue];
   _animatedIndicator = [[MDCPageControlIndicator alloc] initWithCenter:center radius:radius];
+  [_animatedIndicator updateIndicatorTransformX:point.x - kPageControlIndicatorRadius];
   [_containerView.layer addSublayer:_animatedIndicator];
 
   [self setNeedsLayout];
@@ -512,7 +514,7 @@ static inline CGFloat normalizeValue(CGFloat value, CGFloat minRange, CGFloat ma
   // In iOS 8+, we could be included by way of a dynamic framework, and our resource bundles may
   // not be in the main .app bundle, but rather in a nested framework, so figure out where we live
   // and use that as the search location.
-  NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+  NSBundle *bundle = [NSBundle bundleForClass:[MDCPageControl class]];
   NSString *resourcePath = [(nil == bundle ? [NSBundle mainBundle] : bundle)resourcePath];
   return [resourcePath stringByAppendingPathComponent:bundleName];
 }
