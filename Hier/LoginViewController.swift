@@ -14,7 +14,7 @@ import Material
 
 
 class LoginViewController: UIViewController {
-        
+    
     fileprivate var emailField: ErrorTextField!
     fileprivate var passwordField: TextField!
     
@@ -38,6 +38,7 @@ class LoginViewController: UIViewController {
         preparePasswordField()
         prepareEmailField()
         prepareSignInResponderButton()
+        prepareSignUpResponderButton()
    }
 
     /// Prepares the sign in responder button.
@@ -45,7 +46,7 @@ class LoginViewController: UIViewController {
         let btn = RaisedButton(title: "Sign In", titleColor: Color.cyan.base)
         btn.addTarget(self, action: #selector(signIn(button:)), for: .touchUpInside)
         
-        view.layout(btn).width(100).height(constant).center(offsetY: +passwordField.height + 60)
+        view.layout(btn).width(150).height(constant).center(offsetY: +passwordField.height + 80)
 
     }
     
@@ -91,12 +92,27 @@ class LoginViewController: UIViewController {
         }
     }
     
+    /// Prepares the sign up responder button.
+    fileprivate func prepareSignUpResponderButton() {
+        let btn_signup = RaisedButton(title: "Sign Up", titleColor: Color.lime.base)
+        btn_signup.addTarget(self, action: #selector(signUp(button:)), for: .touchUpInside)
+        
+        view.layout(btn_signup).width(150).height(constant).center(offsetY: +passwordField.height + 80 + 40)
+        
+    }
+    
+    @objc
+    internal func signUp(button: UIButton) {
+        self.performSegue(withIdentifier:"signin2signup", sender: self)
+    }
+
+    
     
 }
 
 
 extension LoginViewController {
-    fileprivate func prepareEmailField() {
+    func prepareEmailField() {
         emailField = ErrorTextField()
         emailField.placeholder = "Email"
         emailField.detail = "Error, incorrect email"
@@ -122,7 +138,7 @@ extension LoginViewController {
         
         emailField.leftViewActiveColor = Color.cyan.base
         
-        view.layout(emailField).center(offsetY: -passwordField.height - 60).left(20).right(20)
+        view.layout(emailField).center(offsetY: -passwordField.height - 30).left(20).right(20)
     }
     
     fileprivate func preparePasswordField() {

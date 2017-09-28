@@ -12,13 +12,48 @@ import SwiftyJSON
 
 class ProfileLoginNavigationController: UINavigationController {
     
-    let URL_SIGNIN = "http://127.0.0.1:5000/login/"
+    var loginvalid = true
+    var rtViewID = "ProfileViewController"
+   
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        checkLogin()
+   
+//        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        if (!self.loginvalid){
+            self.rtViewID = "LoginViewController"
+            let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: self.rtViewID) as! LoginViewController
+
+            self.setViewControllers([homeViewController], animated: false)
+
+
+        }else{
+            let homeViewController = mainStoryboard.instantiateViewController( withIdentifier: self.rtViewID) as! ProfileViewController
+            self.setViewControllers([homeViewController], animated: false)
+//            let nav = UINavigationController(rootViewController: homeViewController)
+//            appdelegate.window!.rootViewController = nav
+        }
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
+
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func checkLogin() {
         let defaults = UserDefaults.standard
-        
         if (defaults.object(forKey: "userToken") != nil){
             let savedinfo = defaults.object(forKey: "userToken") as! String
             
@@ -26,26 +61,21 @@ class ProfileLoginNavigationController: UINavigationController {
             if let authorizationHeader = Request.authorizationHeader(user: savedinfo, password: "foo") {
                 headers[authorizationHeader.key] = authorizationHeader.value
             }
-            Alamofire.request(URL_SIGNIN, headers: headers).responseJSON{
+            Alamofire.request(Queries.User.login, headers: headers).responseJSON{
                 
                 response in
                 let statusCode = (response.response?.statusCode)
                 
                 if( statusCode != 200){
                     //switching the screen
-                    self.performSegue(withIdentifier:"login", sender: self)
+//                    self.performSegue(withIdentifier:"login", sender: self)
+                    self.loginvalid = false
                 }
             }
-        
+            
         }else{
-            self.performSegue(withIdentifier:"login", sender: self)
+            self.loginvalid = false
         }
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 

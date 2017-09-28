@@ -15,14 +15,10 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
     // user object id
     var id: String?
     @IBOutlet weak var profilePic: UIImageView!
-    
     @IBOutlet weak var userName: UILabel!
     
-//    var profilePicScrollView: UIScrollView!
-
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
         // Initialize Tab Bar Item
         tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
     }
@@ -76,15 +72,14 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         profilePicScrollView.delegate = self as! UIScrollViewDelegate;
         profilePicScrollView.translatesAutoresizingMaskIntoConstraints = true
         profilePicScrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-        
+                
 //        newImageView.frame = UIScreen.main.bounds
         newImageView.frame = imageView.frame
-        newImageView.backgroundColor = .black
         newImageView.contentMode = .scaleAspectFit
         newImageView.isUserInteractionEnabled = true
         
         profilePicScrollView.addSubview(newImageView)
+        profilePicScrollView.backgroundColor = .black
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
         profilePicScrollView.addGestureRecognizer(tap)
