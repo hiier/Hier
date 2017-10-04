@@ -17,12 +17,10 @@ class SignupViewController: UIViewController{
     fileprivate var emailField: ErrorTextField!
     fileprivate var passwordField: TextField!
     fileprivate var confirmPasswordField: TextField!
+    fileprivate var lbl: UILabel!
     
     /// A constant to layout the textFields.
     fileprivate let constant: CGFloat = 32
-
-    @IBOutlet weak var Label: UILabel!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +30,7 @@ class SignupViewController: UIViewController{
         prepareEmailField()
         prepareConfirmPasswordField()
         prepareSignUpResponderButton()
+        prepareNotif()
         
     }
     
@@ -50,9 +49,9 @@ class SignupViewController: UIViewController{
         let regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}"
         let isMatched = NSPredicate(format:"SELF MATCHES %@", regex).evaluate(with: passwordField.text)
         if(!isMatched){
-            Label.text = "The Password should contain at least a upperCase letter, a digit, or a speical character"
+            lbl.text = "The Password should contain at least an upperCase letter, a digit, or a speical character"
         }else if( passwordField.text != confirmPasswordField.text){
-            Label.text = "Please make sure you are entering same passwords!"
+            lbl.text = "Please make sure you are entering same passwords!"
         }else{
             //creating parameters for the post request
             let parameters: Parameters=[
@@ -65,10 +64,15 @@ class SignupViewController: UIViewController{
                 //printing response
                 print(response)
                 
-                //getting the json value from the server
-                if let result = response.result.value {
-                    
-                    print("JSON: \(result)")
+                let statusCode = (response.response?.statusCode)
+                
+                if( statusCode == 200){
+                    //switching the screen
+                    self.performSegue(withIdentifier:"signup2signin", sender: self)
+                }else{
+                    //error message in case of invalid credential
+                    self.confirmPasswordField.detail = "Sorry, your sign up did not succeed. "
+                    self.confirmPasswordField.detailColor = Color.pink.base
                 }
             }
         }
@@ -101,6 +105,40 @@ class SignupViewController: UIViewController{
 
 
 extension SignupViewController {
+    
+    func prepareNotif(){
+        lbl = UILabel()
+//        lbl.backgroundColor = UIColor.blue
+        lbl.text = ""
+        lbl.textColor = UIColor.black
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.numberOfLines = 0
+        lbl.lineBreakMode = NSLineBreakMode.byWordWrapping
+        lbl.font = lbl.font.withSize(12)
+        
+        view.layout(lbl).center(offsetY: passwordField.height + 165)
+      
+        let widthConstraint = NSLayoutConstraint(item: lbl, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 200)
+        let heightConstraint = NSLayoutConstraint(item: lbl, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 90)
+        var constraints = NSLayoutConstraint.constraints(
+            withVisualFormat: "V:[superview]-(<=1)-[label]",
+            options: NSLayoutFormatOptions.alignAllCenterX,
+            metrics: nil,
+            views: ["superview":view, "label":lbl])
+        
+        view.addConstraints(constraints)
+        
+//        // Center vertically
+//        constraints = NSLayoutConstraint.constraints(
+//            withVisualFormat: "H:[superview]-(<=1)-[label]",
+//            options: NSLayoutFormatOptions.alignAllCenterY,
+//            metrics: nil,
+//            views: ["superview":view, "label":lbl])
+//        
+//        view.addConstraints(constraints)
+        view.addConstraints([ widthConstraint, heightConstraint])
+    }
+    
     func prepareEmailField() {
         emailField = ErrorTextField()
         emailField.placeholder = "Email"
@@ -108,6 +146,9 @@ extension SignupViewController {
         emailField.isClearIconButtonEnabled = true
         emailField.delegate = self
         emailField.isPlaceholderUppercasedWhenEditing = true
+        emailField.autocorrectionType = .no
+        emailField.autocapitalizationType = .none;
+        emailField.spellCheckingType = .no
         //        emailField.placeholderAnimation = .hidden
         
         // Set the colors for the emailField, different from the defaults.
@@ -133,7 +174,7 @@ extension SignupViewController {
     fileprivate func preparePasswordField() {
         passwordField = TextField()
         passwordField.placeholder = "Password"
-        passwordField.detail = "At least 8 characters"
+        passwordField.detail = "at least an upperCase letter, a digit, or a speical character"
         passwordField.clearButtonMode = .whileEditing
         passwordField.isVisibilityIconButtonEnabled = true
         passwordField.isPlaceholderUppercasedWhenEditing = true
@@ -156,7 +197,7 @@ extension SignupViewController {
     fileprivate func prepareConfirmPasswordField() {
         confirmPasswordField = TextField()
         confirmPasswordField.placeholder = "Confirm Password"
-        confirmPasswordField.detail = "At least 8 characters"
+        confirmPasswordField.detail = ""
         confirmPasswordField.clearButtonMode = .whileEditing
         confirmPasswordField.isVisibilityIconButtonEnabled = true
         confirmPasswordField.isPlaceholderUppercasedWhenEditing = true
@@ -173,7 +214,7 @@ extension SignupViewController {
         // Setting the visibilityIconButton color.
         confirmPasswordField.visibilityIconButton?.tintColor = Color.cyan.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
         
-        view.layout(confirmPasswordField).center(offsetY: +passwordField.height + 20).left(20).right(20)
+        view.layout(confirmPasswordField).center(offsetY: +passwordField.height + 30).left(20).right(20)
     }
     
 }

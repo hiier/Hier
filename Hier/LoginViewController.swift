@@ -119,6 +119,9 @@ extension LoginViewController {
         emailField.isClearIconButtonEnabled = true
         emailField.delegate = self
         emailField.isPlaceholderUppercasedWhenEditing = true
+        emailField.autocorrectionType = .no
+        emailField.autocapitalizationType = .none;
+        emailField.spellCheckingType = .no
 //        emailField.placeholderAnimation = .hidden
         
         // Set the colors for the emailField, different from the defaults.

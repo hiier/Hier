@@ -9,13 +9,17 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-import MaterialComponents
+import Material 
 
 class ProfileViewController: UIViewController, UIScrollViewDelegate {
     // user object id
     var id: String?
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var userName: UILabel!
+    
+    fileprivate var buttons = [TabItem]()
+    fileprivate var tabBar: TabBar!
+    fileprivate let tabFontSize: CGFloat = 14
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -45,10 +49,13 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         }
 
         // Do any additional setup after loading the view.
-        setUpView()
+        setUpProfilePic()
+        prepareButtons()
+        prepareTabBar()
     }
     
-    func setUpView() {
+    func setUpProfilePic() {
+        //round image
         self.profilePic.layer.borderWidth = 1
         self.profilePic.layer.masksToBounds = false
         self.profilePic.layer.cornerRadius = self.profilePic.frame.size.width/2
@@ -109,4 +116,55 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         // Dispose of any resources that can be recreated.
     }
 
+}
+
+
+extension ProfileViewController {
+    fileprivate func prepareButtons() {
+        let btn1 = TabItem(title: "Upcoming", titleColor: Color.blueGrey.base)
+        btn1.pulseAnimation = .none
+        btn1.titleLabel!.font =  btn1.titleLabel!.font.withSize(tabFontSize)
+        buttons.append(btn1)
+        
+        let btn2 = TabItem(title: "Attended", titleColor: Color.blueGrey.base)
+        btn2.pulseAnimation = .none
+        btn2.titleLabel!.font =  btn1.titleLabel!.font.withSize(tabFontSize)
+        buttons.append(btn2)
+        
+        let btn3 = TabItem(title: "My Events", titleColor: Color.blueGrey.base)
+        btn3.pulseAnimation = .none
+        btn3.titleLabel!.font =  btn1.titleLabel!.font.withSize(tabFontSize)
+        buttons.append(btn3)
+        
+        let btn4 = TabItem(title: "Saved", titleColor: Color.blueGrey.base)
+        btn4.pulseAnimation = .none
+        btn4.titleLabel!.font =  btn1.titleLabel!.font.withSize(tabFontSize)
+        buttons.append(btn4)
+    }
+    
+    fileprivate func prepareTabBar() {
+        tabBar = TabBar()
+        tabBar.delegate = self
+        
+        tabBar.dividerColor = Color.grey.lighten2
+        tabBar.dividerAlignment = .top
+        
+        tabBar.lineColor = Color.cyan.base
+        tabBar.lineAlignment = .bottom
+        
+        tabBar.backgroundColor = Color.grey.lighten5
+        tabBar.tabItems = buttons
+    
+        view.layout(tabBar).horizontally().center(offsetY: -40)
+    }
+}
+
+extension ProfileViewController: TabBarDelegate {
+    func tabBar(tabBar: TabBar, willSelect button: UIButton) {
+        print("will select")
+    }
+    
+    func tabBar(tabBar: TabBar, didSelect button: UIButton) {
+        print("did select")
+    }
 }

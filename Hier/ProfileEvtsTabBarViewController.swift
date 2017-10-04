@@ -27,7 +27,7 @@ class ProfileEvtsTabBarViewController: MDCTabBarViewController {
         tabBar.barTintColor = UIColor(red:0.04, green:0.73, blue:0.71, alpha:1.0)
         tabBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         tabBar.sizeToFit()
-        view.addSubview(tabBar)
+//        view.addSubview(tabBar)
 
         // Do any additional setup after loading the view.
     }
