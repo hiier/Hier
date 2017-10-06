@@ -14,12 +14,24 @@ import Material
 class ProfileViewController: UIViewController, UIScrollViewDelegate {
     // user object id
     var id: String?
-    @IBOutlet weak var profilePic: UIImageView!
-    @IBOutlet weak var userName: UILabel!
+    var profilePic : UIImageView!
+    var userName : UILabel!
+    var userDesc : UILabel!
+    var userLoc : UILabel!
+    var locationPic : UIImageView!
+    
+    internal var tableView: ProfileSubTableView!
+    open var dataSourceItems = [DataSourceItem]()
+  
+
     
     fileprivate var buttons = [TabItem]()
     fileprivate var tabBar: TabBar!
     fileprivate let tabFontSize: CGFloat = 14
+    
+    var imageView : UIImageView!
+
+    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -29,6 +41,9 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUpProfileInfo()
+        setUpProfilePic()
         
         let defaults = UserDefaults.standard
 
@@ -49,13 +64,51 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         }
 
         // Do any additional setup after loading the view.
-        setUpProfilePic()
+        
         prepareButtons()
         prepareTabBar()
+        prepareTableView()
+        
+
+    }
+    
+    func setUpProfileInfo(){
+        self.userName = UILabel()
+        self.userName.text = "Hier"
+        self.userName.frame =  CGRect(x: 100, y: 138, width: 121, height: 16)
+        self.userName.textColor = UIColor(red: 10/255, green: 186/255, blue: 181/255, alpha: 1.00)
+        self.userName.font = self.userName.font.withSize(14)
+        self.userName.textAlignment = .center
+        self.view.addSubview(self.userName)
+        
+        self.userDesc = UILabel()
+        self.userDesc.text = "An Explorer"
+        self.userDesc.frame =  CGRect(x: 100, y: 155, width: 121, height: 13)
+        self.userDesc.textColor = UIColor(red: 10/255, green: 186/255, blue: 181/255, alpha: 1.00)
+        self.userDesc.font = self.userDesc.font.withSize(12)
+        self.userDesc.textAlignment = .center
+        self.view.addSubview(self.userDesc)
+        
+        self.userLoc = UILabel()
+        self.userLoc.text = "Sunnyvale, California"
+        self.userLoc.frame =  CGRect(x: 100, y: 169, width: 121, height: 13)
+        self.userLoc.textColor = UIColor(red: 10/255, green: 186/255, blue: 181/255, alpha: 1.00)
+        self.userLoc.font = self.userLoc.font.withSize(12)
+        self.userLoc.textAlignment = .center
+        self.view.addSubview(self.userLoc)
+        
+        self.locationPic  = UIImageView(frame:CGRect(x:78, y:170, width:13, height:13))
+        self.locationPic.image = UIImage(named:"discover")
+        self.view.addSubview(self.locationPic)
+        
+    
     }
     
     func setUpProfilePic() {
         //round image
+        self.profilePic  = UIImageView(frame:CGRect(x:128, y:72, width:64, height:64));
+        self.profilePic.image = UIImage(named:"defaultProfile")
+        self.view.addSubview(self.profilePic)
         self.profilePic.layer.borderWidth = 1
         self.profilePic.layer.masksToBounds = false
         self.profilePic.layer.cornerRadius = self.profilePic.frame.size.width/2
@@ -157,14 +210,32 @@ extension ProfileViewController {
     
         view.layout(tabBar).horizontally().center(offsetY: -40)
     }
+    
+    fileprivate func prepareData() {
+        let persons = [["name": "Daniel"], ["name": "Sarah"]]
+        for person in persons {
+            dataSourceItems.append(DataSourceItem(data: person))
+        }
+        tableView.dataSourceItems = dataSourceItems
+        tableView.reloadData()
+    }
+    
+    fileprivate func prepareTableView(){
+        tableView = ProfileSubTableView()
+        tableView.frame =  CGRect(x: 0, y: 248, width: 320, height: 320)
+        self.view.addSubview(self.tableView)
+        prepareData()
+    }
 }
 
 extension ProfileViewController: TabBarDelegate {
     func tabBar(tabBar: TabBar, willSelect button: UIButton) {
         print("will select")
+        print(button.titleLabel?.text)
     }
     
     func tabBar(tabBar: TabBar, didSelect button: UIButton) {
         print("did select")
+        print(button.titleLabel?.text)
     }
 }

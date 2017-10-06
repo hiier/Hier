@@ -22,6 +22,7 @@
 		219989871F156B0E0083ADE4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219989861F156B0E0083ADE4 /* ProfileViewController.swift */; };
 		2199FE4E1F73780500421815 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2199FE4D1F73780500421815 /* UIViewExtensions.swift */; };
 		21D02EFD1F04B0A800CDA906 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */; };
+		21E6CE4A1F8751A00059FCA1 /* ProfileSubTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E6CE491F87519F0059FCA1 /* ProfileSubTableView.swift */; };
 		52BDF342C25BFD388AE3D010 /* Pods_HierTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714327D4949130D7954570D0 /* Pods_HierTests.framework */; };
 		AFF98DF63D47199B39407E7F /* Pods_Hier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CD76E8BF0ABAEFBF1DFCB29 /* Pods_Hier.framework */; };
 		C01EB7371F456842000EABEC /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EB7361F456842000EABEC /* EventTableViewCell.swift */; };
@@ -69,6 +70,7 @@
 		219989861F156B0E0083ADE4 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2199FE4D1F73780500421815 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		21E6CE491F87519F0059FCA1 /* ProfileSubTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSubTableView.swift; sourceTree = "<group>"; };
 		714327D4949130D7954570D0 /* Pods_HierTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HierTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD76E8BF0ABAEFBF1DFCB29 /* Pods_Hier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6CAA26C25386E7E2317AB3A /* Pods-HierTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HierTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HierTests/Pods-HierTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */,
 				216962E51F4A22210052B871 /* ProfileLoginNavigationController.swift */,
 				219989861F156B0E0083ADE4 /* ProfileViewController.swift */,
+				21E6CE491F87519F0059FCA1 /* ProfileSubTableView.swift */,
 				21827E381F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift */,
 			);
 			name = profile;
@@ -499,6 +502,7 @@
 			files = (
 				C0D764371F5CE37900011BCA /* EventLocationViewController.swift in Sources */,
 				2199FE4E1F73780500421815 /* UIViewExtensions.swift in Sources */,
+				21E6CE4A1F8751A00059FCA1 /* ProfileSubTableView.swift in Sources */,
 				C01EB73E1F46ACB2000EABEC /* User.swift in Sources */,
 				C01EB7461F4914A0000EABEC /* Constants.swift in Sources */,
 				C0D832D41F679DAA00EC6E58 /* DetailedEventTableViewController.swift in Sources */,
