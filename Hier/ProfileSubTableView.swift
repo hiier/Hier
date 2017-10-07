@@ -21,7 +21,7 @@ class ProfileSubTableView: UITableView {
     
 //    internal lazy var heights = [IndexPath: CGFloat]()
     open var dataSourceItems = [DataSourceItem]()
- 
+
     
     /**
      An initializer that initializes the object with a NSCoder object.
@@ -68,15 +68,18 @@ extension ProfileSubTableView: TableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileSubTableViewCell", for: indexPath) as! TableViewCell
         
-        guard let data = dataSourceItems[indexPath.row].data as? [String: String] else {
+//        guard let data = dataSourceItems[indexPath.row].data as? [String: String] else {
+//            return cell
+//        }
+        guard let data = dataSourceItems[indexPath.row].data as? Event else {
             return cell
         }
         
     
-        cell.imageView?.image = UIImage(named:"defaultProfile")
-        cell.detailTextLabel?.text = "detail info"
+        cell.imageView?.image =  UIImage(named:"defaultProfile")
+        cell.detailTextLabel?.text = data.description
         cell.dividerColor = Color.grey.lighten2
-        cell.textLabel?.text = data["name"]
+        cell.textLabel?.text = data.title
         
         return cell
     }

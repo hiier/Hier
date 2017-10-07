@@ -37,7 +37,8 @@ class DataMgr {
     }
     
     public func getEvents() -> [Event] {
-        return events
+
+        return self.events
     }
     
     public func createEvent(title: String, description: String, photo: NSData?, time: Date, location: MKPlacemark, contactPhone: String) {
