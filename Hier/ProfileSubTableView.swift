@@ -72,7 +72,12 @@ extension ProfileSubTableView: TableViewDataSource {
             return cell
         }
         
+    
+        cell.imageView?.image = UIImage(named:"defaultProfile")
+        cell.detailTextLabel?.text = "detail info"
+        cell.dividerColor = Color.grey.lighten2
         cell.textLabel?.text = data["name"]
+        
         return cell
     }
     
@@ -98,7 +103,8 @@ extension ProfileSubTableView: TableViewDataSource {
 }
 
 extension ProfileSubTableView: TableViewDelegate {
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return heights[indexPath] ?? 100
-//    }
+          return 88
+    }
 }

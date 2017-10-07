@@ -211,7 +211,7 @@ extension ProfileViewController {
         view.layout(tabBar).horizontally().center(offsetY: -40)
     }
     
-    fileprivate func prepareData() {
+    fileprivate func prepareData(btnLabel : String) {
         let persons = [["name": "Daniel"], ["name": "Sarah"]]
         for person in persons {
             dataSourceItems.append(DataSourceItem(data: person))
@@ -222,20 +222,23 @@ extension ProfileViewController {
     
     fileprivate func prepareTableView(){
         tableView = ProfileSubTableView()
-        tableView.frame =  CGRect(x: 0, y: 248, width: 320, height: 320)
+        tableView.frame =  CGRect(x: 0, y: 245, width: 320, height: 320)
+        tableView.isScrollEnabled = true
         self.view.addSubview(self.tableView)
-        prepareData()
+        prepareData( btnLabel:"Upcoming" )
     }
 }
 
 extension ProfileViewController: TabBarDelegate {
     func tabBar(tabBar: TabBar, willSelect button: UIButton) {
         print("will select")
-        print(button.titleLabel?.text)
+        let btnLabel = button.titleLabel?.text as! String
+        prepareData( btnLabel: btnLabel )
+        
     }
     
     func tabBar(tabBar: TabBar, didSelect button: UIButton) {
         print("did select")
-        print(button.titleLabel?.text)
+        print(button.titleLabel?.text as! String)
     }
 }

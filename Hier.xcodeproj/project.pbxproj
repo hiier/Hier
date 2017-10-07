@@ -164,6 +164,13 @@
 			path = HierTests;
 			sourceTree = "<group>";
 		};
+		21E6CE4B1F8950400059FCA1 /* profileSubTables */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = profileSubTables;
+			sourceTree = "<group>";
+		};
 		6D339B0B169F18D6A3E0345A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +239,7 @@
 				216962E51F4A22210052B871 /* ProfileLoginNavigationController.swift */,
 				219989861F156B0E0083ADE4 /* ProfileViewController.swift */,
 				21E6CE491F87519F0059FCA1 /* ProfileSubTableView.swift */,
+				21E6CE4B1F8950400059FCA1 /* profileSubTables */,
 				21827E381F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift */,
 			);
 			name = profile;
