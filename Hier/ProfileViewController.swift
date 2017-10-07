@@ -20,15 +20,6 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
     var userLoc : UILabel!
     var locationPic : UIImageView!
     
-    internal var tableView: ProfileSubTableView!
-    open var dataSourceItems = [DataSourceItem]()
-  
-
-    
-    fileprivate var buttons = [TabItem]()
-    fileprivate var tabBar: TabBar!
-    fileprivate let tabFontSize: CGFloat = 14
-    
     var imageView : UIImageView!
 
     
@@ -64,12 +55,8 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         }
 
         // Do any additional setup after loading the view.
-        
-        prepareButtons()
-        prepareTabBar()
-        prepareTableView()
-        
 
+        prepareSubTableView()
     }
     
     func setUpProfileInfo(){
@@ -100,7 +87,6 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         self.locationPic  = UIImageView(frame:CGRect(x:78, y:170, width:13, height:13))
         self.locationPic.image = UIImage(named:"discover")
         self.view.addSubview(self.locationPic)
-        
     
     }
     
@@ -173,72 +159,54 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
 
 
 extension ProfileViewController {
-    fileprivate func prepareButtons() {
-        let btn1 = TabItem(title: "Upcoming", titleColor: Color.blueGrey.base)
-        btn1.pulseAnimation = .none
-        btn1.titleLabel!.font =  btn1.titleLabel!.font.withSize(tabFontSize)
-        buttons.append(btn1)
-        
-        let btn2 = TabItem(title: "Attended", titleColor: Color.blueGrey.base)
-        btn2.pulseAnimation = .none
-        btn2.titleLabel!.font =  btn1.titleLabel!.font.withSize(tabFontSize)
-        buttons.append(btn2)
-        
-        let btn3 = TabItem(title: "My Events", titleColor: Color.blueGrey.base)
-        btn3.pulseAnimation = .none
-        btn3.titleLabel!.font =  btn1.titleLabel!.font.withSize(tabFontSize)
-        buttons.append(btn3)
-        
-        let btn4 = TabItem(title: "Saved", titleColor: Color.blueGrey.base)
-        btn4.pulseAnimation = .none
-        btn4.titleLabel!.font =  btn1.titleLabel!.font.withSize(tabFontSize)
-        buttons.append(btn4)
-    }
+//    fileprivate func prepareButtons() {
+//        let btn1 = TabItem(title: "Upcoming", titleColor: Color.blueGrey.base)
+//        btn1.pulseAnimation = .none
+//        btn1.titleLabel!.font =  btn1.titleLabel!.font.withSize(tabFontSize)
+//        buttons.append(btn1)
+//        
+//        let btn2 = TabItem(title: "Attended", titleColor: Color.blueGrey.base)
+//        btn2.pulseAnimation = .none
+//        btn2.titleLabel!.font =  btn1.titleLabel!.font.withSize(tabFontSize)
+//        buttons.append(btn2)
+//        
+//        let btn3 = TabItem(title: "My Events", titleColor: Color.blueGrey.base)
+//        btn3.pulseAnimation = .none
+//        btn3.titleLabel!.font =  btn1.titleLabel!.font.withSize(tabFontSize)
+//        buttons.append(btn3)
+//        
+//        let btn4 = TabItem(title: "Saved", titleColor: Color.blueGrey.base)
+//        btn4.pulseAnimation = .none
+//        btn4.titleLabel!.font =  btn1.titleLabel!.font.withSize(tabFontSize)
+//        buttons.append(btn4)
+//    }
+//    
+//    fileprivate func prepareTabBar() {
+//        tabBar = TabBar()
+//        tabBar.delegate = self
+//        
+//        tabBar.dividerColor = Color.grey.lighten2
+//        tabBar.dividerAlignment = .top
+//        
+//        tabBar.lineColor = Color.cyan.base
+//        tabBar.lineAlignment = .bottom
+//        
+//        tabBar.backgroundColor = Color.grey.lighten5
+//        tabBar.tabItems = buttons
+//    
+//        view.layout(tabBar).horizontally().center(offsetY: -40)
+//    }
     
-    fileprivate func prepareTabBar() {
-        tabBar = TabBar()
-        tabBar.delegate = self
+    fileprivate func prepareSubTableView(){
         
-        tabBar.dividerColor = Color.grey.lighten2
-        tabBar.dividerAlignment = .top
+        let controller = storyboard?.instantiateViewController(withIdentifier: "profileTabsController") as! profileTabsController
+        self.addChildViewController(controller)
         
-        tabBar.lineColor = Color.cyan.base
-        tabBar.lineAlignment = .bottom
-        
-        tabBar.backgroundColor = Color.grey.lighten5
-        tabBar.tabItems = buttons
-    
-        view.layout(tabBar).horizontally().center(offsetY: -40)
-    }
-    
-    fileprivate func prepareData(btnLabel : String) {
-        let persons = [["name": "Daniel"], ["name": "Sarah"]]
-        for person in persons {
-            dataSourceItems.append(DataSourceItem(data: person))
-        }
-        tableView.dataSourceItems = dataSourceItems
-        tableView.reloadData()
-    }
-    
-    fileprivate func prepareTableView(){
-        tableView = ProfileSubTableView()
-        tableView.frame =  CGRect(x: 0, y: 245, width: 320, height: 320)
-        tableView.isScrollEnabled = true
-        self.view.addSubview(self.tableView)
-        prepareData( btnLabel:"Upcoming" )
+        controller.view.frame = CGRect(x: 0, y: 190, width: self.view.bounds.size.width, height: self.view.bounds.size.height*0.7)
+        self.view.addSubview(controller.view)
+        controller.didMove(toParentViewController: self)
+
     }
 }
 
-extension ProfileViewController: TabBarDelegate {
-    func tabBar(tabBar: TabBar, willSelect button: UIButton) {
-        print("will select")
-        let btnLabel = button.titleLabel?.text as! String
-        prepareData( btnLabel: btnLabel )
-        
-    }
-    
-    func tabBar(tabBar: TabBar, didSelect button: UIButton) {
-        print("did select")
-        print(button.titleLabel?.text as! String)
-    }
-}
+

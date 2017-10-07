@@ -18,4 +18,5 @@ struct Constants {
     static let CornerRadius = CGFloat(6)
     static let MapZoomInLatitudeRange = 0.05
     static let MapZoomInLongtudeRange = 0.05
+    static let tabFontSize: CGFloat = 14
 }

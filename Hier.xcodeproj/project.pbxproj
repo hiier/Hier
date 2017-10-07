@@ -18,11 +18,15 @@
 		217BFD2E1EFA247D0033AD54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217BFD2C1EFA247D0033AD54 /* Main.storyboard */; };
 		217BFD301EFA247D0033AD54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 217BFD2F1EFA247D0033AD54 /* Assets.xcassets */; };
 		217BFD3E1EFA247D0033AD54 /* HierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BFD3D1EFA247D0033AD54 /* HierTests.swift */; };
-		21827E391F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21827E381F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift */; };
 		219989871F156B0E0083ADE4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219989861F156B0E0083ADE4 /* ProfileViewController.swift */; };
 		2199FE4E1F73780500421815 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2199FE4D1F73780500421815 /* UIViewExtensions.swift */; };
 		21D02EFD1F04B0A800CDA906 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */; };
 		21E6CE4A1F8751A00059FCA1 /* ProfileSubTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E6CE491F87519F0059FCA1 /* ProfileSubTableView.swift */; };
+		21E6CE4D1F89520F0059FCA1 /* profileTabsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E6CE4C1F89520F0059FCA1 /* profileTabsController.swift */; };
+		21E6CE4F1F89530E0059FCA1 /* upcoming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E6CE4E1F89530E0059FCA1 /* upcoming.swift */; };
+		21E6CE511F8953250059FCA1 /* attended.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E6CE501F8953250059FCA1 /* attended.swift */; };
+		21E6CE531F8953320059FCA1 /* myevents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E6CE521F8953320059FCA1 /* myevents.swift */; };
+		21E6CE551F89534B0059FCA1 /* saved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E6CE541F89534B0059FCA1 /* saved.swift */; };
 		52BDF342C25BFD388AE3D010 /* Pods_HierTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714327D4949130D7954570D0 /* Pods_HierTests.framework */; };
 		AFF98DF63D47199B39407E7F /* Pods_Hier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CD76E8BF0ABAEFBF1DFCB29 /* Pods_Hier.framework */; };
 		C01EB7371F456842000EABEC /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EB7361F456842000EABEC /* EventTableViewCell.swift */; };
@@ -66,11 +70,15 @@
 		217BFD391EFA247D0033AD54 /* HierTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HierTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		217BFD3D1EFA247D0033AD54 /* HierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierTests.swift; sourceTree = "<group>"; };
 		217BFD3F1EFA247D0033AD54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		21827E381F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEvtsTabBarViewController.swift; sourceTree = "<group>"; };
 		219989861F156B0E0083ADE4 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2199FE4D1F73780500421815 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		21E6CE491F87519F0059FCA1 /* ProfileSubTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSubTableView.swift; sourceTree = "<group>"; };
+		21E6CE4C1F89520F0059FCA1 /* profileTabsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileTabsController.swift; sourceTree = "<group>"; };
+		21E6CE4E1F89530E0059FCA1 /* upcoming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = upcoming.swift; sourceTree = "<group>"; };
+		21E6CE501F8953250059FCA1 /* attended.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = attended.swift; sourceTree = "<group>"; };
+		21E6CE521F8953320059FCA1 /* myevents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myevents.swift; sourceTree = "<group>"; };
+		21E6CE541F89534B0059FCA1 /* saved.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = saved.swift; sourceTree = "<group>"; };
 		714327D4949130D7954570D0 /* Pods_HierTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HierTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD76E8BF0ABAEFBF1DFCB29 /* Pods_Hier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6CAA26C25386E7E2317AB3A /* Pods-HierTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HierTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HierTests/Pods-HierTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -167,6 +175,11 @@
 		21E6CE4B1F8950400059FCA1 /* profileSubTables */ = {
 			isa = PBXGroup;
 			children = (
+				21E6CE4C1F89520F0059FCA1 /* profileTabsController.swift */,
+				21E6CE4E1F89530E0059FCA1 /* upcoming.swift */,
+				21E6CE501F8953250059FCA1 /* attended.swift */,
+				21E6CE521F8953320059FCA1 /* myevents.swift */,
+				21E6CE541F89534B0059FCA1 /* saved.swift */,
 			);
 			name = profileSubTables;
 			sourceTree = "<group>";
@@ -240,7 +253,6 @@
 				219989861F156B0E0083ADE4 /* ProfileViewController.swift */,
 				21E6CE491F87519F0059FCA1 /* ProfileSubTableView.swift */,
 				21E6CE4B1F8950400059FCA1 /* profileSubTables */,
-				21827E381F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift */,
 			);
 			name = profile;
 			sourceTree = "<group>";
@@ -508,9 +520,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21E6CE531F8953320059FCA1 /* myevents.swift in Sources */,
 				C0D764371F5CE37900011BCA /* EventLocationViewController.swift in Sources */,
+				21E6CE511F8953250059FCA1 /* attended.swift in Sources */,
 				2199FE4E1F73780500421815 /* UIViewExtensions.swift in Sources */,
 				21E6CE4A1F8751A00059FCA1 /* ProfileSubTableView.swift in Sources */,
+				21E6CE4F1F89530E0059FCA1 /* upcoming.swift in Sources */,
 				C01EB73E1F46ACB2000EABEC /* User.swift in Sources */,
 				C01EB7461F4914A0000EABEC /* Constants.swift in Sources */,
 				C0D832D41F679DAA00EC6E58 /* DetailedEventTableViewController.swift in Sources */,
@@ -524,7 +539,7 @@
 				217BFD2B1EFA247D0033AD54 /* SignupViewController.swift in Sources */,
 				C023CA741F5691420081A2B9 /* UITextViewPlaceholder.swift in Sources */,
 				C01EB73C1F457017000EABEC /* Comment.swift in Sources */,
-				21827E391F57EA10009DA04E /* ProfileEvtsTabBarViewController.swift in Sources */,
+				21E6CE4D1F89520F0059FCA1 /* profileTabsController.swift in Sources */,
 				C023CA6A1F4D2D280081A2B9 /* Tag.swift in Sources */,
 				C0D764391F5E570900011BCA /* LocationSearchTableViewController.swift in Sources */,
 				C01EB7421F46B0E1000EABEC /* DataMgr.swift in Sources */,
@@ -533,6 +548,7 @@
 				216962E61F4A22210052B871 /* ProfileLoginNavigationController.swift in Sources */,
 				C01EB73A1F456FD9000EABEC /* Like.swift in Sources */,
 				05CD86AB1F7216E2002471AB /* API.swift in Sources */,
+				21E6CE551F89534B0059FCA1 /* saved.swift in Sources */,
 				217BFD291EFA247D0033AD54 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -105,6 +105,6 @@ extension ProfileSubTableView: TableViewDataSource {
 extension ProfileSubTableView: TableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return heights[indexPath] ?? 100
-          return 88
+          return 60
     }
 }
