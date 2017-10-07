@@ -16,9 +16,9 @@ class Event {
     var id: String
     var title: String
     var description: String?
-    var photo: NSData?
+    var photo: Data?
     var time: Date
-    var location: CLPlacemark
+    var location: CLLocation
     var contactPhone: String?
     var maxNumParticipants: Int?
     var creator: User
@@ -30,7 +30,7 @@ class Event {
     
     // MARK: - Methods
     
-    init?(id: String, title: String, description: String?, photo: NSData?, time: Date, location: CLPlacemark, contactPhone: String?, maxNumParticipants: Int?, creator: User) {
+    init?(id: String, title: String, description: String?, photo: Data?, time: Date, location: CLLocation, contactPhone: String?, maxNumParticipants: Int?, creator: User) {
         guard Event.isValidTitle(title) && Event.isValidDescription(description) && Event.isValidTime(time) else {
             return nil
         }

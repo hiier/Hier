@@ -13,8 +13,10 @@ class DataMgr {
     
     // MARK: - Properties
     
-    var events: [Event] = []
-    var user: User?
+    private var events: [Event] = []
+    private var user: User?
+    
+    private static var dataMgr: DataMgr?
         
     // MARK: - Methods
     
@@ -28,12 +30,16 @@ class DataMgr {
     }
     
     private func createDummyEvent() {
-        let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString("300 Barber Ct, Milpitas, CA 95035") { (placemarks, error) in
-            let placemark = placemarks!.first!
-            let event = Event(id: "1341324", title: "Dining", description: "Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen!", photo: nil, time: Date(), location: placemark, contactPhone: "6502857451", maxNumParticipants: 5, creator: self.user!)!
-            self.events = [event]
+        let location = CLLocation(latitude: 37.423440, longitude: -121.917371)
+        let event = Event(id: "1341324", title: "Dining", description: "Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen!", photo: nil, time: Date(), location: location, contactPhone: "6502857451", maxNumParticipants: 5, creator: self.user!)!
+        self.events = [event]
+    }
+    
+    public static func getSingletonInstance() -> DataMgr {
+        if dataMgr == nil {
+            dataMgr = DataMgr()
         }
+        return dataMgr!
     }
     
     public func getEvents() -> [Event] {

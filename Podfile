@@ -15,6 +15,7 @@ target 'Hier' do
   pod 'Eureka'
   pod 'ImageRow', '~> 1.0'
   pod 'PhoneNumberKit', '~> 1.3'
+  pod 'ReadMoreTextView'
   # Pods for Hier
 
   target 'HierTests' do

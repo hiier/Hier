@@ -15,7 +15,6 @@ class EventTableViewCell: UITableViewCell {
     @IBOutlet weak var eventPhoto: UIImageView! {
         didSet {
             eventPhoto.layer.cornerRadius = Constants.CornerRadius
-            eventPhoto.clipsToBounds = true
         }
     }
     
@@ -23,26 +22,20 @@ class EventTableViewCell: UITableViewCell {
     
     @IBOutlet weak var eventDescription: UILabel!
     
-    @IBOutlet weak var numLikes: UILabel!
+    @IBOutlet weak var eventNumLikes: UILabel!
     
-    @IBOutlet weak var numComments: UILabel!
+    @IBOutlet weak var eventNumComments: UILabel!
     
     // MARK: - Properties
     
-    var event: Event? {
+    var event: Event! {
         didSet {
-            updateUI()
-        }
-    }
-
-    // MARK: - Custom methods
-    
-    private func updateUI() {
-        if let unwrappedEvent = event {
-            eventTitle.text = unwrappedEvent.title
-            eventDescription.text = unwrappedEvent.description
-            numLikes.text = String(unwrappedEvent.likes.count)
-            numComments.text = String(unwrappedEvent.comments.count)
+            if event != nil {
+                eventTitle.text = event.title
+                eventDescription.text = event.description
+                eventNumLikes.text = String(event.likes.count)
+                eventNumComments.text = String(event.comments.count)
+            }
         }
     }
 }

@@ -320,7 +320,7 @@ static const CGFloat MDCDialogMessageOpacity = 0.54f;
   // In iOS 8+, we could be included by way of a dynamic framework, and our resource bundles may
   // not be in the main .app bundle, but rather in a nested framework, so figure out where we live
   // and use that as the search location.
-  NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+  NSBundle *bundle = [NSBundle bundleForClass:[MDCAlertController class]];
   NSString *resourcePath = [(nil == bundle ? [NSBundle mainBundle] : bundle) resourcePath];
   return [resourcePath stringByAppendingPathComponent:bundleName];
 }
@@ -458,8 +458,13 @@ static const CGFloat MDCDialogMessageOpacity = 0.54f;
     self.actionsScrollView.frame = actionsScrollViewRect;
   } else {
     // Complex layout case : Split the space between the two scrollviews
-    CGFloat maxActionsHeight = CGRectGetHeight(self.view.bounds) * 0.5f;
-    actionsScrollViewRect.size.height = MIN(maxActionsHeight, actionsScrollViewRect.size.height);
+    if (CGRectGetHeight(contentScrollViewRect) < CGRectGetHeight(self.view.bounds) * 0.5f) {
+      actionsScrollViewRect.size.height = 
+          CGRectGetHeight(self.view.bounds) - contentScrollViewRect.size.height;
+    } else {
+      CGFloat maxActionsHeight = CGRectGetHeight(self.view.bounds) * 0.5f;
+      actionsScrollViewRect.size.height = MIN(maxActionsHeight, actionsScrollViewRect.size.height);
+    }
     actionsScrollViewRect.origin.y =
         CGRectGetHeight(self.view.bounds) - actionsScrollViewRect.size.height;
     self.actionsScrollView.frame = actionsScrollViewRect;

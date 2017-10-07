@@ -8,8 +8,9 @@
 
 import UIKit
 import MapKit
+import PhoneNumberKit
 
-class CreateEventTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class CreateEventTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
 
     // MARK: - Outlets
     
@@ -17,14 +18,16 @@ class CreateEventTableViewController: UITableViewController, UIImagePickerContro
         didSet {
             eventTitle.borderStyle = .none
             eventTitle.delegate = self
-            eventTitle.font = Constants.TitleFont
+            eventTitle.font = Constants.DefaultTextFont
             eventTitle.placeholder = "Title"
             eventTitle.returnKeyType = .done
+            eventTitle.addTarget(self, action: #selector(CreateEventTableViewController.textFieldDidChange(_:)), for: .editingChanged)
         }
     }
     
     @IBOutlet weak var eventDescription: UITextView! {
         didSet {
+            eventDescription.delegate = self
             eventDescription.font = Constants.DefaultTextFont
             eventDescription.textAlignment = .left
             eventDescription.placeholder = "Description (optional)"
@@ -34,8 +37,6 @@ class CreateEventTableViewController: UITableViewController, UIImagePickerContro
     @IBOutlet weak var eventPhoto: UIImageView! {
         didSet {
             eventPhoto.layer.cornerRadius = Constants.CornerRadius
-            eventPhoto.layer.borderColor = Constants.LightGreen.cgColor
-            eventPhoto.layer.borderWidth = 1
             eventPhoto.clipsToBounds = true
             eventPhoto.isUserInteractionEnabled = true
             let singleTap = UITapGestureRecognizer(target: self, action: #selector(choosePhoto(gesture:)))
@@ -67,12 +68,33 @@ class CreateEventTableViewController: UITableViewController, UIImagePickerContro
         }
     }
     
+    @IBOutlet weak var eventContactPhone: UITextField! {
+        didSet {
+            eventContactPhone.borderStyle = .none
+            eventContactPhone.delegate = self
+            eventContactPhone.font = Constants.DefaultTextFont
+            eventContactPhone.placeholder = "Phone (optional)"
+            eventContactPhone.keyboardType = .numberPad
+            eventContactPhone.addTarget(self, action: #selector(CreateEventTableViewController.textFieldDidChange(_:)), for: .editingChanged)
+        }
+    }
+    
+    @IBOutlet weak var eventMaxNumParticipants: UITextField! {
+        didSet {
+            eventMaxNumParticipants.borderStyle = .none
+            eventMaxNumParticipants.delegate = self
+            eventMaxNumParticipants.font = Constants.DefaultTextFont
+            eventMaxNumParticipants.placeholder = "Max #participants (optional)"
+            eventMaxNumParticipants.keyboardType = .numberPad
+            eventMaxNumParticipants.addTarget(self, action: #selector(CreateEventTableViewController.textFieldDidChange(_:)), for: .editingChanged)
+        }
+    }
+    
     @IBOutlet weak var submitButton: UIButton! {
         didSet {
-            submitButton.alpha = 0.5
             submitButton.backgroundColor = Constants.LightGreen
-            submitButton.isEnabled = false
             submitButton.setTitleColor(UIColor.white, for: .normal)
+            disableSubmitButton()
         }
     }
     
@@ -88,22 +110,11 @@ class CreateEventTableViewController: UITableViewController, UIImagePickerContro
     
     @IBAction func unwindToCreateEventTableViewController(segue: UIStoryboardSegue) {
         if let elvc = segue.source as? EventLocationViewController {
-            selectedPlacemark = elvc.selectedPlacemark
-            if selectedPlacemark != nil {
-                eventLocation.setTitle(selectedPlacemark?.name, for: .normal)
+            selectedLocation = elvc.selectedPlacemark
+            if let location = selectedLocation {
+                eventLocation.setTitle(Helpers.parseAddress(selectedItem: location), for: .normal)
                 eventLocation.setTitleColor(UIColor.black, for: .normal)
             }
-        }
-    }
-    
-    @IBAction func validateFields() {
-        let areRequiredFieldsValid = isTitleValid() && isDescriptionValid() && isTimeValid() && isLocationValid()
-        if areRequiredFieldsValid {
-            submitButton.isEnabled = true
-            submitButton.alpha = 1.0
-        } else {
-            submitButton.isEnabled = false
-            submitButton.alpha = 0.5
         }
     }
 
@@ -115,17 +126,19 @@ class CreateEventTableViewController: UITableViewController, UIImagePickerContro
         return picker
     }()
     
-    var selectedPlacemark: MKPlacemark? {
+    var selectedLocation: MKPlacemark? {
         didSet {
             validateFields()
         }
     }
     
-    var selectedDateTime: Date? {
+    var selectedTime: Date? {
         didSet {
             validateFields()
         }
     }
+    
+    let phoneNumberKit = PhoneNumberKit()
     
     // MARK: - Event photo methods
 
@@ -176,7 +189,7 @@ class CreateEventTableViewController: UITableViewController, UIImagePickerContro
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
         eventTime.text = dateFormatter.string(from: datePicker.date)
-        selectedDateTime = datePicker.date
+        selectedTime = datePicker.date
         dismissDatePicker()
     }
     
@@ -184,7 +197,7 @@ class CreateEventTableViewController: UITableViewController, UIImagePickerContro
         self.view.endEditing(true)
     }
     
-    // MARK: - UITextFieldDelegate methods
+    // MARK: - UITextField methods
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -196,8 +209,34 @@ class CreateEventTableViewController: UITableViewController, UIImagePickerContro
         switch textField {
         case eventTitle:
             return length <= 100
+        case eventMaxNumParticipants:
+            return length <= 3
         default:
             return true
+        }
+    }
+    
+    func textFieldDidChange(_ textField: UITextField) {
+        switch textField {
+        case eventTitle:
+            validateFields()
+        case eventContactPhone:
+            validateFields()
+        case eventMaxNumParticipants:
+            validateFields()
+        default:
+            break
+        }
+    }
+    
+    // MARK: - UITextView methods
+    
+    func textViewDidChange(_ textView: UITextView) {
+        switch textView {
+        case eventDescription:
+            validateFields()
+        default:
+            break
         }
     }
     
@@ -213,7 +252,7 @@ class CreateEventTableViewController: UITableViewController, UIImagePickerContro
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -221,6 +260,8 @@ class CreateEventTableViewController: UITableViewController, UIImagePickerContro
         case 0:
             return 2
         case 1:
+            return 2
+        case 2:
             return 2
         default:
             return 0
@@ -234,7 +275,7 @@ class CreateEventTableViewController: UITableViewController, UIImagePickerContro
             if let nc = segue.destination as? UINavigationController {
                 if let elvc = nc.viewControllers.first as? EventLocationViewController {
                     view.endEditing(true)
-                    elvc.selectedPlacemark = self.selectedPlacemark
+                    elvc.selectedPlacemark = self.selectedLocation
                 }
             }
         }
@@ -252,21 +293,66 @@ class CreateEventTableViewController: UITableViewController, UIImagePickerContro
         dismissEvent()
     }
     
+    private func disableSubmitButton() {
+        submitButton.isEnabled = false
+        submitButton.alpha = 0.5
+    }
+    
+    private func enableSubmitButton() {
+        submitButton.isEnabled = true
+        submitButton.alpha = 1.0
+    }
+    
     private func isTitleValid() -> Bool {
-        return !eventTitle.text!.isEmpty
+        return !eventTitle.text!.removingWhitespaces().isEmpty
     }
     
     private func isDescriptionValid() -> Bool {
-        return true
+        return eventDescription.text!.isEmpty || !eventDescription.text!.removingWhitespaces().isEmpty
     }
     
     private func isTimeValid() -> Bool {
-        return selectedDateTime != nil
+        return true
     }
     
     private func isLocationValid() -> Bool {
-        return selectedPlacemark != nil
+        return selectedLocation != nil
+    }
+    
+    private func isContactPhoneValid() -> Bool {
+        if eventContactPhone.text!.isEmpty {
+            return true
+        }
+        do {
+            let _ = try phoneNumberKit.parse(eventContactPhone.text!)
+            return true
+        } catch {
+            return false
+        }
+    }
+    
+    private func isMaxNumParticipantsValid() -> Bool {
+        if eventMaxNumParticipants.text!.isEmpty {
+            return true
+        }
+        if let _ = Int(eventMaxNumParticipants.text!) {
+            return true
+        }
+        return false
+    }
+    
+    private func validateFields() {
+        let areRequiredFieldsValid = isTitleValid() && isDescriptionValid() && isTimeValid() && isLocationValid() && isContactPhoneValid() && isMaxNumParticipantsValid()
+        if areRequiredFieldsValid {
+            enableSubmitButton()
+        } else {
+            disableSubmitButton()
+        }
     }
 }
 
-
+extension String {
+    func removingWhitespaces() -> String {
+        return components(separatedBy: .whitespacesAndNewlines).joined()
+    }
+}

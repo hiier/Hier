@@ -12,7 +12,7 @@ class EventsTableViewController: UITableViewController {
     
     // MARK: - Properties
     
-    var dataMgr = DataMgr()
+    var dataMgr = DataMgr.getSingletonInstance()
 
     // MARK: - View controller lifecycle
     
