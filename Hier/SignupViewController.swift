@@ -65,8 +65,8 @@ class SignupViewController: UIViewController{
                 print(response)
                 
                 let statusCode = (response.response?.statusCode)
-                
-                if( statusCode == 200){
+  
+                if( statusCode == 201){
                     //switching the screen
                     self.performSegue(withIdentifier:"signup2signin", sender: self)
                 }else{
