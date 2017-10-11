@@ -16,6 +16,7 @@ target 'Hier' do
   pod 'ImageRow', '~> 1.0'
   pod 'PhoneNumberKit', '~> 1.3'
   pod 'Material', '~> 2.0'
+  pod 'SnapKit', '~> 3.0.0'
   # Pods for Hier
 
   target 'HierTests' do

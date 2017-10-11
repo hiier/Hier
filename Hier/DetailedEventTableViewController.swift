@@ -7,55 +7,50 @@
 //
 
 import UIKit
+import SnapKit
 
 class DetailedEventTableViewController: UITableViewController {
     
-    @IBOutlet weak var eventTitle: UILabel! {
-        didSet {
-            eventTitle.font = Constants.TitleFont
-        }
-    }
+    private var eventTitle: UILabel!
     
-    @IBOutlet weak var eventTime: UILabel! {
-        didSet {
-            eventTime.font = Constants.DefaultTextFont
-        }
-    }
+    private var eventTime: UILabel!
     
-    @IBOutlet weak var eventLocation: UILabel! {
-        didSet {
-            eventLocation.font = Constants.DefaultTextFont
-        }
-    }
+    private var eventLocation: UILabel!
     
-    @IBOutlet weak var eventPhoto: UIImageView! {
-        didSet {
-            eventPhoto.layer.cornerRadius = Constants.CornerRadius
-            eventPhoto.layer.borderWidth = 1
-            eventPhoto.clipsToBounds = true
-        }
-    }
+    private var eventPhoto: UIImageView = UIImageView(image: UIImage(named: "defaultPhoto"))
     
     // MARK: - Properties
     
     var event: Event!
+    var cells: [[UITableViewCell]] = [
+        [
+            UITableViewCell(),
+        ]
+    ]
 
     // MARK: - View controller lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Event"
         
+        tableView.tableHeaderView = eventPhoto
+        eventPhoto.snp.makeConstraints { (make) -> Void in
+            make.leading.equalTo(eventPhoto.snp.leading).offset(0)
+            make.trailing.equalTo(eventPhoto.snp.trailing).offset(0)
+            make.width.equalTo(eventPhoto.snp.height).multipliedBy(16 / 9)
+        }
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return cells.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return cells[section].count
     }
 
     // MARK: - Navigation

@@ -345,6 +345,7 @@ PODS:
   - PhoneNumberKit/PhoneNumberKitCore (1.4.0)
   - PhoneNumberKit/UIKit (1.4.0):
     - PhoneNumberKit/PhoneNumberKitCore
+  - SnapKit (3.0.2)
   - SwiftLocation (2.0.7)
   - SwiftyJSON (3.1.4)
 
@@ -359,6 +360,7 @@ DEPENDENCIES:
   - Material (~> 2.0)
   - MaterialComponents
   - PhoneNumberKit (~> 1.3)
+  - SnapKit (~> 3.0.0)
   - SwiftLocation
   - SwiftyJSON
 
@@ -389,9 +391,10 @@ SPEC CHECKSUMS:
   MotionInterchange: 7a7c355ba2ed5d36c5cf2ceb76cacd3d3680dbf5
   MotionTransitioning: 01e7fcd6e2974985057109e0a4c98ea546cd5947
   PhoneNumberKit: a739c359d05701e2e9745654f53e7c64379c2516
+  SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
   SwiftLocation: 1fe2e15a5812e961496e82eeaca71d03e829e47a
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 3a4618a4cb567b4498f4278f85a34d604181fe06
+PODFILE CHECKSUM: 17794e07e7c0b629a7fe5c4589db3ef19e8a4d0f
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1

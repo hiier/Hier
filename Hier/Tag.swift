@@ -14,11 +14,11 @@ class Tag {
     
     var name: String
     var description: String?
-    var icon: NSData
+    var icon: Data
     
     // MARK: - Methods
     
-    init?(name: String, description: String?, icon: NSData) {
+    init?(name: String, description: String?, icon: Data) {
         guard Tag.isValidName(name) else {
             return nil
         }

@@ -16,6 +16,7 @@ class User {
     var id: String
     var email: String
     var username: String
+    var photo: Data?
     
     var participated: [Event] = []
     var created: [Event] = []
