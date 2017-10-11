@@ -96,6 +96,8 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         self.profilePic.image = UIImage(named:"defaultProfile")
         self.view.addSubview(self.profilePic)
         self.profilePic.layer.borderWidth = 1
+
+        self.profilePic.layer.borderColor = UIColor(red: 10/255, green: 186/255, blue: 181/255, alpha: 1.00).cgColor
         self.profilePic.layer.masksToBounds = false
         self.profilePic.layer.cornerRadius = self.profilePic.frame.size.width/2
         self.profilePic.clipsToBounds = true

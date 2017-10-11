@@ -21,13 +21,13 @@ class upcomingViewController: UIViewController {
         view.backgroundColor = Color.blue.base
         
         prepareTabItem()
-//        prepareProfileSubTableView()
+        prepareProfileSubTableView()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        prepareProfileSubTableView()
+//        prepareProfileSubTableView()
     }
 //    open override func viewDidAppear(_ animated: Bool) {
 //        super.viewDidAppear(animated)

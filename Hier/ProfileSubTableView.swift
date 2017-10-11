@@ -67,16 +67,13 @@ extension ProfileSubTableView: TableViewDataSource {
     @objc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileSubTableViewCell", for: indexPath) as! TableViewCell
-        
-//        guard let data = dataSourceItems[indexPath.row].data as? [String: String] else {
-//            return cell
-//        }
+
         guard let data = dataSourceItems[indexPath.row].data as? Event else {
             return cell
         }
         
     
-        cell.imageView?.image =  UIImage(named:"defaultProfile")
+        cell.imageView?.image =  UIImage(named:"defaultPhoto")
         cell.detailTextLabel?.text = data.description
         cell.dividerColor = Color.grey.lighten2
         cell.textLabel?.text = data.title

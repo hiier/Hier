@@ -9,12 +9,15 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Material
 
 class ProfileLoginNavigationController: UINavigationController {
     
     var loginvalid = true
     var rtViewID = "ProfileViewController"
    
+    fileprivate var starButton: IconButton!
+    fileprivate var nextButton: FlatButton!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -41,8 +44,8 @@ class ProfileLoginNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        prepareStarButton()
+        prepareNavigationItem()
 
     }
 
@@ -88,5 +91,27 @@ class ProfileLoginNavigationController: UINavigationController {
         // Pass the selected object to the new view controller.
     }
     */
+
+}
+
+fileprivate extension ProfileLoginNavigationController{
+
+    
+    func prepareStarButton() {
+        starButton = IconButton(image: Icon.cm.star)
+    }
+    
+    func prepareNavigationItem() {
+        print("======")
+        self.navigationItem.titleLabel.text = "Material"
+        self.navigationItem.detailLabel.text = "Build Beautiful Software"
+        
+        
+        self.navigationItem.rightViews = [starButton]
+    }
+    
+}
+
+extension ProfileLoginNavigationController {
 
 }
