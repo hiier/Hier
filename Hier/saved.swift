@@ -17,7 +17,7 @@ class savedViewController: UIViewController {
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Color.cyan.base
+//        view.backgroundColor = Color.cyan.base
 
         
         prepareTabItem()

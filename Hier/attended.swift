@@ -18,7 +18,7 @@ class attendedViewController: UIViewController {
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Color.purple.base
+//        view.backgroundColor = Color.purple.base
         
         prepareTabItem()
         prepareProfileSubTableView()

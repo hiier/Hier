@@ -17,7 +17,7 @@ class myeventsViewController: UIViewController {
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Color.brown.base
+//        view.backgroundColor = Color.brown.base
         
         prepareTabItem()
         prepareProfileSubTableView()

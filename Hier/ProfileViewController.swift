@@ -21,14 +21,11 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
     var locationPic : UIImageView!
     
     var imageView : UIImageView!
+    
+    
+    fileprivate var starButton: IconButton!
+    fileprivate var nextButton: FlatButton!
 
-    
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        // Initialize Tab Bar Item
-        tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +53,14 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
 
         // Do any additional setup after loading the view.
 
+//        prepareSubTableView()
+        
+
+        prepareStarButton()
+        prepareNavigationItem()
         prepareSubTableView()
+        
+        
     }
     
     func setUpProfileInfo(){
@@ -161,53 +165,59 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
 
 
 extension ProfileViewController {
-//    fileprivate func prepareButtons() {
-//        let btn1 = TabItem(title: "Upcoming", titleColor: Color.blueGrey.base)
-//        btn1.pulseAnimation = .none
-//        btn1.titleLabel!.font =  btn1.titleLabel!.font.withSize(tabFontSize)
-//        buttons.append(btn1)
-//        
-//        let btn2 = TabItem(title: "Attended", titleColor: Color.blueGrey.base)
-//        btn2.pulseAnimation = .none
-//        btn2.titleLabel!.font =  btn1.titleLabel!.font.withSize(tabFontSize)
-//        buttons.append(btn2)
-//        
-//        let btn3 = TabItem(title: "My Events", titleColor: Color.blueGrey.base)
-//        btn3.pulseAnimation = .none
-//        btn3.titleLabel!.font =  btn1.titleLabel!.font.withSize(tabFontSize)
-//        buttons.append(btn3)
-//        
-//        let btn4 = TabItem(title: "Saved", titleColor: Color.blueGrey.base)
-//        btn4.pulseAnimation = .none
-//        btn4.titleLabel!.font =  btn1.titleLabel!.font.withSize(tabFontSize)
-//        buttons.append(btn4)
-//    }
-//    
-//    fileprivate func prepareTabBar() {
-//        tabBar = TabBar()
-//        tabBar.delegate = self
-//        
-//        tabBar.dividerColor = Color.grey.lighten2
-//        tabBar.dividerAlignment = .top
-//        
-//        tabBar.lineColor = Color.cyan.base
-//        tabBar.lineAlignment = .bottom
-//        
-//        tabBar.backgroundColor = Color.grey.lighten5
-//        tabBar.tabItems = buttons
-//    
-//        view.layout(tabBar).horizontally().center(offsetY: -40)
-//    }
     
     fileprivate func prepareSubTableView(){
         
         let controller = storyboard?.instantiateViewController(withIdentifier: "profileTabsController") as! profileTabsController
+       
         self.addChildViewController(controller)
-        
         controller.view.frame = CGRect(x: 0, y: 190, width: self.view.bounds.size.width, height: self.view.bounds.size.height*0.7)
         self.view.addSubview(controller.view)
         controller.didMove(toParentViewController: self)
 
+    }
+}
+
+fileprivate extension ProfileViewController{
+    
+    
+    func prepareStarButton() {
+        starButton = IconButton(image: Icon.cm.star)
+    }
+    
+    func prepareNavigationItem() {
+        self.title = "Profile"
+        let navigationBar = navigationController!.navigationBar
+        navigationBar.tintColor = Constants.LightGreen
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Constants.LightGreen]
+    
+        
+        let button = UIButton.init(type: .custom)
+        //set image for button
+        button.setImage(Icon.settings, for: UIControlState.normal)
+        //add function for button
+        button.addTarget(self, action: #selector(ProfileViewController.rightButtonPressed), for: UIControlEvents.touchUpInside)
+        //set frame
+        button.frame = CGRect(x: 10, y: 10, width: 35, height: 35)
+        
+        let rightButton = UIBarButtonItem(customView: button)
+     
+        
+        navigationItem.rightBarButtonItem = rightButton
+        
+        
+        
+    }
+    
+
+
+    
+}
+
+extension ProfileViewController {
+    @objc
+    fileprivate func rightButtonPressed() {
+        navigationController?.pushViewController(ProfileSetting(), animated: true)
     }
 }
 

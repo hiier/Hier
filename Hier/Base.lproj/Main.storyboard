@@ -19,7 +19,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -263,7 +263,7 @@
                         <viewControllerLayoutGuide type="bottom" id="03l-0d-jWc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vNY-kD-f4R">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -277,7 +277,7 @@
             </objects>
             <point key="canvasLocation" x="3008" y="-690"/>
         </scene>
-        <!--Item-->
+        <!--Profile-->
         <scene sceneID="68G-Hm-q8E">
             <objects>
                 <viewController storyboardIdentifier="ProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bf6-in-wg6" customClass="ProfileViewController" customModule="Hier" customModuleProvider="target" sceneMemberID="viewController">
@@ -286,11 +286,11 @@
                         <viewControllerLayoutGuide type="bottom" id="lh2-yW-DN0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fjO-1v-0Yz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="5qn-fq-cTD"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="5qn-fq-cTD"/>
                     <navigationItem key="navigationItem" id="qXW-CO-5VW"/>
                     <connections>
                         <segue destination="442-H1-4Oo" kind="show" identifier="ProfileToLogin" id="agF-c8-HTb"/>
@@ -633,7 +633,7 @@
         <image name="profile" width="24" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pbd-EI-LrG"/>
         <segue reference="agF-c8-HTb"/>
+        <segue reference="09e-zP-bPI"/>
     </inferredMetricsTieBreakers>
 </document>

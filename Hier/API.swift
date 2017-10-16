@@ -13,10 +13,16 @@ import SwiftyJSON
 
 struct Queries {
     struct User {
-        static let login = "http://127.0.0.1:5000/login/"
-        static let profile = "http://127.0.0.1:5000/user/"
-        static let register = "http://127.0.0.1:5000/signup/"
-        static let events = "http://127.0.0.1:5000/events"
+//        static let login = "http://127.0.0.1:5000/login/"
+//        static let profile = "http://127.0.0.1:5000/user/"
+//        static let register = "http://127.0.0.1:5000/signup/"
+//        static let events = "http://127.0.0.1:5000/events"
+        
+        static let login = "https://erhi.herokuapp.com/login/"
+        static let profile = "https://erhi.herokuapp.com/user/"
+        static let register = "https://erhi.herokuapp.com/signup/"
+        static let events = "https://erhi.herokuapp.com/events"
+        
     }
 }
 

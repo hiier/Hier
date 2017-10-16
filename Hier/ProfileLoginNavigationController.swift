@@ -15,12 +15,13 @@ class ProfileLoginNavigationController: UINavigationController {
     
     var loginvalid = true
     var rtViewID = "ProfileViewController"
-   
-    fileprivate var starButton: IconButton!
-    fileprivate var nextButton: FlatButton!
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = false
+        
         checkLogin()
    
 //        let appdelegate = UIApplication.shared.delegate as! AppDelegate
@@ -31,21 +32,24 @@ class ProfileLoginNavigationController: UINavigationController {
             let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: self.rtViewID) as! LoginViewController
 
             self.setViewControllers([homeViewController], animated: false)
+//            self.viewControllers = [homeViewController]
+            
+            
 
 
         }else{
-            let homeViewController = mainStoryboard.instantiateViewController( withIdentifier: self.rtViewID) as! ProfileViewController
-            self.setViewControllers([homeViewController], animated: false)
-//            let nav = UINavigationController(rootViewController: homeViewController)
-//            appdelegate.window!.rootViewController = nav
+//            let homeViewController = mainStoryboard.instantiateViewController( withIdentifier: self.rtViewID) as! ProfileViewController
+//            self.setViewControllers([homeViewController], animated: false)
+//            
+////            self.viewControllers = [homeViewController]
+////            let nav = UINavigationController(rootViewController: homeViewController)
+////            appdelegate.window!.rootViewController = nav
         }
         
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        prepareStarButton()
-        prepareNavigationItem()
 
     }
 
@@ -96,22 +100,8 @@ class ProfileLoginNavigationController: UINavigationController {
 
 fileprivate extension ProfileLoginNavigationController{
 
-    
-    func prepareStarButton() {
-        starButton = IconButton(image: Icon.cm.star)
-    }
-    
-    func prepareNavigationItem() {
-        print("======")
-        self.navigationItem.titleLabel.text = "Material"
-        self.navigationItem.detailLabel.text = "Build Beautiful Software"
-        
-        
-        self.navigationItem.rightViews = [starButton]
-    }
+
     
 }
 
-extension ProfileLoginNavigationController {
 
-}

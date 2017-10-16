@@ -18,7 +18,7 @@ class upcomingViewController: UIViewController {
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Color.blue.base
+//        view.backgroundColor = Color.blue.base
         
         prepareTabItem()
         prepareProfileSubTableView()

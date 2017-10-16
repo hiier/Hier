@@ -21,12 +21,12 @@ class LoginViewController: UIViewController {
     /// A constant to layout the textFields.
     fileprivate let constant: CGFloat = 32
     
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        // Initialize Tab Bar Item
-        tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
-    }
+//    
+//    required init?(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//        // Initialize Tab Bar Item
+//        tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+//    }
 
     override func viewDidLoad() {
         //FACEBOOK LOGIN
@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
 //        loginButton.center = view.center
 //        
 //        view.addSubview(loginButton)
-        
+        view.backgroundColor = .white
         preparePasswordField()
         prepareEmailField()
         prepareSignInResponderButton()

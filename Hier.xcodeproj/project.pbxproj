@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		05CD86AB1F7216E2002471AB /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD86AA1F7216E2002471AB /* API.swift */; };
+		2139359A1F946EB5009F5F27 /* ProfileSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213935991F946EB5009F5F27 /* ProfileSetting.swift */; };
 		216487AF1F43FE1E000FDDF1 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216487AE1F43FE1E000FDDF1 /* CustomCell.swift */; };
 		216511111F1EFF0700B839DD /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216511101F1EFF0700B839DD /* EventsTableViewController.swift */; };
 		216511191F1F14FC00B839DD /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216511181F1F14FC00B839DD /* RatingControl.swift */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		05CD86AA1F7216E2002471AB /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		213935991F946EB5009F5F27 /* ProfileSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetting.swift; sourceTree = "<group>"; };
 		216487AE1F43FE1E000FDDF1 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		216511101F1EFF0700B839DD /* EventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		216511181F1F14FC00B839DD /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 		C023CA701F4E86B10081A2B9 /* profile */ = {
 			isa = PBXGroup;
 			children = (
+				213935991F946EB5009F5F27 /* ProfileSetting.swift */,
 				217BFD2A1EFA247D0033AD54 /* SignupViewController.swift */,
 				21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */,
 				216962E51F4A22210052B871 /* ProfileLoginNavigationController.swift */,
@@ -527,6 +530,7 @@
 				21E6CE531F8953320059FCA1 /* myevents.swift in Sources */,
 				C0D764371F5CE37900011BCA /* EventLocationViewController.swift in Sources */,
 				21E6CE511F8953250059FCA1 /* attended.swift in Sources */,
+				2139359A1F946EB5009F5F27 /* ProfileSetting.swift in Sources */,
 				2199FE4E1F73780500421815 /* UIViewExtensions.swift in Sources */,
 				21E6CE4A1F8751A00059FCA1 /* ProfileSubTableView.swift in Sources */,
 				21E6CE4F1F89530E0059FCA1 /* upcoming.swift in Sources */,
