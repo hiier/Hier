@@ -29,9 +29,6 @@ class ProfileLoginNavigationController: UINavigationController {
             let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: self.rtViewID) as! LoginViewController
             self.setViewControllers([homeViewController], animated: false)
 //            self.viewControllers = [homeViewController]
-        }else{
-            let homeViewController = mainStoryboard.instantiateViewController( withIdentifier: self.rtViewID) as! ProfileViewController
-            self.setViewControllers([homeViewController], animated: false)
         }
         
     }

@@ -22,10 +22,6 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
     var locationPic : UIImageView!
     
     var imageView : UIImageView!
-    
-    
-    fileprivate var starButton: IconButton!
-    fileprivate var nextButton: FlatButton!
 
 
     override func viewDidLoad() {
@@ -49,15 +45,13 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
                 self.userName.text = user!.username
             }
         }else{
-            self.performSegue(withIdentifier:"ProfileToLogin", sender: self)
+           
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            self.navigationController?.setViewControllers([vc], animated: false)
         }
 
         // Do any additional setup after loading the view.
 
-//        prepareSubTableView()
-        
-
-        prepareStarButton()
         prepareNavigationItem()
         prepareSubTableView()
         
@@ -196,12 +190,6 @@ extension ProfileViewController {
 }
 
 fileprivate extension ProfileViewController{
-    
-    
-    func prepareStarButton() {
-        starButton = IconButton(image: Icon.cm.star)
-    }
-    
     func prepareNavigationItem() {
         self.title = self.userName.text
         let navigationBar = navigationController!.navigationBar
