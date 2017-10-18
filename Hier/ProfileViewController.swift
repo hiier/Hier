@@ -71,7 +71,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         self.userName.textColor = UIColor(red: 10/255, green: 186/255, blue: 181/255, alpha: 1.00)
         self.userName.font = self.userName.font.withSize(14)
         self.userName.textAlignment = .center
-        self.view.addSubview(self.userName)
+//        self.view.addSubview(self.userName)
         
         self.userDesc = UILabel()
         self.userDesc.text = "An Explorer"
@@ -142,13 +142,12 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         profilePicScrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                 
 //        newImageView.frame = UIScreen.main.bounds
-        newImageView.frame = imageView.frame
+        newImageView.frame = self.profilePicOuter.frame
         newImageView.contentMode = .scaleAspectFit
         newImageView.isUserInteractionEnabled = true
         
         profilePicScrollView.addSubview(newImageView)
-        profilePicScrollView.backgroundColor = .black
-        
+        profilePicScrollView.backgroundColor =  .black
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
         profilePicScrollView.addGestureRecognizer(tap)
         
@@ -204,7 +203,7 @@ fileprivate extension ProfileViewController{
     }
     
     func prepareNavigationItem() {
-        self.title = "Profile"
+        self.title = self.userName.text
         let navigationBar = navigationController!.navigationBar
         navigationBar.tintColor = Constants.LightGreen
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Constants.LightGreen]
