@@ -23,27 +23,15 @@ class ProfileLoginNavigationController: UINavigationController {
         self.navigationController?.isNavigationBarHidden = false
         
         checkLogin()
-   
-//        let appdelegate = UIApplication.shared.delegate as! AppDelegate
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        
         if (!self.loginvalid){
             self.rtViewID = "LoginViewController"
             let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: self.rtViewID) as! LoginViewController
-
             self.setViewControllers([homeViewController], animated: false)
 //            self.viewControllers = [homeViewController]
-            
-            
-
-
         }else{
-//            let homeViewController = mainStoryboard.instantiateViewController( withIdentifier: self.rtViewID) as! ProfileViewController
-//            self.setViewControllers([homeViewController], animated: false)
-//            
-////            self.viewControllers = [homeViewController]
-////            let nav = UINavigationController(rootViewController: homeViewController)
-////            appdelegate.window!.rootViewController = nav
+            let homeViewController = mainStoryboard.instantiateViewController( withIdentifier: self.rtViewID) as! ProfileViewController
+            self.setViewControllers([homeViewController], animated: false)
         }
         
     }
@@ -75,7 +63,6 @@ class ProfileLoginNavigationController: UINavigationController {
                 
                 if( statusCode != 200){
                     //switching the screen
-//                    self.performSegue(withIdentifier:"login", sender: self)
                     self.loginvalid = false
                 }
             }

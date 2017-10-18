@@ -15,6 +15,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
     // user object id
     var id: String?
     var profilePic : UIImageView!
+    var profilePicOuter : UIView!
     var userName : UILabel!
     var userDesc : UILabel!
     var userLoc : UILabel!
@@ -89,27 +90,42 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         self.view.addSubview(self.userLoc)
         
         self.locationPic  = UIImageView(frame:CGRect(x:78, y:170, width:13, height:13))
-        self.locationPic.image = UIImage(named:"discover")
+        self.locationPic.image = UIImage(named:"pin")
         self.view.addSubview(self.locationPic)
     
     }
     
     func setUpProfilePic() {
         //round image
-        self.profilePic  = UIImageView(frame:CGRect(x:128, y:72, width:64, height:64));
+//        self.profilePic  = UIImageView(frame:CGRect(x:128, y:72, width:64, height:64));
+        self.profilePicOuter = UIView(frame:CGRect(x:128, y:72, width:64, height:64));
+        self.profilePic  = UIImageView(frame: profilePicOuter.bounds);
+               let radius = self.profilePic.frame.size.width/2
         self.profilePic.image = UIImage(named:"defaultProfile")
-        self.view.addSubview(self.profilePic)
-        self.profilePic.layer.borderWidth = 1
-
-        self.profilePic.layer.borderColor = UIColor(red: 10/255, green: 186/255, blue: 181/255, alpha: 1.00).cgColor
+        
+//        self.profilePic.layer.borderWidth = 1
+//        self.profilePic.layer.borderColor = UIColor(red: 10/255, green: 186/255, blue: 181/255, alpha: 1.00).cgColor
         self.profilePic.layer.masksToBounds = false
-        self.profilePic.layer.cornerRadius = self.profilePic.frame.size.width/2
+        self.profilePic.layer.cornerRadius = radius
         self.profilePic.clipsToBounds = true
         
         let pictureTap = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped(_:)))
         
         self.profilePic.addGestureRecognizer(pictureTap)
         self.profilePic.isUserInteractionEnabled = true
+        
+        //add shadow
+        self.profilePicOuter.clipsToBounds = false
+        self.profilePicOuter.layer.shadowColor = UIColor.black.cgColor
+        self.profilePicOuter.layer.shadowOpacity = 0.8
+        self.profilePicOuter.layer.shadowOffset = CGSize.zero
+        self.profilePicOuter.layer.shadowRadius = 2
+        self.profilePicOuter.layer.shadowPath = UIBezierPath(roundedRect: self.profilePic.bounds, cornerRadius: radius).cgPath
+        
+//        self.view.addSubview(self.profilePic)
+        self.profilePicOuter.addSubview(self.profilePic)
+        self.view.addSubview(self.profilePicOuter)
+        
     }
 
     @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
@@ -169,6 +185,8 @@ extension ProfileViewController {
     fileprivate func prepareSubTableView(){
         
         let controller = storyboard?.instantiateViewController(withIdentifier: "profileTabsController") as! profileTabsController
+        
+//        let controller = profileTabsController()
        
         self.addChildViewController(controller)
         controller.view.frame = CGRect(x: 0, y: 190, width: self.view.bounds.size.width, height: self.view.bounds.size.height*0.7)
@@ -202,15 +220,8 @@ fileprivate extension ProfileViewController{
         
         let rightButton = UIBarButtonItem(customView: button)
      
-        
         navigationItem.rightBarButtonItem = rightButton
-        
-        
-        
     }
-    
-
-
     
 }
 

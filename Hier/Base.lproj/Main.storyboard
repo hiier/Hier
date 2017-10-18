@@ -269,7 +269,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="PCY-ev-0x8"/>
                     <connections>
-                        <segue destination="7uP-xh-QXn" kind="show" identifier="welcome" id="09e-zP-bPI"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="signin2signup" id="tiE-Pe-BfH"/>
                     </connections>
                 </viewController>
@@ -286,15 +285,12 @@
                         <viewControllerLayoutGuide type="bottom" id="lh2-yW-DN0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fjO-1v-0Yz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="profile" id="5qn-fq-cTD"/>
                     <navigationItem key="navigationItem" id="qXW-CO-5VW"/>
-                    <connections>
-                        <segue destination="442-H1-4Oo" kind="show" identifier="ProfileToLogin" id="agF-c8-HTb"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sRt-Eh-Hf8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -632,8 +628,4 @@
         <image name="pin" width="28" height="40"/>
         <image name="profile" width="24" height="21"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="agF-c8-HTb"/>
-        <segue reference="09e-zP-bPI"/>
-    </inferredMetricsTieBreakers>
 </document>

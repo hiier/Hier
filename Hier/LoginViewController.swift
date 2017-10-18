@@ -39,6 +39,7 @@ class LoginViewController: UIViewController {
         prepareEmailField()
         prepareSignInResponderButton()
         prepareSignUpResponderButton()
+        prepareNavigationItem()
    }
 
     /// Prepares the sign in responder button.
@@ -83,7 +84,10 @@ class LoginViewController: UIViewController {
                 defaults.set(token, forKey: "userToken")
                 defaults.set(userId, forKey:"userId")
                 //switching the screen
-                self.performSegue(withIdentifier:"welcome", sender: self)
+                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+                
+                self.navigationController?.setViewControllers([vc], animated: true)
+                
             }else{
                 //error message in case of invalid credential
                 self.passwordField.detail = "Invalid username or password"
@@ -182,6 +186,17 @@ extension LoginViewController: TextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         (textField as? ErrorTextField)?.isErrorRevealed = true
         return true
+    }
+}
+
+extension LoginViewController{
+    func prepareNavigationItem() {
+        
+        self.title = "Login"
+       
+        let navigationBar = navigationController!.navigationBar
+        navigationBar.tintColor = Constants.LightGreen
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Constants.LightGreen]
     }
 }
 
