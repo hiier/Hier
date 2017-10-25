@@ -13,8 +13,8 @@ class ProfileSetting: UITableViewController {
 
 //    fileprivate var tableView: TableView!
 
-    var names = [" ":["Log Out"], "Vegetables": ["Tomato", "Potato"], "Fruits": ["Apple", "Banana"] ]
-    var sectionNames = ["Vegetables", "Fruits", " "]
+    var names = [" ":["Log Out"], "Profile":["Profile Photo"] ]
+    var sectionNames = ["Profile", " "]
     
     struct Objects {
         
@@ -32,7 +32,10 @@ class ProfileSetting: UITableViewController {
         prepareNavigationItem()
         prepareSwitch()
         
+//        let cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "cell")
+        
         tableView.register(TableViewCell.self, forCellReuseIdentifier: "cell")
+//        tableView.register(cell.self )
         
         for key in sectionNames {
             let values = names[key]
@@ -61,10 +64,22 @@ class ProfileSetting: UITableViewController {
         
         // Configure the cell...
         cell.textLabel?.text = objectArray[indexPath.section].sectionObjects[indexPath.row]
-        if(cell.textLabel?.text != "Log Out"){
-            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-        }else{
+        if(cell.textLabel?.text == "Log Out"){
             cell.textLabel?.textAlignment =  .center
+            cell.textLabel?.textColor =  Color.deepOrange.base
+            
+            
+        }else if(cell.textLabel?.text == "Profile Photo")
+        {
+            let sidePic = UIImageView(image:UIImage(named:"defaultProfile")!)
+            sidePic.setWidth(width:30);
+            sidePic.setHeight(height:30);
+            cell.accessoryView = sidePic;
+            
+        }
+        else{
+            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+            
         }
         return cell
     }
@@ -92,6 +107,12 @@ class ProfileSetting: UITableViewController {
             self.navigationController?.setViewControllers([vc], animated: false)
             
 
+        }
+        else if(settingName == "Profile Photo"){
+            
+            let vc = ProfilePicEditingViewController()
+            vc.settingName  = settingName
+            self.navigationController?.pushViewController(vc, animated:true)
         }
         else{
             let vc = DetailSettingViewController()

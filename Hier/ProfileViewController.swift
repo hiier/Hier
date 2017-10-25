@@ -54,7 +54,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
 
         prepareNavigationItem()
         prepareSubTableView()
-        
+   
         
     }
     
@@ -65,7 +65,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         self.userName.textColor = UIColor(red: 10/255, green: 186/255, blue: 181/255, alpha: 1.00)
         self.userName.font = self.userName.font.withSize(14)
         self.userName.textAlignment = .center
-//        self.view.addSubview(self.userName)
+        self.view.addSubview(self.userName)
         
         self.userDesc = UILabel()
         self.userDesc.text = "An Explorer"
@@ -191,7 +191,8 @@ extension ProfileViewController {
 
 fileprivate extension ProfileViewController{
     func prepareNavigationItem() {
-        self.title = self.userName.text
+//        self.title = self.userName.text
+        self.title = "Profile"
         let navigationBar = navigationController!.navigationBar
         navigationBar.tintColor = Constants.LightGreen
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Constants.LightGreen]
@@ -218,5 +219,6 @@ extension ProfileViewController {
         navigationController?.pushViewController(ProfileSetting(), animated: true)
     }
 }
+
 
 

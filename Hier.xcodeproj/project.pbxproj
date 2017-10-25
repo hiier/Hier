@@ -10,6 +10,8 @@
 		05CD86AB1F7216E2002471AB /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD86AA1F7216E2002471AB /* API.swift */; };
 		2139359A1F946EB5009F5F27 /* ProfileSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213935991F946EB5009F5F27 /* ProfileSetting.swift */; };
 		2161514A1F970BC100311A51 /* DetailSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216151491F970BC100311A51 /* DetailSettingViewController.swift */; };
+		2161514C1FA0468900311A51 /* DSCameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2161514B1FA0468800311A51 /* DSCameraHandler.swift */; };
+		2161514E1FA0539500311A51 /* ProfilePicEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2161514D1FA0539500311A51 /* ProfilePicEditingViewController.swift */; };
 		216487AF1F43FE1E000FDDF1 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216487AE1F43FE1E000FDDF1 /* CustomCell.swift */; };
 		216511111F1EFF0700B839DD /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216511101F1EFF0700B839DD /* EventsTableViewController.swift */; };
 		216511191F1F14FC00B839DD /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216511181F1F14FC00B839DD /* RatingControl.swift */; };
@@ -60,6 +62,8 @@
 		05CD86AA1F7216E2002471AB /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		213935991F946EB5009F5F27 /* ProfileSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetting.swift; sourceTree = "<group>"; };
 		216151491F970BC100311A51 /* DetailSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailSettingViewController.swift; sourceTree = "<group>"; };
+		2161514B1FA0468800311A51 /* DSCameraHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSCameraHandler.swift; sourceTree = "<group>"; };
+		2161514D1FA0539500311A51 /* ProfilePicEditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePicEditingViewController.swift; sourceTree = "<group>"; };
 		216487AE1F43FE1E000FDDF1 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		216511101F1EFF0700B839DD /* EventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		216511181F1F14FC00B839DD /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
@@ -253,6 +257,7 @@
 			children = (
 				213935991F946EB5009F5F27 /* ProfileSetting.swift */,
 				216151491F970BC100311A51 /* DetailSettingViewController.swift */,
+				2161514D1FA0539500311A51 /* ProfilePicEditingViewController.swift */,
 				217BFD2A1EFA247D0033AD54 /* SignupViewController.swift */,
 				21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */,
 				216962E51F4A22210052B871 /* ProfileLoginNavigationController.swift */,
@@ -266,6 +271,7 @@
 		C023CA711F5691110081A2B9 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				2161514B1FA0468800311A51 /* DSCameraHandler.swift */,
 				C01EB7451F4914A0000EABEC /* Constants.swift */,
 				2199FE4D1F73780500421815 /* UIViewExtensions.swift */,
 				C023CA731F5691420081A2B9 /* UITextViewPlaceholder.swift */,
@@ -559,6 +565,8 @@
 				C01EB7371F456842000EABEC /* EventTableViewCell.swift in Sources */,
 				216962E61F4A22210052B871 /* ProfileLoginNavigationController.swift in Sources */,
 				C01EB73A1F456FD9000EABEC /* Like.swift in Sources */,
+				2161514C1FA0468900311A51 /* DSCameraHandler.swift in Sources */,
+				2161514E1FA0539500311A51 /* ProfilePicEditingViewController.swift in Sources */,
 				05CD86AB1F7216E2002471AB /* API.swift in Sources */,
 				21E6CE551F89534B0059FCA1 /* saved.swift in Sources */,
 				217BFD291EFA247D0033AD54 /* AppDelegate.swift in Sources */,

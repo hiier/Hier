@@ -21,10 +21,10 @@ class profileTabsController: TabsController {
         
         tabBarAlignment = .top
         tabBar.tabBarStyle = .auto
-        tabBar.lineHeight = 2.0
+        tabBar.lineHeight = 1.0
         tabBar.dividerColor = Color.grey.lighten2
         tabBar.dividerAlignment = .top
-        tabBar.lineColor = Color.cyan.base
+        tabBar.lineColor = Constants.LightGreen
         tabBar.lineAlignment = .bottom
         tabBar.backgroundColor = Color.grey.lighten5
         motionTransitionType = .autoReverse(presenting: .slide(direction: .left))
