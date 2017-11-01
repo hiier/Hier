@@ -8,6 +8,9 @@
 
 import UIKit
 import Material
+import SwiftyJSON
+import Alamofire
+
 
 class ProfilePicEditingViewController: UIViewController {
 
@@ -77,11 +80,51 @@ extension ProfilePicEditingViewController: UINavigationControllerDelegate, UIIma
         // image is our desired image
         profilePic.image = image
         
+        
+        let paramDict: [String: String] = [
+            "fname": "test",
+            "ftype": "jpeg"
+        ]
+        
+        let dataRequst = API.httpGet(url: Queries.User.photos, parameters: paramDict, requireAuthentication: true)
+        dataRequst.responseJSON { response in
+            print(response)
+            let json = JSON(response.result.value)
+            print(json["data"]["fields"]["signature"])
+            
+            self.uploadImage( s3Data:json["data"], url: json["url"].string! )
+            
+           
+            
+        }
+        
+
+        
+        
         picker.dismiss(animated: true, completion: nil)
     }
 }
 
 fileprivate extension ProfilePicEditingViewController{
+    
+    func uploadImage(s3Data:JSON, url:String ){
+        var param : Dictionary<String, Any>
+        param = [:]
+        for (key,value):(String, JSON) in s3Data["fields"] {
+            param[key] = value.string
+        }
+        param["file"] = profilePic.image
+        
+        print(param)
+        let dataRequest = Alamofire.request(url, method: .post, parameters: param)
+        dataRequest.response { response in
+            print(response)
+        }
+        
+        
+    }
+    
+    
     func prepareNavigationItem() {
 
         let navigationBar = navigationController!.navigationBar

@@ -21,8 +21,8 @@ struct Queries {
         static let login = "https://erhi.herokuapp.com/login/"
         static let profile = "https://erhi.herokuapp.com/user/"
         static let register = "https://erhi.herokuapp.com/signup/"
-        static let events = "https://erhi.herokuapp.com/events"
-        
+        static let events = "https://erhi.herokuapp.com/events/"
+        static let photos = "https://erhi.herokuapp.com/sign_file/"
     }
 }
 
@@ -47,4 +47,6 @@ class API {
         }
         return Alamofire.request(url, parameters: parameters, headers: headers)
     }
+    
+   
 }
