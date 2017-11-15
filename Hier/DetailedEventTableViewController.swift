@@ -28,7 +28,6 @@ class DetailedEventTableViewController: UITableViewController {
         ]), size: 14)
 
     static let DefaultTextColor = UIColor(red: 0/255, green: 75/255, blue: 102/255, alpha: 1.0)
-    static let ThemeColor = UIColor(red: 74/255, green: 198/255, blue: 181/255, alpha: 1.0)
     
     // MARK: - Properties
     
@@ -120,7 +119,7 @@ class DetailedEventTableViewController: UITableViewController {
         let button = UIButton()
         button.setTitle("I'm going", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = DetailedEventTableViewController.ThemeColor
+        button.backgroundColor = Constants.ThemeColor
         button.isUserInteractionEnabled = true
         return button
     }()
@@ -232,7 +231,7 @@ class DetailedEventTableViewController: UITableViewController {
         }
         
         // Set separator style
-        tableView.separatorColor = DetailedEventTableViewController.ThemeColor
+        tableView.separatorColor = Constants.ThemeColor
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
     }
 

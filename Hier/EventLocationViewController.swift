@@ -17,28 +17,15 @@ protocol HandleMapSearch {
 
 class EventLocationViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate, CLLocationManagerDelegate, HandleMapSearch {
     
-    // MARK: - Outlets
-    
-    @IBOutlet weak var mapView: MKMapView! {
-        didSet {
-            mapView.delegate = self
-        }
-    }
-    
-    // MARK: - Actions
-    
-    @IBAction func done(_ sender: UIBarButtonItem) {
-        view.endEditing(true)
-        presentingViewController?.dismiss(animated: true, completion: nil)
-    }
-    
     // MARK: - Properties
     
-    let locationManager = CLLocationManager()
+    private var mapView: MKMapView = MKMapView()
     
-    var resultSearchController: UISearchController!
+    private let locationManager = CLLocationManager()
     
-    var selectedPlacemark: MKPlacemark?
+    private var resultSearchController: UISearchController!
+    
+    public var selectedPlacemark: MKPlacemark?
     
     // MARK: - Location manager delegate methods
     
@@ -59,6 +46,16 @@ class EventLocationViewController: UIViewController, UISearchBarDelegate, MKMapV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set map view
+        mapView.delegate = self
+        view.addSubview(mapView)
+        mapView.snp.makeConstraints { (make) -> Void in
+            make.leading.equalTo(view.snp.leading)
+            make.trailing.equalTo(view.snp.trailing)
+            make.top.equalTo((topLayoutGuide as! UIView).snp.bottom)
+            make.bottom.equalTo((bottomLayoutGuide as! UIView).snp.top)
+        }
         
         // Location manager set up
         locationManager.delegate = self
@@ -87,9 +84,22 @@ class EventLocationViewController: UIViewController, UISearchBarDelegate, MKMapV
         if let placemark = selectedPlacemark {
             dropPinZoomIn(placemark: placemark)
         }
+        
+        // Set done button
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        doneButton.tintColor = Constants.ThemeColor
+        self.navigationItem.leftBarButtonItem  = doneButton
     }
     
     // MARK: - Custom methods
+    
+    func done() {
+        if let cetvc = (presentingViewController as? UINavigationController)?.topViewController as? CreateEventTableViewController {
+            cetvc.unwindToCreateEventTableViewController(placemark: selectedPlacemark)
+        }
+        view.endEditing(true)
+        presentingViewController?.dismiss(animated: true, completion: nil)
+    }
     
     func dropPinZoomIn(placemark: MKPlacemark) {
         resultSearchController.searchBar.text = placemark.name
