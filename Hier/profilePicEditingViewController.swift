@@ -83,7 +83,7 @@ extension ProfilePicEditingViewController: UINavigationControllerDelegate, UIIma
         
         let paramDict: [String: String] = [
             "fname": "test",
-            "ftype": "jpeg"
+            "ftype": "png"
         ]
         
         let dataRequst = API.httpGet(url: Queries.User.photos, parameters: paramDict, requireAuthentication: true)
@@ -113,10 +113,24 @@ fileprivate extension ProfilePicEditingViewController{
         for (key,value):(String, JSON) in s3Data["fields"] {
             param[key] = value.string
         }
-        param["file"] = profilePic.image
+        let imageData = UIImagePNGRepresentation(profilePic.image!)
+        param["file"] = imageData
         
         print(param)
-        let dataRequest = Alamofire.request(url, method: .post, parameters: param)
+        
+        var headers: HTTPHeaders = [:]
+      
+        let userToken: String? = API.getUserToken()
+            if userToken == nil {
+                // what should be the return value?
+            }
+            if let authorizationHeader = Request.authorizationHeader(user: userToken!, password: "foo") {
+                headers[authorizationHeader.key] = authorizationHeader.value
+            }
+        headers["Content-Type"] = "png"
+        
+        let dataRequest = Alamofire.request(url, method: .post,parameters: param, headers: headers)
+      
         dataRequest.response { response in
             print(response)
         }

@@ -13,7 +13,7 @@ class ProfileSetting: UITableViewController {
 
 //    fileprivate var tableView: TableView!
 
-    var names = [" ":["Log Out"], "Profile":["Profile Photo"] ]
+    var names = [" ":["Log Out"], "Profile":["Profile Photo", "Reset Password"] ]
     var sectionNames = ["Profile", " "]
     
     struct Objects {
@@ -72,8 +72,8 @@ class ProfileSetting: UITableViewController {
         }else if(cell.textLabel?.text == "Profile Photo")
         {
             let sidePic = UIImageView(image:UIImage(named:"defaultProfile")!)
-            sidePic.setWidth(width:30);
-            sidePic.setHeight(height:30);
+            sidePic.setWidth(width:60);
+            sidePic.setHeight(height:60);
             cell.accessoryView = sidePic;
             
         }
@@ -114,12 +114,30 @@ class ProfileSetting: UITableViewController {
             vc.settingName  = settingName
             self.navigationController?.pushViewController(vc, animated:true)
         }
+        else if(settingName == "Reset Password")
+        {
+            let vc = ResetPasswordViewController()
+            vc.settingName  = settingName
+            self.navigationController?.pushViewController(vc, animated:true)
+        }
         else{
             let vc = DetailSettingViewController()
             vc.settingName  = settingName
             self.navigationController?.pushViewController(vc, animated:true)
         }
     }
+    
+    
+    
+      override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat  {
+        let section = indexPath.section
+        let row = indexPath.row
+        if section == 0 && row == 0{
+            return 85.0
+        }
+        return 40.0
+    }
+    
     
 //    // MARK: - Navigation
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

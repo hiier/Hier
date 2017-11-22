@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		05CD86AB1F7216E2002471AB /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD86AA1F7216E2002471AB /* API.swift */; };
+		21301ECF1FC5374F0002CFE2 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21301ECE1FC5374F0002CFE2 /* ResetPasswordViewController.swift */; };
 		2139359A1F946EB5009F5F27 /* ProfileSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213935991F946EB5009F5F27 /* ProfileSetting.swift */; };
 		2161514A1F970BC100311A51 /* DetailSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216151491F970BC100311A51 /* DetailSettingViewController.swift */; };
 		2161514C1FA0468900311A51 /* DSCameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2161514B1FA0468800311A51 /* DSCameraHandler.swift */; };
@@ -61,6 +62,7 @@
 
 /* Begin PBXFileReference section */
 		05CD86AA1F7216E2002471AB /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		21301ECE1FC5374F0002CFE2 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		213935991F946EB5009F5F27 /* ProfileSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetting.swift; sourceTree = "<group>"; };
 		216151491F970BC100311A51 /* DetailSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailSettingViewController.swift; sourceTree = "<group>"; };
 		2161514B1FA0468800311A51 /* DSCameraHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSCameraHandler.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				213935991F946EB5009F5F27 /* ProfileSetting.swift */,
+				21301ECE1FC5374F0002CFE2 /* ResetPasswordViewController.swift */,
 				216151491F970BC100311A51 /* DetailSettingViewController.swift */,
 				2161514D1FA0539500311A51 /* ProfilePicEditingViewController.swift */,
 				217BFD2A1EFA247D0033AD54 /* SignupViewController.swift */,
@@ -566,6 +569,7 @@
 				C01EB7421F46B0E1000EABEC /* DataMgr.swift in Sources */,
 				219989871F156B0E0083ADE4 /* ProfileViewController.swift in Sources */,
 				C01EB7371F456842000EABEC /* EventTableViewCell.swift in Sources */,
+				21301ECF1FC5374F0002CFE2 /* ResetPasswordViewController.swift in Sources */,
 				216962E61F4A22210052B871 /* ProfileLoginNavigationController.swift in Sources */,
 				C012266E1F972A2D00782CAD /* Helpers.swift in Sources */,
 				C01EB73A1F456FD9000EABEC /* Like.swift in Sources */,
