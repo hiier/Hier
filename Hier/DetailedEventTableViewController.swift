@@ -14,116 +14,41 @@ class DetailedEventTableViewController: UITableViewController {
     
     // MARK: - Constants
     
-    static let TitltFont = UIFont(descriptor: UIFontDescriptor(fontAttributes: [
-        UIFontDescriptorNameAttribute: "Avenir Next",
-        UIFontDescriptorTraitsAttribute: [UIFontWeightTrait: UIFontWeightBold]
-        ]), size: 18)
-    static let AttributeFont = UIFont(descriptor: UIFontDescriptor(fontAttributes: [
-        UIFontDescriptorNameAttribute: "Avenir Next",
-        UIFontDescriptorTraitsAttribute: [UIFontWeightTrait: UIFontWeightRegular]
-        ]), size: 16)
-    static let DescriptionFont = UIFont(descriptor: UIFontDescriptor(fontAttributes: [
-        UIFontDescriptorNameAttribute: "Avenir Next",
-        UIFontDescriptorTraitsAttribute: [UIFontWeightTrait: UIFontWeightRegular]
-        ]), size: 14)
-
-    static let DefaultTextColor = UIColor(red: 0/255, green: 75/255, blue: 102/255, alpha: 1.0)
+    private static let PhotoAspectRatio: CGFloat = 1.0 / 3.0
+    private static let LargeIconSize: CGFloat = 28
+    private static let SmallIconSize: CGFloat = 24
+    private static let SmallTextWidth: CGFloat = 40
+    
+    // MARK: - Outlets
+    
+    private var eventPhoto: UIImageView!
+    
+    private var eventTitle: UILabel!
+    
+    private var eventTime: UILabel!
+    
+    private var eventLocation: UILabel!
+    
+    private var eventDescription: UILabel!
+    
+    private var eventLikeButton: UIButton!
+    
+    private var eventNumLikes: UILabel!
+    
+    private var eventCommentButton: UIButton!
+    
+    private var eventNumComments: UILabel!
+    
+    private var eventJoinButton: UIButton!
     
     // MARK: - Properties
     
     public var event: Event!
     
     private var cells: [[UITableViewCell]] = [
-        [UITableViewCell(), UITableViewCell(), UITableViewCell()]
+        [UITableViewCell(), UITableViewCell(), UITableViewCell(), UITableViewCell()]
     ]
     
-    private let eventPhoto: UIImageView = {
-        let image = UIImageView(image: UIImage(named: "defaultPhoto"))
-        image.contentMode = .scaleAspectFill
-        image.clipsToBounds = true
-        return image
-    }()
-    
-    private let eventTitle: UILabel = {
-        let label = UILabel()
-        label.textColor = DetailedEventTableViewController.DefaultTextColor
-        label.font = DetailedEventTableViewController.TitltFont
-        return label
-    }()
-    
-    private let calendar: UIImageView = {
-        let image = UIImageView(image: UIImage(named: "calendar"))
-        image.contentMode = .scaleAspectFit
-        return image
-    }()
-    
-    private let eventTime: UILabel = {
-        let label = UILabel()
-        label.textColor = DetailedEventTableViewController.DefaultTextColor
-        label.font = DetailedEventTableViewController.AttributeFont
-        return label
-    }()
-    
-    private let pin: UIImageView = {
-        let image = UIImageView(image: UIImage(named: "pin"))
-        image.contentMode = .scaleAspectFit
-        return image
-    }()
-    
-    private let eventLocation: UILabel = {
-        let label = UILabel()
-        label.textColor = DetailedEventTableViewController.DefaultTextColor
-        label.font = DetailedEventTableViewController.AttributeFont
-        return label
-    }()
-    
-    private let eventDescription: UILabel = {
-        let label = UILabel()
-        label.textColor = .black
-        label.font = DetailedEventTableViewController.DescriptionFont
-        label.numberOfLines = 0
-        label.lineBreakMode = .byTruncatingTail
-        return label
-    }()
-    
-    private let like: UIButton = {
-        let button = UIButton()
-        button.setBackgroundImage(UIImage(named: "like"), for: .normal)
-        button.isUserInteractionEnabled = true
-        return button
-
-    }()
-    
-    private let eventNumLikes: UILabel = {
-        let label = UILabel()
-        label.textColor = DetailedEventTableViewController.DefaultTextColor
-        label.font = DetailedEventTableViewController.AttributeFont
-        return label
-    }()
-    
-    private let comment: UIButton = {
-        let button = UIButton()
-        button.setBackgroundImage(UIImage(named: "comment"), for: .normal)
-        button.isUserInteractionEnabled = true
-        return button
-    }()
-    
-    private let eventNumComments: UILabel = {
-        let label = UILabel()
-        label.textColor = DetailedEventTableViewController.DefaultTextColor
-        label.font = DetailedEventTableViewController.AttributeFont
-        return label
-    }()
-    
-    private let joinEvent: UIButton = {
-        let button = UIButton()
-        button.setTitle("I'm going", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = Constants.ThemeColor
-        button.isUserInteractionEnabled = true
-        return button
-    }()
-
     // MARK: - View controller lifecycle
     
     override func viewDidLoad() {
@@ -132,107 +57,128 @@ class DetailedEventTableViewController: UITableViewController {
         // Set title
         title = "Event"
         
-        // Set first cell content and constraints
-        let firstCell = cells[0][0]
-        firstCell.selectionStyle = .none
+        /* Set 1st cell ************************/
         
-        eventTitle.text = event.title
-        firstCell.addSubview(eventTitle)
-        eventTitle.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(firstCell.contentView).offset(8)
-            make.trailing.equalTo(firstCell.contentView).offset(8)
-            make.top.equalTo(firstCell.contentView).offset(8)
-        }
+        // Set event photo
+        eventPhoto = UIImageView(image: UIImage(named: Constants.DefaultPhoto))
+        eventPhoto.contentMode = .scaleAspectFill
+        eventPhoto.clipsToBounds = true
         
-        firstCell.addSubview(calendar)
-        calendar.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(firstCell.contentView).offset(8)
-            make.top.equalTo(eventTitle.snp.bottom).offset(8)
-            make.width.equalTo(28)
-            make.height.equalTo(28)
-        }
+        Helpers.layoutSingleOutlet(outlet: eventPhoto, cell: cells[0][0], inset: UIEdgeInsetsMake(0, 0, 0, 0))
         
+        /* Set 2nd cell ************************/
+        
+        // Set event title
+        eventTitle = Helpers.getLabel(text: event.title, textColor: Constants.DetailedEventDefaultTextColor, font: Constants.DetailedEventTitltFont)
+        
+        // Set calendar icon
+        let calendar = Helpers.getIconAsImage(name: Constants.Calendar, size: DetailedEventTableViewController.LargeIconSize)
+        
+        // Set event time
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
-        eventTime.text = dateFormatter.string(from: event.time)
-        firstCell.addSubview(eventTime)
+        eventTime = Helpers.getLabel(text: dateFormatter.string(from: event.time), textColor: Constants.DetailedEventDefaultTextColor, font: Constants.DetailedEventAttributeFont)
+        
+        // Set pin icon
+        let pin = Helpers.getIconAsImage(name: Constants.Pin, size: DetailedEventTableViewController.LargeIconSize)
+        
+        // Set event location
+        eventLocation = Helpers.getLabel(text: "Location", textColor: Constants.DetailedEventDefaultTextColor, font: Constants.DetailedEventAttributeFont)
+        
+        let secondCell = cells[0][1]
+        secondCell.addSubview(eventTitle)
+        secondCell.addSubview(calendar)
+        secondCell.addSubview(eventTime)
+        secondCell.addSubview(pin)
+        secondCell.addSubview(eventLocation)
+        eventTitle.snp.makeConstraints { (make) -> Void in
+            make.leading.equalTo(secondCell.contentView).offset(Constants.DefaultMargin)
+            make.trailing.equalTo(secondCell.contentView).offset(Constants.DefaultMargin)
+            make.top.equalTo(secondCell.contentView).offset(Constants.DefaultMargin)
+        }
+        calendar.snp.makeConstraints { (make) -> Void in
+            make.leading.equalTo(secondCell.contentView).offset(Constants.DefaultMargin)
+            make.top.equalTo(eventTitle.snp.bottom).offset(Constants.DefaultMargin)
+        }
         eventTime.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(calendar.snp.trailing).offset(8)
-            make.trailing.equalTo(firstCell.contentView).offset(-8)
+            make.leading.equalTo(calendar.snp.trailing).offset(Constants.DefaultMargin)
+            make.trailing.equalTo(secondCell.contentView).offset(-Constants.DefaultMargin)
             make.top.equalTo(calendar.snp.top)
         }
-        
-        firstCell.addSubview(pin)
         pin.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(firstCell.contentView).offset(8)
-            make.top.equalTo(calendar.snp.bottom).offset(8)
-            make.width.equalTo(28)
-            make.height.equalTo(28)
+            make.leading.equalTo(secondCell.contentView).offset(Constants.DefaultMargin)
+            make.top.equalTo(calendar.snp.bottom).offset(Constants.DefaultMargin)
         }
-        
-        eventLocation.text = "Location"
-        firstCell.addSubview(eventLocation)
         eventLocation.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(pin.snp.trailing).offset(8)
-            make.trailing.equalTo(firstCell.contentView).offset(-8)
+            make.leading.equalTo(pin.snp.trailing).offset(Constants.DefaultMargin)
+            make.trailing.equalTo(secondCell.contentView).offset(-Constants.DefaultMargin)
             make.top.equalTo(pin.snp.top)
         }
         
-        // Set second cell content and constraints
-        let secondCell = cells[0][1]
-        secondCell.selectionStyle = .none
+        /* Set 3rd cell ************************/
         
-        eventDescription.text = event.description
-        secondCell.addSubview(eventDescription)
-        eventDescription.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(secondCell.contentView).offset(8)
-            make.trailing.equalTo(secondCell.contentView).offset(-8)
-            make.top.equalTo(secondCell.contentView).offset(8)
-            make.bottom.equalTo(secondCell.contentView).offset(-8)
+        // Set event description
+        eventDescription = Helpers.getLabel(text: event.description, textColor: Constants.DetailedEventDefaultTextColor, font: Constants.DetailedEventDescriptionFont)
+        eventDescription.numberOfLines = 0
+        
+        Helpers.layoutSingleOutlet(outlet: eventDescription, cell: cells[0][2], inset: UIEdgeInsetsMake(Constants.DefaultMargin, Constants.DefaultMargin, -Constants.DefaultMargin, -Constants.DefaultMargin))
+        
+        /* Set 4th cell ************************/
+        
+        // Set like button
+        eventLikeButton = Helpers.getIconAsButton(name: Constants.Like, size: DetailedEventTableViewController.SmallIconSize)
+        
+        // Set event #likes
+        eventNumLikes = Helpers.getLabel(text: "\(event.likes.count)", textColor: Constants.DetailedEventDefaultTextColor, font: Constants.DetailedEventAttributeFont)
+        
+        // Set comment button
+        eventCommentButton = Helpers.getIconAsButton(name: Constants.Comment, size: DetailedEventTableViewController.SmallIconSize)
+        
+        // Set event #comments
+        eventNumComments = Helpers.getLabel(text: "\(event.comments.count)", textColor: Constants.DetailedEventDefaultTextColor, font: Constants.DetailedEventAttributeFont)
+        
+        let fourthCell = cells[0][3]
+        fourthCell.addSubview(eventLikeButton)
+        fourthCell.addSubview(eventNumLikes)
+        fourthCell.addSubview(eventCommentButton)
+        fourthCell.addSubview(eventNumComments)
+        eventLikeButton.snp.makeConstraints { (make) -> Void in
+            make.leading.equalTo(fourthCell.contentView).offset(Constants.DefaultMargin)
+            make.top.equalTo(fourthCell.contentView).offset(Constants.DefaultMargin)
         }
-        
-        // Set third cell content and constraints
-        let thirdCell = cells[0][2]
-        thirdCell.selectionStyle = .none
-        
-        thirdCell.addSubview(like)
-        like.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(thirdCell.contentView).offset(8)
-            make.top.equalTo(thirdCell.contentView).offset(8)
-            make.width.equalTo(24)
-            make.height.equalTo(24)
-        }
-        
-        eventNumLikes.text = "\(event.likes.count)"
-        thirdCell.addSubview(eventNumLikes)
         eventNumLikes.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(like.snp.trailing).offset(8)
-            make.top.equalTo(like.snp.top)
-            make.bottom.equalTo(like.snp.bottom)
-            make.width.equalTo(40)
+            make.leading.equalTo(eventLikeButton.snp.trailing).offset(Constants.DefaultMargin)
+            make.top.equalTo(eventLikeButton.snp.top)
+            make.bottom.equalTo(eventLikeButton.snp.bottom)
+            make.width.equalTo(DetailedEventTableViewController.SmallTextWidth)
         }
-        
-        thirdCell.addSubview(comment)
-        comment.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(eventNumLikes.snp.trailing).offset(8)
+        eventCommentButton.snp.makeConstraints { (make) -> Void in
+            make.leading.equalTo(eventNumLikes.snp.trailing).offset(Constants.DefaultMargin)
             make.top.equalTo(eventNumLikes.snp.top)
-            make.bottom.equalTo(eventNumLikes.snp.bottom)
-            make.width.equalTo(24)
+        }
+        eventNumComments.snp.makeConstraints { (make) -> Void in
+            make.leading.equalTo(eventCommentButton.snp.trailing).offset(Constants.DefaultMargin)
+            make.top.equalTo(eventCommentButton.snp.top)
+            make.bottom.equalTo(eventCommentButton.snp.bottom)
+            make.width.equalTo(DetailedEventTableViewController.SmallTextWidth)
         }
         
-        eventNumComments.text = "\(event.comments.count)"
-        thirdCell.addSubview(eventNumComments)
-        eventNumComments.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(comment.snp.trailing).offset(8)
-            make.top.equalTo(comment.snp.top)
-            make.bottom.equalTo(comment.snp.bottom)
-            make.width.equalTo(40)
-        }
+        // Set join button
+        eventJoinButton = UIButton()
+        eventJoinButton.setTitle("I'm going", for: .normal)
+        eventJoinButton.setTitleColor(.white, for: .normal)
+        eventJoinButton.backgroundColor = Constants.ThemeColor
+        eventJoinButton.isUserInteractionEnabled = true
         
         // Set separator style
+        for row in cells {
+            for cell in row {
+                cell.selectionStyle = .none
+            }
+        }
         tableView.separatorColor = Constants.ThemeColor
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: Constants.DefaultMargin, bottom: 0, right: Constants.DefaultMargin)
     }
 
     // MARK: - Table view data source
@@ -254,11 +200,13 @@ class DetailedEventTableViewController: UITableViewController {
         case 0:
             switch indexPath.row {
             case 0:
-                return 116
+                return (tableView.width * DetailedEventTableViewController.PhotoAspectRatio)
             case 1:
-                return 160
+                return 3 * DetailedEventTableViewController.LargeIconSize + 4 * Constants.DefaultMargin
             case 2:
-                return 44
+                return 160
+            case 3:
+                return Constants.DefaultTableViewCellHeight
             default:
                 return 0
             }
@@ -267,28 +215,10 @@ class DetailedEventTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        switch section {
-        case 0:
-            return eventPhoto
-        default:
-            return nil
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        switch section {
-        case 0:
-            return 180
-        default:
-            return 0
-        }
-    }
-    
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         switch section {
         case 0:
-            return joinEvent
+            return eventJoinButton
         default:
             return nil
         }
@@ -297,7 +227,7 @@ class DetailedEventTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         switch section {
         case 0:
-            return 44
+            return Constants.DefaultTableViewCellHeight
         default:
             return 0
         }
