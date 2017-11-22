@@ -36,7 +36,7 @@ class ResetPasswordViewController: UIViewController {
 
     /// Prepares the sign up responder button.
     fileprivate func prepareResetResponderButton() {
-        let btn = RaisedButton(title: "Reset", titleColor: Color.cyan.base)
+        let btn = RaisedButton(title: "Reset", titleColor: Constants.LightBlue)
         btn.addTarget(self, action: #selector(reset(button:)), for: .touchUpInside)
         
         view.layout(btn).width(150).height(constant).center(offsetY: +passwordField.height + 100)
@@ -137,14 +137,14 @@ extension ResetPasswordViewController{
         passwordField.isVisibilityIconButtonEnabled = true
         passwordField.isPlaceholderUppercasedWhenEditing = true
         
-        passwordField.dividerActiveColor = Color.cyan.base
+        passwordField.dividerActiveColor = Constants.LightBlue
         passwordField.placeholderActiveColor = Color.pink.base
         
         let leftView = UIImageView()
         leftView.image = Icon.cm.pen
         passwordField.leftView = leftView
         
-        passwordField.leftViewActiveColor = Color.cyan.base
+        passwordField.leftViewActiveColor = Constants.LightBlue
         
         // Setting the visibilityIconButton color.
         passwordField.visibilityIconButton?.tintColor = Color.cyan.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
@@ -160,14 +160,14 @@ extension ResetPasswordViewController{
         confirmPasswordField.isVisibilityIconButtonEnabled = true
         confirmPasswordField.isPlaceholderUppercasedWhenEditing = true
         
-        confirmPasswordField.dividerActiveColor = Color.cyan.base
+        confirmPasswordField.dividerActiveColor = Constants.LightBlue
         confirmPasswordField.placeholderActiveColor = Color.pink.base
         
         let leftView = UIImageView()
         leftView.image = Icon.cm.pen
         confirmPasswordField.leftView = leftView
         
-        confirmPasswordField.leftViewActiveColor = Color.cyan.base
+        confirmPasswordField.leftViewActiveColor = Constants.LightBlue
         
         // Setting the visibilityIconButton color.
         confirmPasswordField.visibilityIconButton?.tintColor = Color.cyan.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)

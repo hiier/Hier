@@ -19,6 +19,8 @@ class SignupViewController: UIViewController{
     fileprivate var confirmPasswordField: TextField!
     fileprivate var lbl: UILabel!
     
+    fileprivate var logo: UIImageView!
+    
     /// A constant to layout the textFields.
     fileprivate let constant: CGFloat = 32
 
@@ -31,16 +33,16 @@ class SignupViewController: UIViewController{
         prepareConfirmPasswordField()
         prepareSignUpResponderButton()
         prepareNotif()
-        
+        prepareLogo()
     }
     
     
     /// Prepares the sign up responder button.
     fileprivate func prepareSignUpResponderButton() {
-        let btn = RaisedButton(title: "Sign Up", titleColor: Color.cyan.base)
+        let btn = RaisedButton(title: "Sign Up", titleColor: Constants.Orange)
         btn.addTarget(self, action: #selector(signUp(button:)), for: .touchUpInside)
         
-        view.layout(btn).width(150).height(constant).center(offsetY: +passwordField.height + 100)
+        view.layout(btn).width(150).height(constant).center(offsetY: +passwordField.height + 120)
         
     }
     
@@ -106,6 +108,14 @@ class SignupViewController: UIViewController{
 
 extension SignupViewController {
     
+    func prepareLogo() {
+        logo = UIImageView(frame:CGRect(x:128, y:90, width:64, height:64))
+        logo.image = UIImage(named:"Hier")
+        view.addSubview(logo)
+        
+        
+    }
+    
     func prepareNotif(){
         lbl = UILabel()
 //        lbl.backgroundColor = UIColor.blue
@@ -116,7 +126,7 @@ extension SignupViewController {
         lbl.lineBreakMode = NSLineBreakMode.byWordWrapping
         lbl.font = lbl.font.withSize(12)
         
-        view.layout(lbl).center(offsetY: passwordField.height + 165)
+        view.layout(lbl).center(offsetY: passwordField.height + 185)
       
         let widthConstraint = NSLayoutConstraint(item: lbl, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 200)
         let heightConstraint = NSLayoutConstraint(item: lbl, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 90)
@@ -156,7 +166,7 @@ extension SignupViewController {
         //        emailField.placeholderActiveColor = Color.pink.base
         //        emailField.dividerNormalColor = Color.cyan.base
         //        emailField.dividerActiveColor = Color.green.base
-        emailField.dividerActiveColor = Color.cyan.base
+        emailField.dividerActiveColor = Constants.LightBlue
         emailField.placeholderActiveColor = Color.pink.base
         
         // Set the text inset
@@ -166,9 +176,9 @@ extension SignupViewController {
         leftView.image = Icon.email
         emailField.leftView = leftView
         
-        emailField.leftViewActiveColor = Color.cyan.base
+        emailField.leftViewActiveColor = Constants.LightBlue
         
-        view.layout(emailField).center(offsetY: -passwordField.height - 60).left(20).right(20)
+        view.layout(emailField).center(offsetY: -passwordField.height - 40).left(20).right(20)
     }
     
     fileprivate func preparePasswordField() {
@@ -179,19 +189,19 @@ extension SignupViewController {
         passwordField.isVisibilityIconButtonEnabled = true
         passwordField.isPlaceholderUppercasedWhenEditing = true
         
-        passwordField.dividerActiveColor = Color.cyan.base
+        passwordField.dividerActiveColor = Constants.LightBlue
         passwordField.placeholderActiveColor = Color.pink.base
         
         let leftView = UIImageView()
         leftView.image = Icon.cm.pen
         passwordField.leftView = leftView
         
-        passwordField.leftViewActiveColor = Color.cyan.base
+        passwordField.leftViewActiveColor = Constants.LightBlue
         
         // Setting the visibilityIconButton color.
         passwordField.visibilityIconButton?.tintColor = Color.cyan.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
         
-        view.layout(passwordField).center(offsetY: -30).left(20).right(20)
+        view.layout(passwordField).center(offsetY: -10).left(20).right(20)
     }
     
     fileprivate func prepareConfirmPasswordField() {
@@ -202,19 +212,19 @@ extension SignupViewController {
         confirmPasswordField.isVisibilityIconButtonEnabled = true
         confirmPasswordField.isPlaceholderUppercasedWhenEditing = true
         
-        confirmPasswordField.dividerActiveColor = Color.cyan.base
+        confirmPasswordField.dividerActiveColor = Constants.LightBlue
         confirmPasswordField.placeholderActiveColor = Color.pink.base
         
         let leftView = UIImageView()
         leftView.image = Icon.cm.pen
         confirmPasswordField.leftView = leftView
         
-        confirmPasswordField.leftViewActiveColor = Color.cyan.base
+        confirmPasswordField.leftViewActiveColor = Constants.LightBlue
         
         // Setting the visibilityIconButton color.
         confirmPasswordField.visibilityIconButton?.tintColor = Color.cyan.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
         
-        view.layout(confirmPasswordField).center(offsetY: +passwordField.height + 30).left(20).right(20)
+        view.layout(confirmPasswordField).center(offsetY: +passwordField.height + 50).left(20).right(20)
     }
     
 }

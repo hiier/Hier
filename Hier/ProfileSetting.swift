@@ -74,6 +74,8 @@ class ProfileSetting: UITableViewController {
             let sidePic = UIImageView(image:UIImage(named:"defaultProfile")!)
             sidePic.setWidth(width:60);
             sidePic.setHeight(height:60);
+            sidePic.layer.cornerRadius = Constants.CornerRadius
+            sidePic.clipsToBounds = true
             cell.accessoryView = sidePic;
             
         }

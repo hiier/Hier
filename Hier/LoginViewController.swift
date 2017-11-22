@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
     
     fileprivate var emailField: ErrorTextField!
     fileprivate var passwordField: TextField!
+    fileprivate var logo: UIImageView!
     
     /// A constant to layout the textFields.
     fileprivate let constant: CGFloat = 32
@@ -40,11 +41,12 @@ class LoginViewController: UIViewController {
         prepareSignInResponderButton()
         prepareSignUpResponderButton()
         prepareNavigationItem()
+        prepareLogo()
    }
 
     /// Prepares the sign in responder button.
     fileprivate func prepareSignInResponderButton() {
-        let btn = RaisedButton(title: "Sign In", titleColor: Color.cyan.base)
+        let btn = RaisedButton(title: "Sign In", titleColor: Constants.LightBlue)
         btn.addTarget(self, action: #selector(signIn(button:)), for: .touchUpInside)
         
         view.layout(btn).width(150).height(constant).center(offsetY: +passwordField.height + 80)
@@ -98,7 +100,8 @@ class LoginViewController: UIViewController {
     
     /// Prepares the sign up responder button.
     fileprivate func prepareSignUpResponderButton() {
-        let btn_signup = RaisedButton(title: "Sign Up", titleColor: Color.lime.base)
+        let btn_signup = RaisedButton(title: "Sign Up", titleColor: Constants.Orange)
+        //Color.lime.base
         btn_signup.addTarget(self, action: #selector(signUp(button:)), for: .touchUpInside)
         
         view.layout(btn_signup).width(150).height(constant).center(offsetY: +passwordField.height + 80 + 40)
@@ -116,6 +119,15 @@ class LoginViewController: UIViewController {
 
 
 extension LoginViewController {
+    
+    func prepareLogo() {
+        logo = UIImageView(frame:CGRect(x:128, y:90, width:64, height:64))
+        logo.image = UIImage(named:"Hier")
+        view.addSubview(logo)
+
+
+    }
+    
     func prepareEmailField() {
         emailField = ErrorTextField()
         emailField.placeholder = "Email"
@@ -133,7 +145,7 @@ extension LoginViewController {
 //        emailField.placeholderActiveColor = Color.pink.base
 //        emailField.dividerNormalColor = Color.cyan.base
 //        emailField.dividerActiveColor = Color.green.base
-        emailField.dividerActiveColor = Color.cyan.base
+        emailField.dividerActiveColor = Constants.LightBlue
         emailField.placeholderActiveColor = Color.pink.base
         
         // Set the text inset
@@ -143,7 +155,7 @@ extension LoginViewController {
         leftView.image = Icon.email
         emailField.leftView = leftView
         
-        emailField.leftViewActiveColor = Color.cyan.base
+        emailField.leftViewActiveColor = Constants.LightBlue
         
         view.layout(emailField).center(offsetY: -passwordField.height - 30).left(20).right(20)
     }
@@ -156,14 +168,14 @@ extension LoginViewController {
         passwordField.isVisibilityIconButtonEnabled = true
         passwordField.isPlaceholderUppercasedWhenEditing = true
         
-        passwordField.dividerActiveColor = Color.cyan.base
+        passwordField.dividerActiveColor = Constants.LightBlue
         passwordField.placeholderActiveColor = Color.pink.base
         
         let leftView = UIImageView()
         leftView.image = Icon.cm.pen
         passwordField.leftView = leftView
         
-        passwordField.leftViewActiveColor = Color.cyan.base
+        passwordField.leftViewActiveColor = Constants.LightBlue
         
         // Setting the visibilityIconButton color.
         passwordField.visibilityIconButton?.tintColor = Color.cyan.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
