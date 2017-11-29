@@ -234,6 +234,7 @@
 		C023CA6E1F4E86010081A2B9 /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C0DFE33F1FC53B4300310FE1 /* utils */,
 				C023CA701F4E86B10081A2B9 /* profile */,
 				C023CA6F1F4E86A90081A2B9 /* event */,
 				216511181F1F14FC00B839DD /* RatingControl.swift */,
@@ -277,9 +278,16 @@
 			isa = PBXGroup;
 			children = (
 				2161514B1FA0468800311A51 /* DSCameraHandler.swift */,
-				C01EB7451F4914A0000EABEC /* Constants.swift */,
 				2199FE4D1F73780500421815 /* UIViewExtensions.swift */,
 				C023CA731F5691420081A2B9 /* UITextViewPlaceholder.swift */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
+		C0DFE33F1FC53B4300310FE1 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				C01EB7451F4914A0000EABEC /* Constants.swift */,
 				C012266D1F972A2D00782CAD /* Helpers.swift */,
 			);
 			name = utils;
