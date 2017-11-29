@@ -62,7 +62,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         self.userName = UILabel()
         self.userName.text = "Hier"
         self.userName.frame =  CGRect(x: 100, y: 138, width: 121, height: 16)
-        self.userName.textColor = UIColor(red: 10/255, green: 186/255, blue: 181/255, alpha: 1.00)
+        self.userName.textColor = Constants.LightBlue
         self.userName.font = self.userName.font.withSize(14)
         self.userName.textAlignment = .center
         self.view.addSubview(self.userName)
@@ -70,7 +70,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         self.userDesc = UILabel()
         self.userDesc.text = "An Explorer"
         self.userDesc.frame =  CGRect(x: 100, y: 155, width: 121, height: 13)
-        self.userDesc.textColor = UIColor(red: 10/255, green: 186/255, blue: 181/255, alpha: 1.00)
+        self.userDesc.textColor = Constants.LightBlue
         self.userDesc.font = self.userDesc.font.withSize(12)
         self.userDesc.textAlignment = .center
         self.view.addSubview(self.userDesc)
@@ -78,7 +78,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         self.userLoc = UILabel()
         self.userLoc.text = "Sunnyvale, California"
         self.userLoc.frame =  CGRect(x: 100, y: 169, width: 121, height: 13)
-        self.userLoc.textColor = UIColor(red: 10/255, green: 186/255, blue: 181/255, alpha: 1.00)
+        self.userLoc.textColor = Constants.LightBlue
         self.userLoc.font = self.userLoc.font.withSize(12)
         self.userLoc.textAlignment = .center
         self.view.addSubview(self.userLoc)

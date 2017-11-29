@@ -44,43 +44,17 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="selectedImageTintColor" red="0.2901960784" green="0.77647058820000003" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
-                    <connections>
-                        <segue destination="idS-He-IJa" kind="relationship" relationship="viewControllers" id="vHu-v7-HZk"/>
-                        <segue destination="7uP-xh-QXn" kind="relationship" relationship="viewControllers" id="pbd-EI-LrG"/>
-                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ecq-yd-2H9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="536" y="258"/>
         </scene>
         <!--Home-->
-        <scene sceneID="fWd-AG-lyV">
-            <objects>
-                <navigationController storyboardIdentifier="eventsWrapperNavigationController" id="idS-He-IJa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="home" id="rjf-FI-Raz"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IJu-di-Wvc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.2901960784" green="0.77647058820000003" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
-                            <color key="textColor" red="0.2901960784" green="0.77647058820000003" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="hry-Qa-RuY" kind="relationship" relationship="rootViewController" id="lPc-CS-04S"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WI3-PE-riY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1877" y="1136"/>
-        </scene>
-        <!--Home-->
         <scene sceneID="IqO-5r-edu">
             <objects>
                 <tableViewController storyboardIdentifier="eventsTableViewController" id="hry-Qa-RuY" customClass="EventsTableViewController" customModule="Hier" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" id="hXc-pT-k8M">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" red="0.29019607843137252" green="0.77647058823529413" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
@@ -206,7 +180,7 @@
             <objects>
                 <tableViewController id="lIW-i7-7iV" customClass="DetailedEventTableViewController" customModule="Hier" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="wg5-8W-Nxh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections/>
@@ -219,27 +193,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dxA-EF-axM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3547.5" y="1575"/>
-        </scene>
-        <!--Profile-->
-        <scene sceneID="AZc-rs-Asp">
-            <objects>
-                <navigationController storyboardIdentifier="ProfileLoginNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7uP-xh-QXn" customClass="ProfileLoginNavigationController" customModule="Hier" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="moH-qI-Zvr"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Eg4-0C-znS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="FIq-jz-0zl">
-                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                    <connections>
-                        <segue destination="bf6-in-wg6" kind="relationship" relationship="rootViewController" id="j7C-Zq-ldJ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FoS-Tj-CI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1673" y="-564"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Z7L-0s-HkQ">
@@ -272,7 +225,7 @@
                         <viewControllerLayoutGuide type="bottom" id="lh2-yW-DN0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fjO-1v-0Yz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -428,7 +381,6 @@
     <resources>
         <image name="comment" width="19" height="19"/>
         <image name="defaultPhoto" width="1632" height="1224"/>
-        <image name="home" width="24" height="24"/>
         <image name="like" width="19" height="18"/>
         <image name="profile" width="24" height="21"/>
     </resources>
