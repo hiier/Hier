@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
     
     fileprivate var emailField: ErrorTextField!
     fileprivate var passwordField: TextField!
+    fileprivate var forgetPassword: UnderlinedLabel!
     fileprivate var logo: UIImageView!
     
     /// A constant to layout the textFields.
@@ -38,6 +39,7 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .white
         preparePasswordField()
         prepareEmailField()
+        prepareForgetPassword()
         prepareSignInResponderButton()
         prepareSignUpResponderButton()
         prepareNavigationItem()
@@ -181,6 +183,29 @@ extension LoginViewController {
         passwordField.visibilityIconButton?.tintColor = Color.cyan.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
         
         view.layout(passwordField).center().left(20).right(20)
+    }
+    
+    func prepareForgetPassword() {
+        
+        forgetPassword = UnderlinedLabel();
+        forgetPassword.text = "Forget Password?"
+        forgetPassword.textColor = Color.grey.lighten2
+        forgetPassword.font.withSize(10)
+        forgetPassword.translatesAutoresizingMaskIntoConstraints = false
+        view.layout(forgetPassword).center(offsetY: passwordField.height + 28)
+        
+        let forget = UITapGestureRecognizer(target: self, action: #selector(self.goForgetPassword(_:)))
+        forgetPassword.addGestureRecognizer(forget)
+        forgetPassword.isUserInteractionEnabled = true
+        
+        
+        
+    }
+    
+    @IBAction func goForgetPassword(_ sender: UITapGestureRecognizer) {
+        
+        let vc = ForgetPasswordViewController()
+        self.navigationController?.pushViewController(vc, animated:true)
     }
 }
 

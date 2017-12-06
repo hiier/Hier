@@ -26,6 +26,8 @@
 		219989871F156B0E0083ADE4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219989861F156B0E0083ADE4 /* ProfileViewController.swift */; };
 		2199FE4E1F73780500421815 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2199FE4D1F73780500421815 /* UIViewExtensions.swift */; };
 		21D02EFD1F04B0A800CDA906 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */; };
+		21E56BF11FD7BA4900B2F4D3 /* UnderLinedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E56BF01FD7BA4900B2F4D3 /* UnderLinedLabel.swift */; };
+		21E56BF31FD7BE8800B2F4D3 /* ForgetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E56BF21FD7BE8800B2F4D3 /* ForgetPassword.swift */; };
 		21E6CE4A1F8751A00059FCA1 /* ProfileSubTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E6CE491F87519F0059FCA1 /* ProfileSubTableView.swift */; };
 		21E6CE4D1F89520F0059FCA1 /* profileTabsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E6CE4C1F89520F0059FCA1 /* profileTabsController.swift */; };
 		21E6CE4F1F89530E0059FCA1 /* upcoming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E6CE4E1F89530E0059FCA1 /* upcoming.swift */; };
@@ -84,6 +86,8 @@
 		219989861F156B0E0083ADE4 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2199FE4D1F73780500421815 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		21D02EFC1F04B0A800CDA906 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		21E56BF01FD7BA4900B2F4D3 /* UnderLinedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderLinedLabel.swift; sourceTree = "<group>"; };
+		21E56BF21FD7BE8800B2F4D3 /* ForgetPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPassword.swift; sourceTree = "<group>"; };
 		21E6CE491F87519F0059FCA1 /* ProfileSubTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSubTableView.swift; sourceTree = "<group>"; };
 		21E6CE4C1F89520F0059FCA1 /* profileTabsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileTabsController.swift; sourceTree = "<group>"; };
 		21E6CE4E1F89530E0059FCA1 /* upcoming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = upcoming.swift; sourceTree = "<group>"; };
@@ -269,6 +273,7 @@
 				216962E51F4A22210052B871 /* ProfileLoginNavigationController.swift */,
 				219989861F156B0E0083ADE4 /* ProfileViewController.swift */,
 				21E6CE491F87519F0059FCA1 /* ProfileSubTableView.swift */,
+				21E56BF21FD7BE8800B2F4D3 /* ForgetPassword.swift */,
 				21E6CE4B1F8950400059FCA1 /* profileSubTables */,
 			);
 			name = profile;
@@ -277,6 +282,7 @@
 		C023CA711F5691110081A2B9 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				21E56BF01FD7BA4900B2F4D3 /* UnderLinedLabel.swift */,
 				2161514B1FA0468800311A51 /* DSCameraHandler.swift */,
 				2199FE4D1F73780500421815 /* UIViewExtensions.swift */,
 				C023CA731F5691420081A2B9 /* UITextViewPlaceholder.swift */,
@@ -555,6 +561,7 @@
 				21E6CE511F8953250059FCA1 /* attended.swift in Sources */,
 				2139359A1F946EB5009F5F27 /* ProfileSetting.swift in Sources */,
 				2161514A1F970BC100311A51 /* DetailSettingViewController.swift in Sources */,
+				21E56BF31FD7BE8800B2F4D3 /* ForgetPassword.swift in Sources */,
 				2199FE4E1F73780500421815 /* UIViewExtensions.swift in Sources */,
 				21E6CE4A1F8751A00059FCA1 /* ProfileSubTableView.swift in Sources */,
 				21E6CE4F1F89530E0059FCA1 /* upcoming.swift in Sources */,
@@ -567,6 +574,7 @@
 				216487AF1F43FE1E000FDDF1 /* CustomCell.swift in Sources */,
 				21D02EFD1F04B0A800CDA906 /* LoginViewController.swift in Sources */,
 				C023CA761F569D4D0081A2B9 /* CreateEventTableViewController.swift in Sources */,
+				21E56BF11FD7BA4900B2F4D3 /* UnderLinedLabel.swift in Sources */,
 				216511111F1EFF0700B839DD /* EventsTableViewController.swift in Sources */,
 				217BFD2B1EFA247D0033AD54 /* SignupViewController.swift in Sources */,
 				C023CA741F5691420081A2B9 /* UITextViewPlaceholder.swift in Sources */,
