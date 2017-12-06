@@ -106,6 +106,8 @@ class ProfileSetting: UITableViewController {
             defaults.synchronize()
                         
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            vc.tabBarItem = UITabBarItem(title
+                    :"Profile", image:UIImage(named:"profile"), tag:1 )
             self.navigationController?.setViewControllers([vc], animated: false)
             
 
