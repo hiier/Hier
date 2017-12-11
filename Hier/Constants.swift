@@ -44,10 +44,12 @@ struct Constants {
     
     // Image names
     static let Like = "like"
+    static let Liked = "liked"
     static let Comment = "comment"
     static let Calendar = "calendar"
     static let Pin = "pin"
     static let Group = "group"
     static let AddPhoto = "add_photo"
     static let DefaultPhoto = "defaultPhoto"
+    static let Profile = "profile"
 }

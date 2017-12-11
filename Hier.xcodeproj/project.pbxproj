@@ -50,6 +50,9 @@
 		C0D764371F5CE37900011BCA /* EventLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D764361F5CE37900011BCA /* EventLocationViewController.swift */; };
 		C0D764391F5E570900011BCA /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D764381F5E570900011BCA /* LocationSearchTableViewController.swift */; };
 		C0D832D41F679DAA00EC6E58 /* DetailedEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D832D31F679DAA00EC6E58 /* DetailedEventTableViewController.swift */; };
+		C0DFE3411FC6487900310FE1 /* CommentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFE3401FC6487900310FE1 /* CommentsTableViewController.swift */; };
+		C0DFE3431FC6489300310FE1 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFE3421FC6489300310FE1 /* CommentTableViewCell.swift */; };
+		C0DFE3451FCD2BB400310FE1 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFE3441FCD2BB400310FE1 /* CommentsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +116,9 @@
 		C0D764381F5E570900011BCA /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
 		C0D7643A1F60FD6C00011BCA /* Hier.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hier.entitlements; sourceTree = "<group>"; };
 		C0D832D31F679DAA00EC6E58 /* DetailedEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedEventTableViewController.swift; sourceTree = "<group>"; };
+		C0DFE3401FC6487900310FE1 /* CommentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsTableViewController.swift; sourceTree = "<group>"; };
+		C0DFE3421FC6489300310FE1 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		C0DFE3441FCD2BB400310FE1 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		E43464689730B62BBFBF64AC /* Pods-Hier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hier.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hier/Pods-Hier.debug.xcconfig"; sourceTree = "<group>"; };
 		F40AC3A95243F406BC1E821B /* Pods-Hier.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hier.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hier/Pods-Hier.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -257,6 +263,9 @@
 				C023CA751F569D4D0081A2B9 /* CreateEventTableViewController.swift */,
 				C0D764381F5E570900011BCA /* LocationSearchTableViewController.swift */,
 				C0D832D31F679DAA00EC6E58 /* DetailedEventTableViewController.swift */,
+				C0DFE3401FC6487900310FE1 /* CommentsTableViewController.swift */,
+				C0DFE3421FC6489300310FE1 /* CommentTableViewCell.swift */,
+				C0DFE3441FCD2BB400310FE1 /* CommentsViewController.swift */,
 			);
 			name = event;
 			sourceTree = "<group>";
@@ -570,6 +579,8 @@
 				C0D832D41F679DAA00EC6E58 /* DetailedEventTableViewController.swift in Sources */,
 				2165111B1F20784600B839DD /* Event.swift in Sources */,
 				216511191F1F14FC00B839DD /* RatingControl.swift in Sources */,
+				C0DFE3411FC6487900310FE1 /* CommentsTableViewController.swift in Sources */,
+				C0DFE3451FCD2BB400310FE1 /* CommentsViewController.swift in Sources */,
 				C01EB7401F46B086000EABEC /* MainTabBarViewController.swift in Sources */,
 				216487AF1F43FE1E000FDDF1 /* CustomCell.swift in Sources */,
 				21D02EFD1F04B0A800CDA906 /* LoginViewController.swift in Sources */,
@@ -592,6 +603,7 @@
 				2161514C1FA0468900311A51 /* DSCameraHandler.swift in Sources */,
 				2161514E1FA0539500311A51 /* ProfilePicEditingViewController.swift in Sources */,
 				05CD86AB1F7216E2002471AB /* API.swift in Sources */,
+				C0DFE3431FC6489300310FE1 /* CommentTableViewCell.swift in Sources */,
 				21E6CE551F89534B0059FCA1 /* saved.swift in Sources */,
 				217BFD291EFA247D0033AD54 /* AppDelegate.swift in Sources */,
 			);

@@ -11,11 +11,13 @@ import MapKit
 
 class LocationSearchTableViewController: UITableViewController, UISearchResultsUpdating {
     
+    // MARK: - Constants
+    
+    private let CellReuseIdentifier = "locationSearchTableViewCell"
+    
     // MARK: - Properties
     var matchingItems: [MKMapItem] = []
-    
     var mapView: MKMapView?
-    
     var handleMapSearchDelegate:HandleMapSearch?
     
     // MARK: - UISearchResultsUpdating methods
@@ -41,6 +43,8 @@ class LocationSearchTableViewController: UITableViewController, UISearchResultsU
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: CellReuseIdentifier)
     }
 
     // MARK: - Table view data source
@@ -54,7 +58,10 @@ class LocationSearchTableViewController: UITableViewController, UISearchResultsU
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "locationSearchTableViewCell")!
+        var cell = tableView.dequeueReusableCell(withIdentifier: CellReuseIdentifier)!
+        if cell.detailTextLabel == nil {
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: CellReuseIdentifier)
+        }
         let selectedItem = matchingItems[indexPath.row].placemark
         cell.textLabel?.text = selectedItem.name
         cell.detailTextLabel?.text = parseAddress(selectedItem: selectedItem)

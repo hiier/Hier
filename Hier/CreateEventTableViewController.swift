@@ -13,26 +13,19 @@ class CreateEventTableViewController: UITableViewController, UIImagePickerContro
     
     // MAKR: - Constants
     
-    private static let IconSize: CGFloat = 28
-    private static let PhotoSize: CGFloat = 100
-    private static let CellIndent: CGFloat = 16
+    private let IconSize: CGFloat = 28
+    private let PhotoSize: CGFloat = 100
+    private let CellIndent: CGFloat = 16
 
     // MARK: - Outlets
     
     private var eventTitle: UITextField!
-    
     private var eventDescription: UITextView!
-    
     private var eventPhoto: UIImageView!
-    
     private var eventTime: UITextField!
-    
     private var eventLocation: UIButton!
-    
     private var eventMaxParticipants: UITextField!
-    
     private var submitButton: UIButton!
-    
     private var datePicker: UIDatePicker!
     
     // MARK: - Properties
@@ -184,7 +177,7 @@ class CreateEventTableViewController: UITableViewController, UIImagePickerContro
         eventTitle.delegate = self
         eventTitle.addTarget(self, action: #selector(validateTitle), for: .editingChanged)
         
-        Helpers.layoutSingleOutlet(outlet: eventTitle, cell: cells[0][0], inset: UIEdgeInsetsMake(Constants.DefaultMargin, CreateEventTableViewController.CellIndent, Constants.DefaultMargin, Constants.DefaultMargin))
+        Helpers.layoutSingleOutlet(outlet: eventTitle, cell: cells[0][0], inset: UIEdgeInsetsMake(Constants.DefaultMargin, CellIndent, Constants.DefaultMargin, Constants.DefaultMargin))
         
         /* Set 2nd cell ************************/
         
@@ -208,13 +201,13 @@ class CreateEventTableViewController: UITableViewController, UIImagePickerContro
         secondCell.contentView.addSubview(eventPhoto)
         secondCell.contentView.addSubview(eventDescription)
         eventPhoto.snp.makeConstraints { (make) -> Void in
-            make.width.equalTo(CreateEventTableViewController.PhotoSize)
-            make.height.equalTo(CreateEventTableViewController.PhotoSize)
+            make.width.equalTo(PhotoSize)
+            make.height.equalTo(PhotoSize)
             make.trailing.equalTo(secondCell.contentView.snp.trailing).offset(-Constants.DefaultMargin)
             make.top.equalTo(secondCell.contentView.snp.top).offset(Constants.DefaultMargin)
         }
         eventDescription.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(secondCell.contentView.snp.leading).offset(CreateEventTableViewController.CellIndent)
+            make.leading.equalTo(secondCell.contentView.snp.leading).offset(CellIndent)
             make.trailing.equalTo(eventPhoto.snp.leading).offset(-Constants.DefaultMargin)
             make.top.equalTo(eventPhoto.snp.top)
             make.bottom.equalTo(eventPhoto.snp.bottom)
@@ -241,7 +234,7 @@ class CreateEventTableViewController: UITableViewController, UIImagePickerContro
         eventTime.placeholder = "Pick Time"
         eventTime.inputView = datePicker
         
-        Helpers.layoutIconAndField(iconName: Constants.Calendar, iconSize: CreateEventTableViewController.IconSize, field: eventTime, cell: cells[1][0])
+        Helpers.layoutIconAndField(iconName: Constants.Calendar, iconSize: IconSize, field: eventTime, cell: cells[1][0])
         
         /* Set 4th cell ************************/
         
@@ -253,7 +246,7 @@ class CreateEventTableViewController: UITableViewController, UIImagePickerContro
         eventLocation.contentHorizontalAlignment = .left
         eventLocation.addTarget(self, action: #selector(presentEventLocationViewController), for: .touchUpInside)
         
-        Helpers.layoutIconAndField(iconName: Constants.Pin, iconSize: CreateEventTableViewController.IconSize, field: eventLocation, cell: cells[1][1])
+        Helpers.layoutIconAndField(iconName: Constants.Pin, iconSize: IconSize, field: eventLocation, cell: cells[1][1])
         
         /* Set 5th cell ************************/
         
@@ -265,7 +258,7 @@ class CreateEventTableViewController: UITableViewController, UIImagePickerContro
         eventMaxParticipants.delegate = self
         
         // Set 5th cell
-        Helpers.layoutIconAndField(iconName: Constants.Group, iconSize: CreateEventTableViewController.IconSize, field: eventMaxParticipants, cell: cells[1][2])
+        Helpers.layoutIconAndField(iconName: Constants.Group, iconSize: IconSize, field: eventMaxParticipants, cell: cells[1][2])
         
         /* Set 6th cell ************************/
         
@@ -309,12 +302,12 @@ class CreateEventTableViewController: UITableViewController, UIImagePickerContro
             case 0:
                 return Constants.DefaultTableViewCellHeight
             case 1:
-                return CreateEventTableViewController.PhotoSize + 2 * Constants.DefaultMargin
+                return PhotoSize + 2 * Constants.DefaultMargin
             default:
                 return 0
             }
         case 1:
-            return CreateEventTableViewController.IconSize + 2 * Constants.DefaultMargin
+            return IconSize + 2 * Constants.DefaultMargin
         case 2:
             return Constants.DefaultTableViewCellHeight
         default:
@@ -323,12 +316,11 @@ class CreateEventTableViewController: UITableViewController, UIImagePickerContro
     }
     
     func presentEventLocationViewController() {
-        if let elvc = storyboard?.instantiateViewController(withIdentifier: "eventLocationViewController") as? EventLocationViewController {
-            let nc = UINavigationController(rootViewController: elvc)
-            view.endEditing(true)
-            elvc.selectedPlacemark = selectedPlacemark
-            present(nc, animated: true, completion: nil)
-        }
+        let elvc = EventLocationViewController()
+        let nc = UINavigationController(rootViewController: elvc)
+        view.endEditing(true)
+        elvc.selectedPlacemark = selectedPlacemark
+        present(nc, animated: true, completion: nil)
     }
     
     func unwindToCreateEventTableViewController(placemark: MKPlacemark?) {

@@ -1,5 +1,5 @@
 //
-//  EventTableViewCell.swift
+//  swift
 //  Hier
 //
 //  Created by Yang Zhao on 8/16/17.
@@ -12,37 +12,32 @@ class EventTableViewCell: UITableViewCell {
     
     // MARK: Constants
     
-    private static let IconSize: CGFloat = 16
-    private static let PhotoSize: CGFloat = 100
-    private static let TitleHeight: CGFloat = 20
-    private static let DescriptionHeight: CGFloat = 56
-    private static let SmallTextWidth: CGFloat = 32
-    public static let CellHeight: CGFloat = EventTableViewCell.PhotoSize + 2 * Constants.DefaultMargin
+    private let IconSize: CGFloat = 16
+    private let PhotoSize: CGFloat = 100
+    private let TitleHeight: CGFloat = 20
+    private let DescriptionHeight: CGFloat = 56
+    private let SmallTextWidth: CGFloat = 32
     
     // MARK: - Outlets
     
     private var eventPhoto: UIImageView!
-    
     private var eventTitle: UILabel!
-    
     private var eventDescription: UILabel!
-    
     private var eventNumLikes: UILabel!
-    
     private var eventNumComments: UILabel!
     
     // MARK: - Properties
     
     public var event: Event! {
         didSet {
-            updateUI()
+            updateOutlets()
         }
     }
     
-    // MARK: - View controller lifecycle
+    // MARK: - Initializer
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         eventPhoto = UIImageView(image: UIImage(named: Constants.DefaultPhoto))
         eventPhoto.layer.cornerRadius = Constants.CornerRadius
@@ -53,11 +48,11 @@ class EventTableViewCell: UITableViewCell {
         eventDescription = Helpers.getLabel(text: nil, textColor: Constants.DetailedEventDefaultTextColor, font: Constants.DetailedEventDescriptionFont)
         eventDescription.numberOfLines = 0
         
-        let like = Helpers.getIconAsImage(name: Constants.Like, size: EventTableViewCell.IconSize)
+        let like = Helpers.getIconAsImage(name: Constants.Like, size: IconSize)
         
         eventNumLikes = Helpers.getLabel(text: nil, textColor: Constants.DetailedEventDefaultTextColor, font: Constants.DetailedEventAttributeFont)
         
-        let comment = Helpers.getIconAsImage(name: Constants.Comment, size: EventTableViewCell.IconSize)
+        let comment = Helpers.getIconAsImage(name: Constants.Comment, size: IconSize)
         
         eventNumComments = Helpers.getLabel(text: nil, textColor: Constants.DetailedEventDefaultTextColor, font: Constants.DetailedEventAttributeFont)
         
@@ -71,20 +66,20 @@ class EventTableViewCell: UITableViewCell {
         eventPhoto.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(contentView.snp.top).offset(Constants.DefaultMargin)
             make.trailing.equalTo(contentView.snp.trailing).offset(-Constants.DefaultMargin)
-            make.width.equalTo(EventTableViewCell.PhotoSize)
-            make.height.equalTo(EventTableViewCell.PhotoSize)
+            make.width.equalTo(PhotoSize)
+            make.height.equalTo(PhotoSize)
         }
         eventTitle.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(eventPhoto.snp.top)
             make.leading.equalTo(contentView.snp.leading).offset(Constants.DefaultMargin)
             make.trailing.equalTo(eventPhoto.snp.leading).offset(-Constants.DefaultMargin)
-            make.height.equalTo(EventTableViewCell.TitleHeight)
+            make.height.equalTo(TitleHeight)
         }
         eventDescription.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(eventTitle.snp.bottom)
             make.leading.equalTo(eventTitle.snp.leading)
             make.trailing.equalTo(eventTitle.snp.trailing)
-            make.height.equalTo(EventTableViewCell.DescriptionHeight)
+            make.height.equalTo(DescriptionHeight)
         }
         like.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(eventDescription.snp.bottom).offset(Constants.DefaultMargin)
@@ -94,7 +89,7 @@ class EventTableViewCell: UITableViewCell {
             make.top.equalTo(like.snp.top)
             make.leading.equalTo(like.snp.trailing).offset(Constants.DefaultMargin)
             make.bottom.equalTo(like.snp.bottom)
-            make.width.equalTo(EventTableViewCell.SmallTextWidth)
+            make.width.equalTo(SmallTextWidth)
         }
         comment.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(eventNumLikes.snp.top)
@@ -104,13 +99,18 @@ class EventTableViewCell: UITableViewCell {
             make.top.equalTo(comment.snp.top)
             make.leading.equalTo(comment.snp.trailing).offset(Constants.DefaultMargin)
             make.bottom.equalTo(comment.snp.bottom)
-            make.width.equalTo(EventTableViewCell.SmallTextWidth)
+            make.width.equalTo(SmallTextWidth)
         }
+        
     }
-
-    // MARK: - Custom methods
     
-    private func updateUI() {
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Methods
+    
+    private func updateOutlets() {
         eventTitle.text = event.title
         eventDescription.text = event.description
         eventNumLikes.text = "\(event.likes.count)"

@@ -1,5 +1,5 @@
 //
-//  DetailedEventTableViewController.swift
+//  swift
 //  Hier
 //
 //  Created by Yang Zhao on 9/11/17.
@@ -14,31 +14,22 @@ class DetailedEventTableViewController: UITableViewController {
     
     // MARK: - Constants
     
-    private static let PhotoAspectRatio: CGFloat = 1.0 / 3.0
-    private static let LargeIconSize: CGFloat = 28
-    private static let SmallIconSize: CGFloat = 24
-    private static let SmallTextWidth: CGFloat = 40
+    private let PhotoAspectRatio: CGFloat = 1.0 / 3.0
+    private let LargeIconSize: CGFloat = 28
+    private let SmallIconSize: CGFloat = 24
+    private let SmallTextWidth: CGFloat = 40
     
     // MARK: - Outlets
     
     private var eventPhoto: UIImageView!
-    
     private var eventTitle: UILabel!
-    
     private var eventTime: UILabel!
-    
     private var eventLocation: UILabel!
-    
     private var eventDescription: UILabel!
-    
     private var eventLikeButton: UIButton!
-    
     private var eventNumLikes: UILabel!
-    
     private var eventCommentButton: UIButton!
-    
     private var eventNumComments: UILabel!
-    
     private var eventJoinButton: UIButton!
     
     // MARK: - Properties
@@ -72,7 +63,7 @@ class DetailedEventTableViewController: UITableViewController {
         eventTitle = Helpers.getLabel(text: event.title, textColor: Constants.DetailedEventDefaultTextColor, font: Constants.DetailedEventTitltFont)
         
         // Set calendar icon
-        let calendar = Helpers.getIconAsImage(name: Constants.Calendar, size: DetailedEventTableViewController.LargeIconSize)
+        let calendar = Helpers.getIconAsImage(name: Constants.Calendar, size: LargeIconSize)
         
         // Set event time
         let dateFormatter = DateFormatter()
@@ -81,7 +72,7 @@ class DetailedEventTableViewController: UITableViewController {
         eventTime = Helpers.getLabel(text: dateFormatter.string(from: event.time), textColor: Constants.DetailedEventDefaultTextColor, font: Constants.DetailedEventAttributeFont)
         
         // Set pin icon
-        let pin = Helpers.getIconAsImage(name: Constants.Pin, size: DetailedEventTableViewController.LargeIconSize)
+        let pin = Helpers.getIconAsImage(name: Constants.Pin, size: LargeIconSize)
         
         // Set event location
         eventLocation = Helpers.getLabel(text: "Location", textColor: Constants.DetailedEventDefaultTextColor, font: Constants.DetailedEventAttributeFont)
@@ -121,19 +112,23 @@ class DetailedEventTableViewController: UITableViewController {
         // Set event description
         eventDescription = Helpers.getLabel(text: event.description, textColor: Constants.DetailedEventDefaultTextColor, font: Constants.DetailedEventDescriptionFont)
         eventDescription.numberOfLines = 0
+        eventDescription.lineBreakMode = .byWordWrapping
+        eventDescription.sizeToFit()
         
         Helpers.layoutSingleOutlet(outlet: eventDescription, cell: cells[0][2], inset: UIEdgeInsetsMake(Constants.DefaultMargin, Constants.DefaultMargin, -Constants.DefaultMargin, -Constants.DefaultMargin))
         
         /* Set 4th cell ************************/
         
         // Set like button
-        eventLikeButton = Helpers.getIconAsButton(name: Constants.Like, size: DetailedEventTableViewController.SmallIconSize)
+        eventLikeButton = Helpers.getIconAsButton(name: Constants.Like, size: SmallIconSize)
+        eventLikeButton.addTarget(self, action: #selector(like), for: .touchUpInside)
         
         // Set event #likes
         eventNumLikes = Helpers.getLabel(text: "\(event.likes.count)", textColor: Constants.DetailedEventDefaultTextColor, font: Constants.DetailedEventAttributeFont)
         
         // Set comment button
-        eventCommentButton = Helpers.getIconAsButton(name: Constants.Comment, size: DetailedEventTableViewController.SmallIconSize)
+        eventCommentButton = Helpers.getIconAsButton(name: Constants.Comment, size: SmallIconSize)
+        eventCommentButton.addTarget(self, action: #selector(comment), for: .touchUpInside)
         
         // Set event #comments
         eventNumComments = Helpers.getLabel(text: "\(event.comments.count)", textColor: Constants.DetailedEventDefaultTextColor, font: Constants.DetailedEventAttributeFont)
@@ -151,7 +146,7 @@ class DetailedEventTableViewController: UITableViewController {
             make.leading.equalTo(eventLikeButton.snp.trailing).offset(Constants.DefaultMargin)
             make.top.equalTo(eventLikeButton.snp.top)
             make.bottom.equalTo(eventLikeButton.snp.bottom)
-            make.width.equalTo(DetailedEventTableViewController.SmallTextWidth)
+            make.width.equalTo(SmallTextWidth)
         }
         eventCommentButton.snp.makeConstraints { (make) -> Void in
             make.leading.equalTo(eventNumLikes.snp.trailing).offset(Constants.DefaultMargin)
@@ -161,7 +156,7 @@ class DetailedEventTableViewController: UITableViewController {
             make.leading.equalTo(eventCommentButton.snp.trailing).offset(Constants.DefaultMargin)
             make.top.equalTo(eventCommentButton.snp.top)
             make.bottom.equalTo(eventCommentButton.snp.bottom)
-            make.width.equalTo(DetailedEventTableViewController.SmallTextWidth)
+            make.width.equalTo(SmallTextWidth)
         }
         
         // Set join button
@@ -170,13 +165,16 @@ class DetailedEventTableViewController: UITableViewController {
         eventJoinButton.setTitleColor(.white, for: .normal)
         eventJoinButton.backgroundColor = Constants.ThemeColor
         eventJoinButton.isUserInteractionEnabled = true
+        eventJoinButton.addTarget(self, action: #selector(join), for: .touchUpInside)
         
-        // Set separator style
+        // Set others
         for row in cells {
             for cell in row {
                 cell.selectionStyle = .none
             }
         }
+        
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
         tableView.separatorColor = Constants.ThemeColor
         tableView.separatorInset = UIEdgeInsets(top: 0, left: Constants.DefaultMargin, bottom: 0, right: Constants.DefaultMargin)
     }
@@ -200,11 +198,11 @@ class DetailedEventTableViewController: UITableViewController {
         case 0:
             switch indexPath.row {
             case 0:
-                return (tableView.width * DetailedEventTableViewController.PhotoAspectRatio)
+                return (tableView.width * PhotoAspectRatio)
             case 1:
-                return 3 * DetailedEventTableViewController.LargeIconSize + 4 * Constants.DefaultMargin
+                return 3 * LargeIconSize + 4 * Constants.DefaultMargin
             case 2:
-                return 160
+                return UITableViewAutomaticDimension
             case 3:
                 return Constants.DefaultTableViewCellHeight
             default:
@@ -231,5 +229,25 @@ class DetailedEventTableViewController: UITableViewController {
         default:
             return 0
         }
+    }
+    
+    // MARK: - Methods
+    
+    func like() {
+        eventLikeButton.setBackgroundImage(UIImage(named: Constants.Liked), for: .normal)
+    }
+    
+    func comment() {
+//        if let ctvc = storyboard?.instantiateViewController(withIdentifier: "commentsTableViewController") as? CommentsTableViewController {
+//            ctvc.comments = event.comments
+//            navigationController?.pushViewController(ctvc, animated: true)
+//        }
+        let cvc = CommentsViewController()
+        cvc.comments = event.comments
+        navigationController?.pushViewController(cvc, animated: true)
+    }
+    
+    func join() {
+        navigationController?.popViewController(animated: true)
     }
 }
