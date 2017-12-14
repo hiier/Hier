@@ -16,12 +16,8 @@ class MainTabBarViewController: UITabBarController {
         super.viewWillAppear(animated)
         checkLogin()
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        //        let eventsTableViewController = EventsTableViewController()
-        let eventsTableViewController = mainStoryboard.instantiateViewController(withIdentifier: "eventsTableViewController") as! EventsTableViewController
-        
-        
-        eventsTableViewController.tabBarItem = UITabBarItem(title
-            :"Home", image:UIImage(named:"home"), tag:0 )
+        let eventsTableViewController = EventsTableViewController()
+        eventsTableViewController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "home"), tag: 0 )
         //
         //        let profileViewController = ProfileViewController()
         var profileViewController = mainStoryboard.instantiateViewController(withIdentifier: "ProfileViewController")

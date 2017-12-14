@@ -20,13 +20,10 @@ class EventLocationViewController: UIViewController, UISearchBarDelegate, MKMapV
     // MARK: - Properties
     
     private var mapView: MKMapView = MKMapView()
-    
     private let locationManager = CLLocationManager()
-    
     private var resultSearchController: UISearchController!
-    
     public var selectedPlacemark: MKPlacemark?
-    
+
     // MARK: - Location manager delegate methods
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -53,8 +50,8 @@ class EventLocationViewController: UIViewController, UISearchBarDelegate, MKMapV
         mapView.snp.makeConstraints { (make) -> Void in
             make.leading.equalTo(view.snp.leading)
             make.trailing.equalTo(view.snp.trailing)
-            make.top.equalTo((topLayoutGuide as! UIView).snp.bottom)
-            make.bottom.equalTo((bottomLayoutGuide as! UIView).snp.top)
+            make.top.equalTo(view.snp.top)
+            make.bottom.equalTo(view.snp.bottom)
         }
         
         // Location manager set up
@@ -62,24 +59,23 @@ class EventLocationViewController: UIViewController, UISearchBarDelegate, MKMapV
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
         // Search controller set up
-        if let locationSearchTable = storyboard?.instantiateViewController(withIdentifier: "locationSearchTableViewController") as? LocationSearchTableViewController {
-            resultSearchController = UISearchController(searchResultsController: locationSearchTable)
-            resultSearchController.searchResultsUpdater = locationSearchTable
-            
-            // Search bar set up
-            let searchBar = resultSearchController.searchBar
-            searchBar.sizeToFit()
-            searchBar.placeholder = "Places"
-            searchBar.tintColor = Constants.LightGreen
-            navigationItem.titleView = searchBar
-            
-            resultSearchController.hidesNavigationBarDuringPresentation = false
-            resultSearchController.dimsBackgroundDuringPresentation = true
-            definesPresentationContext = true
-            
-            locationSearchTable.mapView = mapView
-            locationSearchTable.handleMapSearchDelegate = self
-        }
+        let locationSearchTable = LocationSearchTableViewController(style: .plain)
+        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+        resultSearchController.searchResultsUpdater = locationSearchTable
+        
+        // Search bar set up
+        let searchBar = resultSearchController.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Places"
+        searchBar.tintColor = Constants.LightGreen
+        navigationItem.titleView = searchBar
+        
+        resultSearchController.hidesNavigationBarDuringPresentation = false
+        resultSearchController.dimsBackgroundDuringPresentation = true
+        definesPresentationContext = true
+        
+        locationSearchTable.mapView = mapView
+        locationSearchTable.handleMapSearchDelegate = self
         
         if let placemark = selectedPlacemark {
             dropPinZoomIn(placemark: placemark)
@@ -88,7 +84,7 @@ class EventLocationViewController: UIViewController, UISearchBarDelegate, MKMapV
         // Set done button
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
         doneButton.tintColor = Constants.ThemeColor
-        self.navigationItem.leftBarButtonItem  = doneButton
+        navigationItem.leftBarButtonItem  = doneButton
     }
     
     // MARK: - Custom methods

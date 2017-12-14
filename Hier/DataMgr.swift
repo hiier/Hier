@@ -32,6 +32,12 @@ class DataMgr {
     private func createDummyEvent() {
         let location = CLLocation(latitude: 37.423440, longitude: -121.917371)
         let event = Event(id: "1341324", title: "Dining", description: "Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen! Let's go eating at Xi'an Kitchen!", photo: nil, time: Date(), location: location, contactPhone: "6502857451", maxNumParticipants: 5, creator: self.user!)!
+        let Alice = User(id: "1", email: "alice@gmail.com", username: "Alice")!
+        let Bob = User(id: "2", email: "bob@gmail.com", username: "Bob")!
+        let Chris = User(id: "3", email: "chris@gmail.com", username: "Chris")!
+        Chris.photo = UIImagePNGRepresentation(UIImage(named: Constants.DefaultPhoto)!)
+        event.likes = [Like(user: Alice, time: Date())!, Like(user: Bob, time: Date())!]
+        event.comments = [Comment(user: Chris, time: Date(), content: "Super delicious!")!]
         self.events = [event]
     }
     

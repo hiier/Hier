@@ -12,7 +12,8 @@ class EventsTableViewController: UITableViewController {
     
     // MARK: - Constants
     
-    private static let CellReuseIdentifier = "eventTableViewCell"
+    private let CellReuseIdentifier = "eventTableViewCell"
+    private let CellHeight: CGFloat = 116
     
     // MARK: - Properties
     
@@ -29,6 +30,7 @@ class EventsTableViewController: UITableViewController {
             NSFontAttributeName: Constants.NavigationTitleFont,
             NSForegroundColorAttributeName: Constants.ThemeColor
         ]
+        navigationController?.navigationBar.tintColor = Constants.ThemeColor
         let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(presentCreateEventTableViewController))
         addBarButton.tintColor = Constants.ThemeColor
         navigationItem.rightBarButtonItem  = addBarButton
@@ -36,6 +38,8 @@ class EventsTableViewController: UITableViewController {
         // Table view config
         tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
         tableView.separatorColor = Constants.ThemeColor
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: Constants.DefaultMargin, bottom: 0, right: Constants.DefaultMargin)
+        tableView.register(EventTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifier)
     }
     
     // MARK: - Table view data source
@@ -50,7 +54,7 @@ class EventsTableViewController: UITableViewController {
 
  
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: EventsTableViewController.CellReuseIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellReuseIdentifier, for: indexPath)
         if let etvc = cell as? EventTableViewCell {
             etvc.event = dataMgr.getEvents()[indexPath.row]
         }
@@ -58,22 +62,20 @@ class EventsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return EventTableViewCell.CellHeight
+        return CellHeight
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let detvc = storyboard?.instantiateViewController(withIdentifier: "detailedEventTableViewController") as? DetailedEventTableViewController {
-            detvc.event = dataMgr.getEvents()[indexPath.row]
-            navigationController?.pushViewController(detvc, animated: true)
-        }
+        let detvc = DetailedEventTableViewController()
+        detvc.event = dataMgr.getEvents()[indexPath.row]
+        navigationController?.pushViewController(detvc, animated: true)
     }
     
     // MARK: - Methods
     
     func presentCreateEventTableViewController() {
-        if let cetvc = storyboard?.instantiateViewController(withIdentifier: "createEventTableViewController") as? CreateEventTableViewController {
-            let nc = UINavigationController(rootViewController: cetvc)
-            present(nc, animated: true, completion: nil)
-        }
+        let cetvc = CreateEventTableViewController(style: .grouped)
+        let nc = UINavigationController(rootViewController: cetvc)
+        present(nc, animated: true, completion: nil)
     }
 }
