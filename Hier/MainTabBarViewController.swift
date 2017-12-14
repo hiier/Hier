@@ -36,13 +36,20 @@ class MainTabBarViewController: UITabBarController {
         profileViewController.tabBarItem = UITabBarItem(title
             :"Profile", image:UIImage(named:"profile"), tag:1 )
         
+        let notificationViewController = NotificationTableViewController()
+        notificationViewController.tabBarItem = UITabBarItem(title
+            :"Notice", image:UIImage(named:"messaging"), tag:2 )
+        
+        
+        
+        
         
         
 //        let viewControllerList = [ UINavigationController(rootViewController:eventsTableViewController), profileLoginNavigationController ]
 //        viewControllers = viewControllerList
         
         
-         let viewControllerList = [eventsTableViewController, profileViewController ]
+         let viewControllerList = [eventsTableViewController, profileViewController, notificationViewController  ]
                 viewControllers = viewControllerList.map { UINavigationController(rootViewController: $0) }
         
         
